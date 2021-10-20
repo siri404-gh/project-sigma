@@ -1,0 +1,61 @@
+{
+  "name": "project-sigma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "debug": "NODE_OPTIONS='--inspect' next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "test": "jest --coverage",
+    "test:ci": "jest --ci",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "typecheck": "tsc -b",
+    "docker:build": "docker build -f Dockerfile .",
+    "docker:build:sigma-builder": "docker build --target project-sigma-builder -t project-sigma-builder .",
+    "docker:build:sigma": "docker build --target project-sigma -t project-sigma . --no-cache",
+    "docker:run:sigma": "docker run -p 5000:3001 project-sigma",
+    "docker-compose:up": "docker-compose -f docker-compose.yml up --build",
+    "postinstall": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sreeram-io/project-sigma.git"
+  },
+  "author": "Sreeram Padmanabhan <me@sreeram.io> (https://www.sreeram.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sreeram-io/project-sigma/issues"
+  },
+  "homepage": "https://github.com/sreeram-io/project-sigma#readme",
+  "dependencies": {
+    "@emotion/react": "^11.5.0",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@fontsource/roboto": "^4.5.1",
+    "@mui/material": "^5.0.4",
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/next": "^9.0.0",
+    "@types/react": "^17.0.31",
+    "@types/react-dom": "^17.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "babel-jest": "^27.3.1",
+    "eslint": "^8.0.1",
+    "eslint-plugin-import-helpers": "^1.1.0",
+    "eslint-plugin-react": "^7.26.1",
+    "husky": "^7.0.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.3.1",
+    "react-test-renderer": "^17.0.2",
+    "typescript": "^4.4.4"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-import-helpers"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "array-bracket-spacing": [
+      "warn",
+      "always"
+    ],
+    "arrow-body-style": [
+      "warn",
+      "as-needed"
+    ],
+    "block-scoped-var": "warn",
+    "block-spacing": "warn",
+    "camelcase": "warn",
+    "comma-dangle": [
+      "warn",
+      "always-multiline"
+    ],
+    "eqeqeq": "warn",
+    "eol-last": "warn",
+    "global-require": "warn",
+    "handle-callback-err": "warn",
+    "implicit-arrow-linebreak": [
+      "warn",
+      "beside"
+    ],
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^react/",
+          "module",
+          "/^@\//",
+          [
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ],
+    "jsx-quotes": [
+      "warn",
+      "prefer-single"
+    ],
+    "no-alert": "warn",
+    "no-else-return": "warn",
+    "no-empty-function": "warn",
+    "no-empty-pattern": "warn",
+    "no-magic-numbers": "warn",
+    "no-mixed-requires": "warn",
+    "no-multi-spaces": "warn",
+    "no-multiple-empty-lines": [
+      "warn",
+      {
+        "max": 1,
+        "maxEOF": 1
+      }
+    ],
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "react/display-name": 0,
+    "react/prop-types": 0,
+    "react/jsx-closing-bracket-location": [
+      "warn",
+      "after-props"
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "16.0"
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  }
+}
