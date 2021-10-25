@@ -73,6 +73,7 @@
     "no-magic-numbers": "warn",
     "no-mixed-requires": "warn",
     "no-multi-spaces": "warn",
+    "no-trailing-spaces": "warn",
     "no-multiple-empty-lines": [
       "warn",
       {
@@ -93,7 +94,7 @@
   },
   "settings": {
     "react": {
-      "version": "16.0"
+      "version": "17.0"
     }
   },
   "env": {
