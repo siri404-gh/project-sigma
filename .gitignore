@@ -10,7 +10,6 @@
 .project
 .idea/
 *.tmproj
-.vscode/
 
 # dependencies
 /node_modules
