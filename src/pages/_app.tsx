@@ -22,6 +22,7 @@ const MyApp: React.FunctionComponent<Props> = ({ Component: Page, emotionCache =
   <CacheProvider value={emotionCache}>
     <Head>
       <title>My page</title>
+      <meta name='viewport' content='viewport-fit=cover' />
     </Head>
     <ThemeProvider theme={theme}>
       <CssBaseline />
