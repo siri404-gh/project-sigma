@@ -11,14 +11,18 @@
     "**/.gh-pages": true
   },
   "files.exclude": {
-    ".next": true,
+    ".devcontainer": false,
+    ".next": false,
+    ".husky": false,
+    "coverage": false,
+    "node_modules": false
   },
   "workbench.colorCustomizations": {
     "editor.background": "#000000",
-    "terminal.background": "#121214",
-    "sideBar.background": "#030118",
+    "terminal.background": "#121226",
+    "sideBar.background": "#000011",
     "activityBar.background": "#000000"
   },
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none"
 }
