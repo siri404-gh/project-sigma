@@ -58,8 +58,7 @@ const NavBar: FC<NavBarProps> = props => {
             edge='start'
             color='inherit'
             aria-label='menu'
-            onClick={onMenuButtonClick}
-          >
+            onClick={onMenuButtonClick}>
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' component='div'>
@@ -69,16 +68,14 @@ const NavBar: FC<NavBarProps> = props => {
             className={styles.description}
             sx={{ display: { xs: 'none', sm: 'block' } }}
             noWrap
-            variant='caption'
-          >
+            variant='caption'>
             {description}
           </Typography>
           <div className={styles.right}>
             <IconButton
               aria-controls='simple-menu'
               onClick={onAvatarClick}
-              aria-hidden
-            >
+              aria-hidden>
               {isUserLoggedIn ? (
                 <Avatar alt='avatar' src={avatarUrl} />
               ) : (
@@ -89,8 +86,7 @@ const NavBar: FC<NavBarProps> = props => {
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
-                onClose={onAvatarClick}
-              >
+                onClose={onAvatarClick}>
                 {isUserLoggedIn ? (
                   <Link href={'/api/auth/logout'}>
                     <a>
