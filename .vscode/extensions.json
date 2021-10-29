@@ -7,6 +7,7 @@
     "eamodio.gitlens",
     "editorconfig.editorconfig",
     "eg2.vscode-npm-script",
+    "esbenp.prettier-vscode",
     "formulahendry.auto-rename-tag",
     "github.copilot",
     "ms-vscode-remote.remote-containers",
@@ -15,6 +16,6 @@
     "steoates.autoimport",
     "tyriar.sort-lines",
     "vscode-icons-team.vscode-icons",
-    "wix.vscode-import-cost",
+    "wix.vscode-import-cost"
   ]
 }

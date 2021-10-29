@@ -11,4 +11,3 @@ describe('NavBar', () => {
     expect(titleDiv).toHaveTextContent('web dev')
   })
 })
-

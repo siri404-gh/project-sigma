@@ -1,15 +1,15 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { CacheProvider } from '@emotion/react';
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
-import Head from 'next/head';
+import { CacheProvider } from '@emotion/react'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
+import Head from 'next/head'
 
-import theme from '../theme';
-import { createEmotionCache } from './_document';
+import theme from '../theme'
+import { createEmotionCache } from './_document'
 
 // Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = createEmotionCache()
 
 export interface Props {
   Component: React.ComponentType
@@ -18,11 +18,18 @@ export interface Props {
   pageProps?: any
 }
 
-const MyApp: React.FunctionComponent<Props> = ({ Component: Page, emotionCache = clientSideEmotionCache, pageProps }) => (
+const MyApp: React.FunctionComponent<Props> = ({
+  Component: Page,
+  emotionCache = clientSideEmotionCache,
+  pageProps,
+}) => (
   <CacheProvider value={emotionCache}>
     <Head>
       <title>My page</title>
-      <meta name='viewport' content='viewport-fit=cover' />
+      <meta
+        name='viewport'
+        content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'
+      />
     </Head>
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -31,4 +38,4 @@ const MyApp: React.FunctionComponent<Props> = ({ Component: Page, emotionCache =
   </CacheProvider>
 )
 
-export default MyApp;
+export default MyApp

@@ -9,13 +9,10 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:@next/next/recommended"
   ],
   "rules": {
-    "array-bracket-spacing": [
-      "warn",
-      "always"
-    ],
     "arrow-body-style": [
       "warn",
       "as-needed"
@@ -31,10 +28,6 @@
     "eol-last": "warn",
     "global-require": "warn",
     "handle-callback-err": "warn",
-    "implicit-arrow-linebreak": [
-      "warn",
-      "beside"
-    ],
     "indent": [
       "warn",
       2,
@@ -86,11 +79,7 @@
       "always"
     ],
     "react/display-name": 0,
-    "react/prop-types": 0,
-    "react/jsx-closing-bracket-location": [
-      "warn",
-      "after-props"
-    ]
+    "react/prop-types": 0
   },
   "settings": {
     "react": {

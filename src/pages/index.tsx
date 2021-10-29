@@ -6,7 +6,7 @@ import NavBar from '@/components/NavBar'
 
 const Index: NextPage = () => (
   <Fragment>
-    <NavBar title='Web of thoughts' />
+    <NavBar title='Web of thoughts' description='Some tagline here' />
   </Fragment>
 )
 
