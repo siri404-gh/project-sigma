@@ -6,38 +6,34 @@ import {
 } from '@mui/icons-material'
 import {
   AppBar,
-  Box,
-  Typography,
-  IconButton,
-  Toolbar,
   Avatar,
+  Box,
+  IconButton,
+  Link as MuiLink,
   Menu,
   MenuItem,
+  Toolbar,
+  Typography,
 } from '@mui/material'
 import Link from 'next/link'
+
+import config from '@/pages/config'
 
 import styles from './NavBar.module.css'
 
 interface NavBarProps {
-  title?: string
+  avatarUrl?: string
   description?: string
-  onToolbarClick?: () => void
-  onMenuClick?: () => void
   isUserLoggedIn?: boolean
   loginRedirectUrl?: string
-  avatarUrl?: string
+  onMenuClick?: () => void
+  onToolbarClick?: () => void
+  title: string
 }
 
 const NavBar: FC<NavBarProps> = props => {
-  const {
-    title,
-    description,
-    onToolbarClick,
-    onMenuClick,
-    isUserLoggedIn,
-    loginRedirectUrl,
-    avatarUrl,
-  } = props
+  const { avatarUrl, isUserLoggedIn, loginRedirectUrl, onMenuClick, title } =
+    props
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const onMenuButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -50,62 +46,73 @@ const NavBar: FC<NavBarProps> = props => {
   }
 
   return (
-    <Box>
-      <AppBar position='static' elevation={0}>
-        <Toolbar onClick={onToolbarClick}>
+    <AppBar color='secondary' component='nav' elevation={0} position='static'>
+      <Toolbar className={styles.toolbar}>
+        <Link href='/' passHref>
+          <MuiLink sx={{ width: { sm: 225 } }} underline='none'>
+            <Typography component='h1' variant='h6'>
+              {title}
+            </Typography>
+          </MuiLink>
+        </Link>
+        <Box
+          component='ul'
+          sx={{
+            display: { xs: 'none', sm: 'none', md: 'block' },
+            listStyle: 'none',
+            p: 0,
+            m: 0,
+          }}>
+          {config.sections.map(({ title, url }) => (
+            <li key={title} className={styles.li}>
+              <Link href={url} passHref>
+                <MuiLink sx={{ ml: 0.5 }} underline='none'>
+                  {title}
+                </MuiLink>
+              </Link>
+            </li>
+          ))}
+        </Box>
+        <Box
+          sx={{ display: 'flex', justifyContent: 'right', width: { sm: 225 } }}>
           <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
+            aria-controls='simple-menu'
+            onClick={onAvatarClick}
+            sx={{ p: 1, m: 1 }}
+            aria-hidden>
+            {isUserLoggedIn ? (
+              <Avatar alt='avatar' src={avatarUrl} />
+            ) : (
+              <AccountIcon />
+            )}
+            <Menu
+              anchorEl={anchorEl}
+              onClose={onAvatarClick}
+              open={Boolean(anchorEl)}
+              keepMounted>
+              {isUserLoggedIn ? (
+                <Link href={'/api/auth/logout'} passHref>
+                  <MenuItem>Logout</MenuItem>
+                </Link>
+              ) : (
+                <Link
+                  href={`/api/auth/login?redirectTo=${loginRedirectUrl}`}
+                  passHref>
+                  <MenuItem>Login</MenuItem>
+                </Link>
+              )}
+            </Menu>
+          </IconButton>
+          <IconButton
             aria-label='menu'
-            onClick={onMenuButtonClick}>
+            edge='start'
+            onClick={onMenuButtonClick}
+            size='large'>
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' component='div'>
-            {title}
-          </Typography>
-          <Typography
-            className={styles.description}
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-            noWrap
-            variant='caption'>
-            {description}
-          </Typography>
-          <div className={styles.right}>
-            <IconButton
-              aria-controls='simple-menu'
-              onClick={onAvatarClick}
-              aria-hidden>
-              {isUserLoggedIn ? (
-                <Avatar alt='avatar' src={avatarUrl} />
-              ) : (
-                <AccountIcon color={'secondary'} />
-              )}
-              <Menu
-                id='simple-menu'
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={onAvatarClick}>
-                {isUserLoggedIn ? (
-                  <Link href={'/api/auth/logout'}>
-                    <a>
-                      <MenuItem>Logout</MenuItem>
-                    </a>
-                  </Link>
-                ) : (
-                  <Link href={`/api/auth/login?redirectTo=${loginRedirectUrl}`}>
-                    <a>
-                      <MenuItem>Login</MenuItem>
-                    </a>
-                  </Link>
-                )}
-              </Menu>
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-    </Box>
+        </Box>
+      </Toolbar>
+    </AppBar>
   )
 }
 

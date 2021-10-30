@@ -1,7 +1,9 @@
-.description {
-  margin-left: 20px;
+.toolbar {
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.right {
-  margin-left: auto;
+.li {
+  display: inline-block;
+  margin: 0 20px;
 }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { CacheProvider } from '@emotion/react'
-import CssBaseline from '@mui/material/CssBaseline'
+import { CssBaseline, Container } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
 import Head from 'next/head'
 
@@ -27,13 +27,15 @@ const MyApp: React.FunctionComponent<Props> = ({
     <Head>
       <title>My page</title>
       <meta
-        name='viewport'
         content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'
+        name='viewport'
       />
     </Head>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Page {...pageProps} />
+      <Container maxWidth='xl' disableGutters>
+        <Page {...pageProps} />
+      </Container>
     </ThemeProvider>
   </CacheProvider>
 )

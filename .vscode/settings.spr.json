@@ -20,11 +20,18 @@
   "workbench.colorCustomizations": {
     "editor.background": "#000000",
     "terminal.background": "#212127",
-    "sideBar.background": "#000011",
-    "activityBar.background": "#000000"
+    "sideBar.background": "#000024",
+    "activityBar.background": "#000000",
+    "statusBar.background": "#4401b1"
   },
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

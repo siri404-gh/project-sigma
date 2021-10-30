@@ -79,7 +79,18 @@
       "always"
     ],
     "react/display-name": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react/jsx-sort-props": [
+      1,
+      {
+        "callbacksLast": false,
+        "shorthandFirst": false,
+        "shorthandLast": true,
+        "ignoreCase": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": true
+      }
+    ]
   },
   "settings": {
     "react": {

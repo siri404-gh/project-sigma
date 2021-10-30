@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <meta name='theme-color' content={theme.palette.primary.main} />
+          <meta content={theme.palette.primary.main} name='theme-color' />
         </Head>
         <body>
           <Main />
@@ -75,9 +75,9 @@ MyDocument.getInitialProps = async ctx => {
   const emotionStyles = extractCriticalToChunks(initialProps.html)
   const emotionStyleTags = emotionStyles.styles.map(style => (
     <style
-      data-emotion={`${style.key} ${style.ids.join(' ')}`}
       key={style.key}
       dangerouslySetInnerHTML={{ __html: style.css }}
+      data-emotion={`${style.key} ${style.ids.join(' ')}`}
     />
   ))
 
