@@ -3,17 +3,17 @@
 exports[`NavBar renders 1`] = `
 <div>
   <nav
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorSecondary MuiAppBar-positionStatic css-tdpxij-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorSecondary MuiAppBar-positionStatic css-iw6dtd-MuiPaper-root-MuiAppBar-root"
   >
     <div
       class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular toolbar css-1t29gy6-MuiToolbar-root"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1j5kj3z-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
         href="/"
       >
         <h1
-          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h6 css-oblp1g-MuiTypography-root"
         >
           title
         </h1>
@@ -25,7 +25,7 @@ exports[`NavBar renders 1`] = `
           class="li"
         >
           <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oddrks-MuiTypography-root-MuiLink-root"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
             href="/about"
           >
             About
@@ -35,7 +35,7 @@ exports[`NavBar renders 1`] = `
           class="li"
         >
           <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oddrks-MuiTypography-root-MuiLink-root"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
             href="/blog"
           >
             Blog
@@ -45,7 +45,7 @@ exports[`NavBar renders 1`] = `
           class="li"
         >
           <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oddrks-MuiTypography-root-MuiLink-root"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
             href="/tech"
           >
             Tech
@@ -55,7 +55,7 @@ exports[`NavBar renders 1`] = `
           class="li"
         >
           <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oddrks-MuiTypography-root-MuiLink-root"
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
             href="/courses"
           >
             Courses
@@ -63,12 +63,12 @@ exports[`NavBar renders 1`] = `
         </li>
       </ul>
       <div
-        class="MuiBox-root css-b0qcfk"
+        class="MuiBox-root css-1yrwlx0"
       >
         <button
           aria-controls="simple-menu"
           aria-hidden="true"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5vjtg7-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
         >
@@ -89,13 +89,13 @@ exports[`NavBar renders 1`] = `
         </button>
         <button
           aria-label="menu"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeStart MuiIconButton-sizeLarge css-29o2ag-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-bp2one-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
             data-testid="MenuIcon"
             focusable="false"
             viewBox="0 0 24 24"

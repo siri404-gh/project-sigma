@@ -1,16 +1,19 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { NextPage } from 'next'
-
-import NavBar from '@/components/NavBar'
+import Image from 'next/image'
 
 const Index: NextPage = () => (
-  <Fragment>
-    <NavBar
-      description='Software Engineer @ Bumble Inc.'
-      title='Sreeram Padmanabhan'
+  <div className='animate-up-down' style={{ margin: 'auto' }}>
+    <Image
+      alt='blog'
+      height='175'
+      loading='lazy'
+      src={'/img/sections/dev.svg'}
+      title='blog'
+      width='300'
     />
-  </Fragment>
+  </div>
 )
 
 export default Index

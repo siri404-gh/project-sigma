@@ -1,29 +1,25 @@
-import * as React from 'react'
+import React, { Fragment } from 'react'
 
-import { CacheProvider } from '@emotion/react'
-import { CssBaseline, Container } from '@mui/material'
+import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
+import type {
+  AppProps as NextAppProps,
+  AppContext as NextAppContext,
+} from 'next/app'
 import Head from 'next/head'
 
+import Layout from '@/components/Layout/Layout'
+import type { LayoutProps } from '@/components/Layout/Layout'
+
 import theme from '../theme'
-import { createEmotionCache } from './_document'
+import '@/styles/styles.css'
 
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache()
-
-export interface Props {
-  Component: React.ComponentType
-  emotionCache?: ReturnType<typeof createEmotionCache>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  pageProps?: any
+interface MyAppProps extends NextAppProps {
+  layoutProps: LayoutProps
 }
 
-const MyApp: React.FunctionComponent<Props> = ({
-  Component: Page,
-  emotionCache = clientSideEmotionCache,
-  pageProps,
-}) => (
-  <CacheProvider value={emotionCache}>
+const MyApp = ({ Component: Page, layoutProps, pageProps }: MyAppProps) => (
+  <Fragment>
     <Head>
       <title>My page</title>
       <meta
@@ -33,11 +29,25 @@ const MyApp: React.FunctionComponent<Props> = ({
     </Head>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth='xl' disableGutters>
+      <Layout {...layoutProps}>
         <Page {...pageProps} />
-      </Container>
+      </Layout>
     </ThemeProvider>
-  </CacheProvider>
+  </Fragment>
 )
+
+MyApp.getInitialProps = async ({ Component, ctx }: NextAppContext) => ({
+  pageProps: Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {},
+  layoutProps: {
+    navbarProps: {
+      title: 'Sreeram Padmanabhan',
+    },
+    sidebarProps: {
+      title: 'Sections',
+    },
+  },
+})
 
 export default MyApp

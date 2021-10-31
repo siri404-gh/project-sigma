@@ -19,9 +19,9 @@ import Link from 'next/link'
 
 import config from '@/pages/config'
 
-import styles from './NavBar.module.css'
+import styles from './Navbar.module.css'
 
-interface NavBarProps {
+export interface NavbarProps {
   avatarUrl?: string
   description?: string
   isUserLoggedIn?: boolean
@@ -31,7 +31,7 @@ interface NavBarProps {
   title: string
 }
 
-const NavBar: FC<NavBarProps> = props => {
+const Navbar: FC<NavbarProps> = props => {
   const { avatarUrl, isUserLoggedIn, loginRedirectUrl, onMenuClick, title } =
     props
 
@@ -45,12 +45,22 @@ const NavBar: FC<NavBarProps> = props => {
     setAnchorEl(!anchorEl ? e.currentTarget : null)
   }
 
+  const appBarColor = 'secondary'
+  const otherColor = 'primary'
+
   return (
-    <AppBar color='secondary' component='nav' elevation={0} position='static'>
+    <AppBar
+      color={appBarColor}
+      component='nav'
+      elevation={0}
+      position='static'
+      sx={theme => ({
+        borderBottom: `solid 1px ${theme.palette.primary.main}`,
+      })}>
       <Toolbar className={styles.toolbar}>
         <Link href='/' passHref>
-          <MuiLink sx={{ width: { sm: 225 } }} underline='none'>
-            <Typography component='h1' variant='h6'>
+          <MuiLink underline='none'>
+            <Typography color={otherColor} component='h1' variant='h6'>
               {title}
             </Typography>
           </MuiLink>
@@ -66,7 +76,7 @@ const NavBar: FC<NavBarProps> = props => {
           {config.sections.map(({ title, url }) => (
             <li key={title} className={styles.li}>
               <Link href={url} passHref>
-                <MuiLink sx={{ ml: 0.5 }} underline='none'>
+                <MuiLink color={otherColor} underline='none'>
                   {title}
                 </MuiLink>
               </Link>
@@ -74,11 +84,11 @@ const NavBar: FC<NavBarProps> = props => {
           ))}
         </Box>
         <Box
-          sx={{ display: 'flex', justifyContent: 'right', width: { sm: 225 } }}>
+          sx={{ display: 'flex', justifyContent: 'right', width: { sm: 200 } }}>
           <IconButton
             aria-controls='simple-menu'
+            color={otherColor}
             onClick={onAvatarClick}
-            sx={{ p: 1, m: 1 }}
             aria-hidden>
             {isUserLoggedIn ? (
               <Avatar alt='avatar' src={avatarUrl} />
@@ -105,10 +115,10 @@ const NavBar: FC<NavBarProps> = props => {
           </IconButton>
           <IconButton
             aria-label='menu'
-            edge='start'
+            color={otherColor}
             onClick={onMenuButtonClick}
-            size='large'>
-            <MenuIcon />
+            sx={{ pr: 0 }}>
+            <MenuIcon fontSize='large' />
           </IconButton>
         </Box>
       </Toolbar>
@@ -116,4 +126,4 @@ const NavBar: FC<NavBarProps> = props => {
   )
 }
 
-export default NavBar
+export default Navbar

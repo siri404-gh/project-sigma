@@ -1,29 +1,29 @@
-import { red as error, indigo as primary } from '@mui/material/colors'
 import { createTheme } from '@mui/material/styles'
-import '@fontsource/roboto/300.css'
-import '@fontsource/roboto/400.css'
-import '@fontsource/roboto/500.css'
-import '@fontsource/roboto/700.css'
+import '@fontsource/oxygen'
+
+const colors = {
+  primary: '#000000',
+  secondary: '#ffffff',
+}
 
 const theme = createTheme({
   palette: {
-    primary,
     secondary: {
-      main: '#ffffff',
+      main: colors.primary,
     },
-    error: {
-      main: error.A400,
+    primary: {
+      main: colors.secondary,
     },
     background: {
-      default: '#ffffff',
+      default: colors.primary,
     },
   },
   typography: {
+    fontFamily: 'Oxygen, Arsenal, Ubuntu, Roboto sans-serif',
     fontSize: 15,
-    fontFamily: 'Ubuntu, Oxygen, Roboto, Helvetica, Arial, sans-serif',
     fontWeightLight: 300,
-    fontWeightRegular: 400,
     fontWeightMedium: 500,
+    fontWeightRegular: 400,
   },
 })
 

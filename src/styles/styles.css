@@ -1,0 +1,71 @@
+@keyframes shimmer {
+  0% {
+    background-position: calc(0% - 50px) 0%;
+  }
+  100% {
+    background-position: calc(100% + 50px) 0%;
+  }
+}
+
+@keyframes up-down {
+  from {
+    transform: translatey(0px);
+  }
+  to {
+    transform: translatey(-20px);
+  }
+}
+
+:root {
+  --animate-up-down: {
+    animation: up-down 1.4s infinite ease-in-out alternate;
+  }
+}
+
+.animate-up-down {
+  animation: up-down 1.4s infinite ease-in-out alternate;
+}
+
+._shimmer {
+  color: rgba(255, 255, 255, 0.3);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#5b5b5b),
+    to(#5b5b5b),
+    color-stop(0.8, #c6c6c6)
+  );
+  background: -moz-gradient(
+    linear,
+    left top,
+    right top,
+    from(#5b5b5b),
+    to(#5b5b5b),
+    color-stop(0.8, #c6c6c6)
+  );
+  background: gradient(
+    linear,
+    left top,
+    right top,
+    from(#5b5b5b),
+    to(#5b5b5b),
+    color-stop(0.8, #c6c6c6)
+  );
+  background-size: 50px 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: rgba(198, 198, 198, 0.3);
+  -webkit-animation: shimmer 3s infinite;
+  animation: shimmer 3s infinite;
+}
+
+._shimmer > h6 {
+  color: #ffffff;
+}
+
+._shimmer > span {
+  color: #ffffff4d;
+}
