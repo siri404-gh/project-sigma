@@ -17,7 +17,7 @@ import {
 } from '@mui/material'
 import Link from 'next/link'
 
-import config from '@/pages/config'
+import config from '@/config'
 
 import styles from './Navbar.module.css'
 
