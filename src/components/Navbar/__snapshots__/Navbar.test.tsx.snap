@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavBar renders 1`] = `
+exports[`Navbar renders 1`] = `
 <div>
   <nav
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorSecondary MuiAppBar-positionStatic css-iw6dtd-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorSecondary MuiAppBar-positionStatic css-tdpxij-MuiPaper-root-MuiAppBar-root"
   >
     <div
       class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular toolbar css-1t29gy6-MuiToolbar-root"
@@ -14,54 +14,8 @@ exports[`NavBar renders 1`] = `
       >
         <h1
           class="MuiTypography-root MuiTypography-h6 css-oblp1g-MuiTypography-root"
-        >
-          title
-        </h1>
+        />
       </a>
-      <ul
-        class="MuiBox-root css-4s7zdz"
-      >
-        <li
-          class="li"
-        >
-          <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
-            href="/about"
-          >
-            About
-          </a>
-        </li>
-        <li
-          class="li"
-        >
-          <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
-            href="/blog"
-          >
-            Blog
-          </a>
-        </li>
-        <li
-          class="li"
-        >
-          <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
-            href="/tech"
-          >
-            Tech
-          </a>
-        </li>
-        <li
-          class="li"
-        >
-          <a
-            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1oaaite-MuiTypography-root-MuiLink-root"
-            href="/courses"
-          >
-            Courses
-          </a>
-        </li>
-      </ul>
       <div
         class="MuiBox-root css-1yrwlx0"
       >

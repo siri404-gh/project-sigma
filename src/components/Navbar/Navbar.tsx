@@ -17,23 +17,28 @@ import {
 } from '@mui/material'
 import Link from 'next/link'
 
-import config from '@/config'
-
 import styles from './Navbar.module.css'
 
 export interface NavbarProps {
   avatarUrl?: string
+  children?: React.ReactNode
   description?: string
   isUserLoggedIn?: boolean
   loginRedirectUrl?: string
   onMenuClick?: () => void
   onToolbarClick?: () => void
-  title: string
+  title?: string
 }
 
 const Navbar: FC<NavbarProps> = props => {
-  const { avatarUrl, isUserLoggedIn, loginRedirectUrl, onMenuClick, title } =
-    props
+  const {
+    avatarUrl,
+    children,
+    isUserLoggedIn,
+    loginRedirectUrl,
+    onMenuClick,
+    title,
+  } = props
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const onMenuButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -55,7 +60,7 @@ const Navbar: FC<NavbarProps> = props => {
       elevation={0}
       position='static'
       sx={theme => ({
-        borderBottom: `solid 1px ${theme.palette.primary.main}`,
+        // borderBottom: `solid 1px ${theme.palette.primary.main}`,
       })}>
       <Toolbar className={styles.toolbar}>
         <Link href='/' passHref>
@@ -65,24 +70,7 @@ const Navbar: FC<NavbarProps> = props => {
             </Typography>
           </MuiLink>
         </Link>
-        <Box
-          component='ul'
-          sx={{
-            display: { xs: 'none', sm: 'none', md: 'block' },
-            listStyle: 'none',
-            p: 0,
-            m: 0,
-          }}>
-          {config.sections.map(({ title, url }) => (
-            <li key={title} className={styles.li}>
-              <Link href={url} passHref>
-                <MuiLink color={otherColor} underline='none'>
-                  {title}
-                </MuiLink>
-              </Link>
-            </li>
-          ))}
-        </Box>
+        {children}
         <Box
           sx={{ display: 'flex', justifyContent: 'right', width: { sm: 200 } }}>
           <IconButton

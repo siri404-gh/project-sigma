@@ -11,16 +11,9 @@ export interface SidebarProps {
   logo?: JSX.Element
 }
 
-const Sidebar: FC<SidebarProps> = ({
-  children,
-  isOpen,
-  onClose,
-  title,
-  logo,
-}) => (
-  <Drawer anchor='left' onClose={onClose} open={isOpen} variant='temporary'>
+const Sidebar: FC<SidebarProps> = ({ children, isOpen, onClose, title }) => (
+  <Drawer anchor='right' onClose={onClose} open={isOpen} variant='temporary'>
     <Toolbar>
-      {logo}
       <Typography color='textSecondary' variant='h6' noWrap>
         {title}
       </Typography>

@@ -3,17 +3,19 @@ import React from 'react'
 import { NextPage } from 'next'
 import Image from 'next/image'
 
+import Center from '@/components/Center/Center'
+
 const Index: NextPage = () => (
-  <div className='animate-up-down' style={{ margin: 'auto' }}>
+  <Center className='animate-up-down'>
     <Image
       alt='blog'
       height='175'
       loading='lazy'
-      src={'/img/sections/dev.svg'}
+      src='/img/sections/dev.svg'
       title='blog'
       width='300'
     />
-  </div>
+  </Center>
 )
 
 export default Index

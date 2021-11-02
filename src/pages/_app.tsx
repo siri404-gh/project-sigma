@@ -8,10 +8,9 @@ import type {
 } from 'next/app'
 import Head from 'next/head'
 
-import Layout from '@/components/Layout/Layout'
-import type { LayoutProps } from '@/components/Layout/Layout'
-
-import theme from '../theme'
+import Layout, { LayoutProps } from '@/components/Layout/Layout'
+import config from '@/config'
+import theme from '@/theme'
 import '@/styles/styles.css'
 
 interface MyAppProps extends NextAppProps {
@@ -41,12 +40,10 @@ MyApp.getInitialProps = async ({ Component, ctx }: NextAppContext) => ({
     ? await Component.getInitialProps(ctx)
     : {},
   layoutProps: {
-    navbarProps: {
-      title: 'Sreeram Padmanabhan',
-    },
-    sidebarProps: {
-      title: 'Sections',
-    },
+    seoProps: config.seo,
+    navbarProps: config.navbar,
+    navlinksProps: config.navlinks,
+    sidebarProps: config.sidebar,
   },
 })
 

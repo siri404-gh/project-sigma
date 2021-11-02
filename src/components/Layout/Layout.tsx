@@ -1,12 +1,13 @@
-import React, { useState, FunctionComponent, Fragment } from 'react'
+import React, { useState, FC } from 'react'
 
-import { Container } from '@mui/material'
+import { Box, Container } from '@mui/material'
 
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
+import Navlinks, { NavlinksProps } from '@/components/Navlinks/Navlinks'
+import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 
 import styles from './Layout.module.css'
-
 export interface LayoutProps {
   // bottomBarProps?: bottomBarPropsType
   // index?: number
@@ -14,13 +15,17 @@ export interface LayoutProps {
   // seoProps?: seoPropsType
   // sidebarContentProps?: sidebarContentPropsType
   children?: JSX.Element
-  navbarProps: NavbarProps
+  seoProps?: SEOProps
+  navbarProps?: NavbarProps
+  navlinksProps?: NavlinksProps
   sidebarProps?: SidebarProps
 }
 
-const Layout: FunctionComponent<LayoutProps> = ({
+const Layout: FC<LayoutProps> = ({
   children,
+  seoProps,
   navbarProps,
+  navlinksProps,
   sidebarProps,
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -36,16 +41,18 @@ const Layout: FunctionComponent<LayoutProps> = ({
     onOpen: onSidebarToggle,
   }
   return (
-    <Fragment>
-      <Navbar {...navbarProps} />
+    <div className='layout'>
+      <Seo {...seoProps} />
       <Sidebar {...sidebarProps} />
       <Container maxWidth='xl' disableGutters>
-        <div className={styles.contentWrapper}>
-          <div className={styles.shift} />
+        <Box sx={{ height: '100vh' }}>
+          <Navbar {...navbarProps}>
+            <Navlinks {...navlinksProps} />
+          </Navbar>
           {children}
-        </div>
+        </Box>
       </Container>
-    </Fragment>
+    </div>
   )
 }
 

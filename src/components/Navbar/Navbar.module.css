@@ -2,8 +2,3 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
-.li {
-  display: inline-block;
-  margin: 0 20px;
-}

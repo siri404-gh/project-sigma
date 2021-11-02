@@ -1,20 +1,22 @@
-export default {
-  sections: [
-    {
-      title: 'About',
-      url: '/about',
-    },
-    {
-      title: 'Blog',
-      url: '/blog',
-    },
-    {
-      title: 'Tech',
-      url: '/tech',
-    },
-    {
-      title: 'Courses',
-      url: '/courses',
-    },
-  ],
+import { NavbarProps } from '@/components/Navbar/Navbar'
+import { NavlinksProps } from '@/components/Navlinks/Navlinks'
+import { SEOProps } from '@/components/Seo/Seo'
+import { SidebarProps } from '@/components/Sidebar/Sidebar'
+
+const envConfig = JSON.parse(process.env.NEXT_PUBLIC_CONFIG || '{}')
+
+interface Config {
+  seo: SEOProps
+  navbar: NavbarProps
+  navlinks: NavlinksProps
+  sidebar: SidebarProps
 }
+
+const config: Config = {
+  seo: {},
+  navbar: {},
+  navlinks: {},
+  sidebar: {},
+}
+
+export default { ...config, ...envConfig }

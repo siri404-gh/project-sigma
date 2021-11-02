@@ -85,3 +85,4 @@ public/service-worker.js.map
 public/workbox-*.js
 public/workbox-*.js.map
 .src
+data.json
