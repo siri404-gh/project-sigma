@@ -5,9 +5,14 @@ import Link from 'next/link'
 
 import styles from './Navlinks.module.css'
 
+export interface NavlinkRoute {
+  title: string
+  route: string
+}
 export interface NavlinkType {
   title: string
   url: string
+  routes?: NavlinkRoute[]
 }
 
 export interface NavlinksProps {
@@ -26,7 +31,9 @@ const Navlinks: FC<NavlinksProps> = ({ links = [] }) => (
     {links.map(({ title, url }) => (
       <li key={title} className={styles.li}>
         <Link href={url} passHref>
-          <MuiLink underline='none'>{title}</MuiLink>
+          <MuiLink color='secondary' underline='none'>
+            {title}
+          </MuiLink>
         </Link>
       </li>
     ))}

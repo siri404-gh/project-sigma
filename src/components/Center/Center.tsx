@@ -1,29 +1,37 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 
 import { Box } from '@mui/material'
+import { styled } from '@mui/system'
 
 export interface CenterProps {
-  children?: React.ReactNode
+  children?: ReactNode
   className?: string
 }
 
-const Center: FC<CenterProps> = ({ children, className }) => (
-  <Box
-    sx={{
-      position: 'relative',
-      height: { xs: 'calc(100% - 57px)', sm: 'calc(100% - 65px)' },
-    }}>
-    <div
-      style={{
-        display: 'flex',
-        position: 'absolute',
-        inset: 0,
-      }}>
-      <div className={className} style={{ margin: 'auto' }}>
-        {children}
-      </div>
-    </div>
-  </Box>
+const RelativeBox = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  height: 'calc(100% - 56px)',
+  [theme.breakpoints.up('sm')]: {
+    height: 'calc(100% - 64px)',
+  },
+}))
+
+const AbsoluteBox = styled(Box)({
+  display: 'flex',
+  position: 'absolute',
+  inset: 0,
+})
+
+const CenterBox = styled(Box)({
+  margin: 'auto',
+})
+
+const Center: FC<CenterProps> = ({ children }) => (
+  <RelativeBox>
+    <AbsoluteBox>
+      <CenterBox>{children}</CenterBox>
+    </AbsoluteBox>
+  </RelativeBox>
 )
 
 export default Center

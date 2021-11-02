@@ -50,18 +50,11 @@ const Navbar: FC<NavbarProps> = props => {
     setAnchorEl(!anchorEl ? e.currentTarget : null)
   }
 
-  const appBarColor = 'secondary'
-  const otherColor = 'primary'
+  const appBarColor = 'transparent'
+  const otherColor = 'secondary'
 
   return (
-    <AppBar
-      color={appBarColor}
-      component='nav'
-      elevation={0}
-      position='static'
-      sx={theme => ({
-        // borderBottom: `solid 1px ${theme.palette.primary.main}`,
-      })}>
+    <AppBar color={appBarColor} component='nav' elevation={0} position='static'>
       <Toolbar className={styles.toolbar}>
         <Link href='/' passHref>
           <MuiLink underline='none'>

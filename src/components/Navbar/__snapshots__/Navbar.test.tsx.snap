@@ -3,7 +3,7 @@
 exports[`Navbar renders 1`] = `
 <div>
   <nav
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorSecondary MuiAppBar-positionStatic css-tdpxij-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorTransparent MuiAppBar-positionStatic css-pivuyh-MuiPaper-root-MuiAppBar-root"
   >
     <div
       class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular toolbar css-1t29gy6-MuiToolbar-root"
@@ -13,7 +13,7 @@ exports[`Navbar renders 1`] = `
         href="/"
       >
         <h1
-          class="MuiTypography-root MuiTypography-h6 css-oblp1g-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h6 css-6zgmsr-MuiTypography-root"
         />
       </a>
       <div
@@ -22,7 +22,7 @@ exports[`Navbar renders 1`] = `
         <button
           aria-controls="simple-menu"
           aria-hidden="true"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeMedium css-1gws2xf-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
         >
@@ -43,7 +43,7 @@ exports[`Navbar renders 1`] = `
         </button>
         <button
           aria-label="menu"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-bp2one-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeMedium css-19a7nlu-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
         >
