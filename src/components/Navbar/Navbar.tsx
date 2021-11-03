@@ -15,9 +15,8 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
+import { styled } from '@mui/system'
 import Link from 'next/link'
-
-import styles from './Navbar.module.css'
 
 export interface NavbarProps {
   avatarUrl?: string
@@ -29,6 +28,11 @@ export interface NavbarProps {
   onToolbarClick?: () => void
   title?: string
 }
+
+const StyledToolbar = styled(Toolbar)({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
 
 const Navbar: FC<NavbarProps> = props => {
   const {
@@ -55,7 +59,7 @@ const Navbar: FC<NavbarProps> = props => {
 
   return (
     <AppBar color={appBarColor} component='nav'>
-      <Toolbar className={styles.toolbar}>
+      <StyledToolbar>
         <Link href='/' passHref>
           <MuiLink underline='none'>
             <Typography color={otherColor} component='h1' variant='h6' noWrap>
@@ -101,7 +105,7 @@ const Navbar: FC<NavbarProps> = props => {
             <MenuIcon fontSize='large' />
           </IconButton>
         </Box>
-      </Toolbar>
+      </StyledToolbar>
     </AppBar>
   )
 }

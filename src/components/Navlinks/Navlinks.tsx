@@ -1,9 +1,8 @@
 import React, { FC } from 'react'
 
 import { Box, Link as MuiLink } from '@mui/material'
+import { styled } from '@mui/system'
 import Link from 'next/link'
-
-import styles from './Navlinks.module.css'
 
 export interface NavlinkRoute {
   title: string
@@ -19,22 +18,30 @@ export interface NavlinksProps {
   links?: NavlinkType[]
 }
 
+const StyledBox = styled(Box)(({ theme }) => ({
+  display: 'none',
+  [theme.breakpoints.up('md')]: {
+    display: 'block',
+  },
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+}))
+
+const StyledLi = styled(Box)({
+  display: 'inline-block',
+  margin: '0 20px',
+})
+
 const Navlinks: FC<NavlinksProps> = ({ links = [] }) => (
-  <Box
-    component='ul'
-    sx={{
-      display: { xs: 'none', sm: 'none', md: 'block' },
-      listStyle: 'none',
-      p: 0,
-      m: 0,
-    }}>
+  <StyledBox component='ul'>
     {links.map(({ title, url }) => (
-      <li key={title} className={styles.li}>
+      <StyledLi key={title}>
         <Link href={url} passHref>
           <MuiLink underline='none'>{title}</MuiLink>
         </Link>
-      </li>
+      </StyledLi>
     ))}
-  </Box>
+  </StyledBox>
 )
 export default Navlinks

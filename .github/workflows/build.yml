@@ -21,4 +21,4 @@ jobs:
         run: npm i
 
       - name: Sanity Checks
-        run: sh ./scripts/sanity_check.sh
+        run: npm run sanity

@@ -1,14 +1,11 @@
-import React, { FC } from 'react'
+import React from 'react'
 
 import { Box } from '@mui/material'
 import { styled } from '@mui/system'
+import { NextPage } from 'next'
 
 import Markdown from '@/components/Markdown/Markdown'
 import Sociallinks from '@/components/Sociallinks/Sociallinks'
-
-interface IndexProps {
-  firstRoute?: string
-}
 
 const RelativeBox = styled(Box)(({ theme }) => ({
   position: 'absolute',
@@ -37,7 +34,7 @@ const ContentBox = styled(Box)(({ theme }) => ({
   backgroundImage: "url('/img/bg/trans.png')",
 }))
 
-const Index: FC<IndexProps> = () => (
+const Index: NextPage = () => (
   <RelativeBox>
     <ContentBox>
       <Markdown>
