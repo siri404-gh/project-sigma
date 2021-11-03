@@ -74,5 +74,5 @@
   background: url(/img/bg/floral-1.jpg), url(/img/bg/floral-2.jpg) black;
   background-size: 300px 400px, 100px 500px;
   background-repeat: no-repeat, no-repeat;
-  background-position: top 0 left, bottom 0 right;
+  background-position: top 25px left, bottom 0 right;
 }

@@ -19,7 +19,7 @@
     "docker:run:sigma": "docker run -p 5000:3001 project-sigma",
     "docker-compose:up": "docker-compose -f docker-compose.yml up --build",
     "postinstall": "husky install",
-    "precommit": "npm run typecheck && npm run format && npm run lint && npm test"
+    "precommit": "npm run format && npm run lint && npm run typecheck && npm test"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,10 @@
     "next": "^12.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-markdown": "^7.1.0",
+    "react-syntax-highlighter": "^15.4.4",
+    "rehype-raw": "^6.1.0",
+    "remark-gfm": "^3.0.0",
     "sass": "^1.43.4"
   },
   "devDependencies": {
@@ -54,6 +58,7 @@
     "@types/next": "^9.0.0",
     "@types/react": "^17.0.31",
     "@types/react-dom": "^17.0.10",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "babel-jest": "^27.3.1",

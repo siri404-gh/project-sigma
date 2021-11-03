@@ -40,7 +40,7 @@ const Layout: FC<LayoutProps> = ({
     <div className='layout'>
       <Seo {...seoProps} />
       <Sidebar {...sidebarProps} />
-      <Container maxWidth='xl' sx={{ height: '100vh' }} disableGutters>
+      <Container maxWidth='md' sx={{ height: '100vh' }} disableGutters>
         <Navbar {...navbarProps}>
           <Navlinks {...navlinksProps} />
         </Navbar>

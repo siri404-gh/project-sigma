@@ -31,9 +31,7 @@ const Navlinks: FC<NavlinksProps> = ({ links = [] }) => (
     {links.map(({ title, url }) => (
       <li key={title} className={styles.li}>
         <Link href={url} passHref>
-          <MuiLink color='secondary' underline='none'>
-            {title}
-          </MuiLink>
+          <MuiLink underline='none'>{title}</MuiLink>
         </Link>
       </li>
     ))}

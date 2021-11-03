@@ -51,10 +51,10 @@ const Navbar: FC<NavbarProps> = props => {
   }
 
   const appBarColor = 'transparent'
-  const otherColor = 'secondary'
+  const otherColor = 'primary'
 
   return (
-    <AppBar color={appBarColor} component='nav' elevation={0} position='static'>
+    <AppBar color={appBarColor} component='nav'>
       <Toolbar className={styles.toolbar}>
         <Link href='/' passHref>
           <MuiLink underline='none'>
@@ -65,7 +65,7 @@ const Navbar: FC<NavbarProps> = props => {
         </Link>
         {children}
         <Box
-          sx={{ display: 'flex', justifyContent: 'right', width: { sm: 200 } }}>
+          sx={{ display: 'flex', justifyContent: 'right', width: { sm: 225 } }}>
           <IconButton
             aria-controls='simple-menu'
             color={otherColor}
@@ -97,8 +97,7 @@ const Navbar: FC<NavbarProps> = props => {
           <IconButton
             aria-label='menu'
             color={otherColor}
-            onClick={onMenuButtonClick}
-            sx={{ pr: 0 }}>
+            onClick={onMenuButtonClick}>
             <MenuIcon fontSize='large' />
           </IconButton>
         </Box>
