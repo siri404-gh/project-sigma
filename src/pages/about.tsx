@@ -1,0 +1,97 @@
+import React, { FC } from 'react'
+
+import { Box } from '@mui/material'
+import { styled } from '@mui/system'
+
+import Markdown from '@/components/Markdown/Markdown'
+import Sociallinks from '@/components/Sociallinks/Sociallinks'
+
+interface IndexProps {
+  firstRoute?: string
+}
+
+const RelativeBox = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: 56,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  overflow: 'scroll',
+  [theme.breakpoints.up('sm')]: {
+    top: 64,
+  },
+}))
+
+const ContentBox = styled(Box)(({ theme }) => ({
+  minHeight: 'fill-available',
+  maxWidth: 900,
+  padding: 15,
+  margin: '0 auto',
+  [theme.breakpoints.up('md')]: {
+    borderRadius: 8,
+    border: 'solid 1px #2a2a2a',
+  },
+  backgroundImage: "url('/img/bg/trans.png')",
+}))
+
+const Index: FC<IndexProps> = () => (
+  <RelativeBox>
+    <ContentBox>
+      <Markdown>
+        {`
+
+## Hello, World! 👋
+
+#### 02 Jun 2021, Berlin
+
+&nbsp;
+
+<img class="img--full-width img--left img--grow" loading="lazy" src="/img/blog/sreeram.jpg" alt="sreeram padmanabhan" title="sreeram padmanabhan" />
+
+Hi there! I am Sreeram. I am a Web Developer. I work for Bumble in London. I consider myself an artist in the world of web painting it with the colors of Javascript with a touch of creativity. Ever since 2011, my job has taken me around the world to work for some great companies amongst some of the best engineering minds in the world. I will be sharing anecdotes of the experiences I have had and the impact it has had in my life.
+
+Outside of work, I am also a Student Pilot enroute getting my pilots license. Its the high octane activity I engage in which takes my mind away from code and computers sometimes. 
+
+I also have a keen interest in teaching. I used to be a bad student in my schooling days and I realized late that I had the potential to do way better. Thats probably why I have developed my own idea of how teching is to be done. Today, I am a part-time teacher teaching people programming online. 
+
+I travel regularly and have so far been to about 15 countries. I try to spend summers in Europe visiting my friends there and winters in India where my parents are. 
+
+I cook, mostly Indian, but I am expanding my repertoire to other cuisines. I recently learnt how to make Biriyani.
+
+I speak a few languages - Tamil, Malayalam, Hindi, and English. I have learnt a bit of Sanskrit and Deutsch too. 
+
+I play a lot of cricket during the summer months. A cringeworthy thing is from 2015 to 2017 I practiced every day to be able to play in 2019 world cup. Didnt succeed.
+
+I tend to have strong opinions on socio-political issues around the world, sometimes controversial. 
+
+Lastly, I'm generally a friendly, easy going, down-to-earth, respectable, reliable, someone one can talk about anything to - life, politics, movies or whatever (except songs). I am meticulous and abmitious and I move steadfast towards my goals.
+
+&nbsp;
+
+## My work experience
+
+So far, I have had the opportunity to work for some great companies which include:
+
+<img height=16 width=16 style="width:auto" src='/img/blog/bumble.ico' /> **Senior Frontend Engineer, Bumble, London, UK - (2021)**
+
+<img height=16 width=16 style="width:auto" src='/img/blog/dh.ico' /> **Senior Software Engineer, Delivery Hero, Berlin, DE (2019)**
+
+<img height=16 width=16 style="width:auto" src='/img/blog/lloyds.ico' /> **Senior Software Engineer, Lloyds Bank, London, UK – (2016)**
+
+<img height=16 width=16 style="width:auto" src='/img/blog/apple.ico' /> **Software Engineer, Apple, Bangalore, IN – (2013)**
+
+<img height=16 width=16 style="width:auto" src='/img/blog/nokia.ico' /> **Unix Administrator, Nokia Networks, Kochi, IN – (2012)**
+
+<img height=16 width=16 style="width:auto" src='/img/blog/wd.png' /> **Senior Software Engineer, Wipro Digital, London, UK – (2012)**
+
+<img height=16 width=16 style="width:auto" src='/img/blog/mistallianz.jpeg' /> **PHP Developer, Mistallianz Pvt Ltd, Trivandrum, IN – (2011)**
+
+**Freelance Web Developer, Trivandrum, IN – (2005-2011)**
+      `}
+      </Markdown>
+    </ContentBox>
+    <Sociallinks />
+  </RelativeBox>
+)
+
+export default Index

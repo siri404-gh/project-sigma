@@ -38,7 +38,12 @@ const components = {
     <Link href={href}>{children}</Link>
   ),
   p: ({ children }: { children: string }) => (
-    <Typography color='primary' component='p' variant='body2' paragraph>
+    <Typography
+      color='primary'
+      component='p'
+      sx={{ textAlign: 'justify' }}
+      variant='body1'
+      paragraph>
       {children}
     </Typography>
   ),
@@ -90,6 +95,7 @@ interface MarkdownProps {
 
 const Markdown: FC<MarkdownProps> = props => (
   <ReactMarkdown
+    className='markdown'
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore-line
     components={components}
