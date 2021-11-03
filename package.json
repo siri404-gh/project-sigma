@@ -19,7 +19,7 @@
     "docker:run:sigma": "docker run -p 5000:3001 project-sigma",
     "docker-compose:up": "docker-compose -f docker-compose.yml up --build",
     "postinstall": "husky install",
-    "precommit": "npm run typecheck && npm run format && npm run lint && npm test"
+    "precommit": "npm run format && npm run lint && npm run typecheck && npm test"
   },
   "repository": {
     "type": "git",

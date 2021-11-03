@@ -22,7 +22,7 @@ const RelativeBox = styled(Box)(({ theme }) => ({
 }))
 
 const ContentBox = styled(Box)(({ theme }) => ({
-  height: 'fill-available',
+  minHeight: 'fill-available',
   maxWidth: 900,
   padding: 15,
   margin: '0 auto 20px',
