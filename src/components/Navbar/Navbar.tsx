@@ -58,7 +58,7 @@ const Navbar: FC<NavbarProps> = props => {
       <Toolbar className={styles.toolbar}>
         <Link href='/' passHref>
           <MuiLink underline='none'>
-            <Typography color={otherColor} component='h1' variant='h6'>
+            <Typography color={otherColor} component='h1' variant='h6' noWrap>
               {title}
             </Typography>
           </MuiLink>

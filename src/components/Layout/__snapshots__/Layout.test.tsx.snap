@@ -19,7 +19,7 @@ exports[`Layout renders 1`] = `
             href="/"
           >
             <h1
-              class="MuiTypography-root MuiTypography-h6 css-oblp1g-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-1q94fhx-MuiTypography-root"
             />
           </a>
           <ul
