@@ -76,3 +76,38 @@
   background-repeat: no-repeat, no-repeat;
   background-position: top 25px left, bottom 0 right;
 }
+
+.img--full-width {
+  width: 100%;
+}
+
+.img--center {
+  height: 200px;
+  margin: auto;
+}
+
+@media (max-width: 600px) {
+  .img--grow {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 600px) {
+  .img--left {
+    max-width: 300px;
+    float: left;
+    margin: 0 15px 15px 0;
+  }
+}
+
+.markdown > p > img {
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.markdown > p > img ~ strong {
+  vertical-align: text-bottom;
+}
