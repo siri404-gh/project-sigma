@@ -87,6 +87,11 @@ const components = {
       {children}
     </Typography>
   ),
+  strong: ({ children }: { children: string }) => (
+    <Typography color='primary' component='strong' variant='subtitle2'>
+      {children}
+    </Typography>
+  ),
 }
 
 interface MarkdownProps {
