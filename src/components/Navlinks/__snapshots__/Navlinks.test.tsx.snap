@@ -3,7 +3,7 @@
 exports[`Navlinks renders 1`] = `
 <div>
   <ul
-    class="MuiBox-root css-4s7zdz"
+    class="MuiBox-root css-1xaulu4"
   />
 </div>
 `;

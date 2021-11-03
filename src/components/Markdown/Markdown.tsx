@@ -95,7 +95,7 @@ const components = {
 }
 
 interface MarkdownProps {
-  children: string
+  children?: string
 }
 
 const Markdown: FC<MarkdownProps> = props => (
