@@ -2,8 +2,8 @@ import { createTheme } from '@mui/material/styles'
 import '@fontsource/oxygen'
 
 const colors = {
-  primary: '#000000',
-  secondary: '#ffffff',
+  primary: '#ffffff',
+  secondary: '#000000',
 }
 
 const theme = createTheme({

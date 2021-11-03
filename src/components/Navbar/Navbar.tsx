@@ -51,7 +51,7 @@ const Navbar: FC<NavbarProps> = props => {
   }
 
   const appBarColor = 'transparent'
-  const otherColor = 'secondary'
+  const otherColor = 'primary'
 
   return (
     <AppBar color={appBarColor} component='nav' elevation={0} position='static'>
@@ -97,8 +97,7 @@ const Navbar: FC<NavbarProps> = props => {
           <IconButton
             aria-label='menu'
             color={otherColor}
-            onClick={onMenuButtonClick}
-            sx={{ pr: 0 }}>
+            onClick={onMenuButtonClick}>
             <MenuIcon fontSize='large' />
           </IconButton>
         </Box>
