@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
 
+import { UserProvider } from '@auth0/nextjs-auth0'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
 import type {
   AppProps as NextAppProps,
   AppContext as NextAppContext,
 } from 'next/app'
-import Head from 'next/head'
 
 import Layout, { LayoutProps } from '@/components/Layout/Layout'
 import config from '@/config'
@@ -19,19 +19,14 @@ interface MyAppProps extends NextAppProps {
 
 const MyApp = ({ Component: Page, layoutProps, pageProps }: MyAppProps) => (
   <Fragment>
-    <Head>
-      <title>My page</title>
-      <meta
-        content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'
-        name='viewport'
-      />
-    </Head>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Layout {...layoutProps}>
-        <Page {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <UserProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Layout {...layoutProps}>
+          <Page {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </UserProvider>
   </Fragment>
 )
 

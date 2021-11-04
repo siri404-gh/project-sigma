@@ -5,6 +5,7 @@ import Head from 'next/head'
 export interface SEOProps {
   author?: string
   description?: string
+  domain?: string
   gtmId?: string
   keywords?: string
   ogImage?: string
@@ -14,11 +15,14 @@ export interface SEOProps {
   ogUrl?: string
   themeColor?: string
   title?: string
+  twitterId?: string
+  viewport?: string
 }
 
 const Seo: FC<SEOProps> = ({
   author,
   description,
+  domain,
   gtmId,
   keywords,
   ogImage,
@@ -28,6 +32,8 @@ const Seo: FC<SEOProps> = ({
   ogUrl,
   themeColor,
   title,
+  twitterId,
+  viewport,
 }) => (
   <Head>
     <title>{title}</title>
@@ -43,10 +49,13 @@ const Seo: FC<SEOProps> = ({
     <meta content={ogImage} property='og:image' />
     <meta content={ogImageAlt} property='og:image:alt' />
     <meta content={ogType} property='og:type' />
-    <meta
-      content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'
-      name='viewport'
-    />
+    <meta content={description} name='twitter:card' />
+    <meta content={domain} name='twitter:url' />
+    <meta content={title} name='twitter:title' />
+    <meta content={description} name='twitter:description' />
+    <meta content={`${domain}/img/icon-192.png`} name='twitter:image' />
+    <meta content={twitterId} name='twitter:creator' />
+    <meta content={viewport} name='viewport' />
     <meta content='index,follow' name='robots' />
     <meta content={process.env.NODE_ENV} name='node-env' />
     <link href='/img/favicon.ico' rel='icon' />

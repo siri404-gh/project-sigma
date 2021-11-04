@@ -39,7 +39,7 @@ const Navbar: FC<NavbarProps> = props => {
     avatarUrl,
     children,
     isUserLoggedIn,
-    loginRedirectUrl,
+    loginRedirectUrl = '/',
     onMenuClick,
     title,
   } = props
@@ -76,7 +76,11 @@ const Navbar: FC<NavbarProps> = props => {
             onClick={onAvatarClick}
             aria-hidden>
             {isUserLoggedIn ? (
-              <Avatar alt='avatar' src={avatarUrl} />
+              <Avatar
+                alt='avatar'
+                src={avatarUrl}
+                sx={{ width: 26, height: 26 }}
+              />
             ) : (
               <AccountIcon />
             )}
@@ -86,15 +90,23 @@ const Navbar: FC<NavbarProps> = props => {
               open={Boolean(anchorEl)}
               keepMounted>
               {isUserLoggedIn ? (
-                <Link href={'/api/auth/logout'} passHref>
-                  <MenuItem>Logout</MenuItem>
-                </Link>
+                <MenuItem>
+                  <MuiLink
+                    color='secondary'
+                    href={'/api/auth/logout'}
+                    underline={'none'}>
+                    Logout
+                  </MuiLink>
+                </MenuItem>
               ) : (
-                <Link
-                  href={`/api/auth/login?redirectTo=${loginRedirectUrl}`}
-                  passHref>
-                  <MenuItem>Login</MenuItem>
-                </Link>
+                <MenuItem>
+                  <MuiLink
+                    color='secondary'
+                    href={`/api/auth/login?returnTo=${loginRedirectUrl}`}
+                    underline={'none'}>
+                    Login
+                  </MuiLink>
+                </MenuItem>
               )}
             </Menu>
           </IconButton>
