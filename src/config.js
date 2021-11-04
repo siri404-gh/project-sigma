@@ -1,4 +1,4 @@
-const envConfig = JSON.parse(process.env.NEXT_PUBLIC_CONFIG || '{}')
+const envConfig = JSON.parse(process.env.CONFIG || '{}')
 
 const config = {
   seo: {},

@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/sreeram-io/project-sigma#readme",
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.6.1",
     "@emotion/react": "^11.5.0",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -42,6 +43,7 @@
     "@fontsource/ubuntu": "^4.5.0",
     "@mui/icons-material": "^5.0.4",
     "@mui/material": "^5.0.4",
+    "mongo": "^0.1.0",
     "next": "^12.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -50,7 +52,8 @@
     "react-syntax-highlighter": "^15.4.4",
     "rehype-raw": "^6.1.0",
     "remark-gfm": "^3.0.0",
-    "sass": "^1.43.4"
+    "sass": "^1.43.4",
+    "stripe": "^8.186.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.0.1",

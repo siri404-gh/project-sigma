@@ -1,5 +1,6 @@
 import React, { useState, FC } from 'react'
 
+import { useUser } from '@auth0/nextjs-auth0'
 import { Container } from '@mui/material'
 
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
@@ -24,10 +25,13 @@ const Layout: FC<LayoutProps> = ({
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const onSidebarToggle = () => setIsSidebarOpen(!isSidebarOpen)
+  const { user } = useUser()
 
   navbarProps = {
     ...navbarProps,
     onMenuClick: onSidebarToggle,
+    isUserLoggedIn: !!user,
+    avatarUrl: user?.picture || '',
   }
   sidebarProps = {
     ...sidebarProps,
