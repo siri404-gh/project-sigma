@@ -12,7 +12,7 @@ export interface SidebarProps {
 }
 
 const Sidebar: FC<SidebarProps> = ({ children, isOpen, onClose, title }) => (
-  <Drawer anchor='right' onClose={onClose} open={isOpen} variant='temporary'>
+  <Drawer onClose={onClose} open={isOpen} variant='temporary'>
     <Toolbar>
       <Typography color='textSecondary' variant='h6' noWrap>
         {title}

@@ -47,8 +47,8 @@ const Layout: FC<LayoutProps> = ({
       <Sidebar {...sidebarProps} />
       <Container maxWidth='md' sx={{ height: '100vh' }} disableGutters>
         <Navbar {...navbarProps}>
-          <Sociallinks />
           <Navlinks {...navlinksProps} />
+          <Sociallinks />
         </Navbar>
         {children}
       </Container>

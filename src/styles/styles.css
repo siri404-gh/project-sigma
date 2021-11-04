@@ -97,6 +97,7 @@
 
 @media (min-width: 600px) {
   .img--left {
+    border-radius: 5px;
     max-width: 299px;
     float: left;
     margin: 0 15px 15px 0;
