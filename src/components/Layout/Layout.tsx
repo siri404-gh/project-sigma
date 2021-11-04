@@ -7,7 +7,7 @@ import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
 import Navlinks, { NavlinksProps } from '@/components/Navlinks/Navlinks'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
-import Sociallinks from '@/components/Sociallinks/Sociallinks'
+import Social, { SocialProps } from '@/components/Social/Social'
 
 export interface LayoutProps {
   children?: JSX.Element
@@ -15,6 +15,7 @@ export interface LayoutProps {
   navbarProps?: NavbarProps
   navlinksProps?: NavlinksProps
   sidebarProps?: SidebarProps
+  socialProps?: SocialProps
 }
 
 const Layout: FC<LayoutProps> = ({
@@ -23,6 +24,7 @@ const Layout: FC<LayoutProps> = ({
   navbarProps,
   navlinksProps,
   sidebarProps,
+  socialProps,
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const onSidebarToggle = () => setIsSidebarOpen(!isSidebarOpen)
@@ -48,7 +50,7 @@ const Layout: FC<LayoutProps> = ({
       <Container maxWidth='md' sx={{ height: '100vh' }} disableGutters>
         <Navbar {...navbarProps}>
           <Navlinks {...navlinksProps} />
-          <Sociallinks />
+          <Social {...socialProps} />
         </Navbar>
         {children}
       </Container>
