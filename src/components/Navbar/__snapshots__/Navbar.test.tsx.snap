@@ -3,7 +3,7 @@
 exports[`Navbar renders 1`] = `
 <div>
   <nav
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorTransparent MuiAppBar-positionFixed mui-fixed css-10srjip-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorTransparent MuiAppBar-positionStatic css-v526sl-MuiPaper-root-MuiAppBar-root"
   >
     <div
       class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1ova7ke-MuiToolbar-root"
@@ -17,7 +17,7 @@ exports[`Navbar renders 1`] = `
         />
       </a>
       <div
-        class="MuiBox-root css-b0qcfk"
+        class="MuiBox-root css-1uwjw6e"
       >
         <button
           aria-controls="simple-menu"
@@ -49,7 +49,7 @@ exports[`Navbar renders 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
             data-testid="MenuIcon"
             focusable="false"
             viewBox="0 0 24 24"

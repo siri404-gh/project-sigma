@@ -105,6 +105,10 @@
 
 /* Styles inside markdown */
 
+.markdown > .experience > p {
+  text-align: justify;
+}
+
 .markdown > .experience > p > img {
   border-radius: 50%;
   margin-right: 3px;
@@ -114,5 +118,4 @@
 
 .markdown > .experience > p > img ~ strong {
   vertical-align: text-bottom;
-  text-align: left;
 }

@@ -5,9 +5,8 @@ import { styled } from '@mui/system'
 import { NextPage } from 'next'
 
 import Markdown from '@/components/Markdown/Markdown'
-import Sociallinks from '@/components/Sociallinks/Sociallinks'
 
-const RelativeBox = styled(Box)(({ theme }) => ({
+const AbsoluteBox = styled(Box)(({ theme }) => ({
   position: 'absolute',
   top: 56,
   left: 0,
@@ -17,28 +16,40 @@ const RelativeBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     top: 64,
   },
+  [theme.breakpoints.up('md')]: {
+    bottom: 20,
+  },
 }))
 
 const ContentBox = styled(Box)(({ theme }) => ({
-  minHeight: 'fill-available',
-  maxWidth: 900,
-  padding: 15,
-  [theme.breakpoints.down('sm')]: {
-    paddingTop: 0,
+  backgroundImage: "url('/img/bg/trans.png')",
+  height: 'calc(100% - 56px)',
+  [theme.breakpoints.up('sm')]: {
+    height: 'calc(100% - 64px)',
   },
-  margin: '0 auto',
   [theme.breakpoints.up('md')]: {
+    height: 'calc(100% - 84px)',
+    margin: '0 auto',
     borderRadius: 8,
     border: 'solid 1px #2a2a2a',
   },
-  backgroundImage: "url('/img/bg/trans.png')",
+}))
+
+const RelativeBox = styled(Box)(({ theme }) => ({
+  padding: 15,
+  [theme.breakpoints.down('md')]: {
+    paddingTop: 0,
+  },
+  maxWidth: 900,
+  margin: 'auto',
 }))
 
 const Index: NextPage = () => (
-  <RelativeBox>
-    <ContentBox>
-      <Markdown>
-        {`
+  <ContentBox>
+    <AbsoluteBox>
+      <RelativeBox>
+        <Markdown>
+          {`
 
 <img class="img--full-width img--left img--grow" loading="lazy" src="/img/blog/sreeram.jpg" alt="sreeram padmanabhan" title="sreeram padmanabhan" />
 
@@ -82,15 +93,18 @@ So far, I have had the opportunity to work for some great companies which includ
 
   <img src='/img/blog/mistallianz.jpeg' /> **PHP Developer, Mistallianz Ltd, Trivandrum**
 
-  **Freelance Web Developer, Trivandrum**
+  <img src='/img/blog/bumble.ico' /> **Freelance Web Developer, Trivandrum**
 
 </div>
-
       `}
-      </Markdown>
-    </ContentBox>
-    <Sociallinks />
-  </RelativeBox>
+        </Markdown>
+      </RelativeBox>
+    </AbsoluteBox>
+  </ContentBox>
 )
 
 export default Index
+
+export const getServerSideProps = async () => ({
+  props: {},
+})
