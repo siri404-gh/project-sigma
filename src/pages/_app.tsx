@@ -39,6 +39,7 @@ MyApp.getInitialProps = async ({ Component, ctx }: NextAppContext) => ({
     navbarProps: config.navbar,
     navlinksProps: config.navlinks,
     sidebarProps: config.sidebar,
+    socialProps: config.socialLinks,
   },
 })
 

@@ -30,9 +30,17 @@ export interface NavbarProps {
 }
 
 const StyledToolbar = styled(Toolbar)({
-  flexDirection: 'row',
+  padding: '0 2px',
   justifyContent: 'space-between',
 })
+
+const StyledTitle = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: 98,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+}))
 
 const Navbar: FC<NavbarProps> = props => {
   const {
@@ -59,23 +67,39 @@ const Navbar: FC<NavbarProps> = props => {
 
   return (
     <AppBar color={appBarColor} component='nav' position='static'>
-      <StyledToolbar>
-        <Link href='/' passHref>
-          <MuiLink underline='none'>
-            <Typography color={otherColor} component='h1' variant='h6' noWrap>
-              {title}
-            </Typography>
-          </MuiLink>
-        </Link>
+      <StyledToolbar disableGutters>
+        <Box sx={{ display: 'flex' }}>
+          <IconButton
+            aria-label='menu'
+            color={otherColor}
+            onClick={onMenuButtonClick}>
+            <MenuIcon />
+          </IconButton>
+          <Link href='/' passHref>
+            <MuiLink sx={{ alignSelf: 'center' }} underline='hover'>
+              <StyledTitle
+                color={otherColor}
+                // component='h1'
+                variant='h6'
+                noWrap>
+                {title}
+              </StyledTitle>
+            </MuiLink>
+          </Link>
+        </Box>
         {children}
-        <Box sx={{ display: 'flex', justifyContent: 'right' }}>
+        <Box sx={{ display: 'flex' }}>
           <IconButton
             aria-controls='simple-menu'
             color={otherColor}
             onClick={onAvatarClick}
             aria-hidden>
             {isUserLoggedIn ? (
-              <Avatar alt='avatar' src={avatarUrl} />
+              <Avatar
+                alt='avatar'
+                src={avatarUrl}
+                sx={{ height: 24, width: 24 }}
+              />
             ) : (
               <AccountIcon />
             )}
@@ -104,12 +128,6 @@ const Navbar: FC<NavbarProps> = props => {
                 </MenuItem>
               )}
             </Menu>
-          </IconButton>
-          <IconButton
-            aria-label='menu'
-            color={otherColor}
-            onClick={onMenuButtonClick}>
-            <MenuIcon />
           </IconButton>
         </Box>
       </StyledToolbar>
