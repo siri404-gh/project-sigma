@@ -9,10 +9,10 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import { Box, Link } from '@mui/material'
 
 const styles = {
-  socialllink: { margin: 3, fontSize: 0 },
+  socialllink: { padding: 1, fontSize: 0 },
   socialIcon: {
-    height: 32,
-    width: 32,
+    height: 24,
+    width: 24,
     color: 'white',
   },
 }
@@ -45,7 +45,6 @@ const Sociallinks = () => (
     sx={{
       display: 'flex',
       justifyContent: 'center',
-      width: '100%',
     }}>
     <Link
       href={LINKEDIN_LINK}

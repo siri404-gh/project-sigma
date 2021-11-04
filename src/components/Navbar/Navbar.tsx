@@ -58,7 +58,7 @@ const Navbar: FC<NavbarProps> = props => {
   const otherColor = 'primary'
 
   return (
-    <AppBar color={appBarColor} component='nav'>
+    <AppBar color={appBarColor} component='nav' position='static'>
       <StyledToolbar>
         <Link href='/' passHref>
           <MuiLink underline='none'>
@@ -68,19 +68,14 @@ const Navbar: FC<NavbarProps> = props => {
           </MuiLink>
         </Link>
         {children}
-        <Box
-          sx={{ display: 'flex', justifyContent: 'right', width: { sm: 225 } }}>
+        <Box sx={{ display: 'flex', justifyContent: 'right' }}>
           <IconButton
             aria-controls='simple-menu'
             color={otherColor}
             onClick={onAvatarClick}
             aria-hidden>
             {isUserLoggedIn ? (
-              <Avatar
-                alt='avatar'
-                src={avatarUrl}
-                sx={{ width: 26, height: 26 }}
-              />
+              <Avatar alt='avatar' src={avatarUrl} />
             ) : (
               <AccountIcon />
             )}
@@ -114,7 +109,7 @@ const Navbar: FC<NavbarProps> = props => {
             aria-label='menu'
             color={otherColor}
             onClick={onMenuButtonClick}>
-            <MenuIcon fontSize='large' />
+            <MenuIcon />
           </IconButton>
         </Box>
       </StyledToolbar>

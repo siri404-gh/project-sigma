@@ -30,7 +30,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 const StyledLi = styled(Box)({
   display: 'inline-block',
-  margin: '0 20px',
+  margin: '0 10px',
 })
 
 const Navlinks: FC<NavlinksProps> = ({ links = [] }) => (

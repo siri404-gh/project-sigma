@@ -7,6 +7,7 @@ import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
 import Navlinks, { NavlinksProps } from '@/components/Navlinks/Navlinks'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
+import Sociallinks from '@/components/Sociallinks/Sociallinks'
 
 export interface LayoutProps {
   children?: JSX.Element
@@ -46,6 +47,7 @@ const Layout: FC<LayoutProps> = ({
       <Sidebar {...sidebarProps} />
       <Container maxWidth='md' sx={{ height: '100vh' }} disableGutters>
         <Navbar {...navbarProps}>
+          <Sociallinks />
           <Navlinks {...navlinksProps} />
         </Navbar>
         {children}

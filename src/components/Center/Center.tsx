@@ -8,10 +8,16 @@ export interface CenterProps {
   className?: string
 }
 
-const RelativeBox = styled(Box)({
+const RelativeBox = styled(Box)(({ theme }) => ({
   position: 'relative',
-  height: '100%',
-})
+  height: 'calc(100% - 56px)',
+  [theme.breakpoints.up('sm')]: {
+    height: 'calc(100% - 64px)',
+  },
+  [theme.breakpoints.up('md')]: {
+    height: 'calc(100% - 84px)',
+  },
+}))
 
 const AbsoluteBox = styled(Box)({
   display: 'flex',
