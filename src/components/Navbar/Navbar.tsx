@@ -8,6 +8,7 @@ import {
   AppBar,
   Avatar,
   Box,
+  Container,
   IconButton,
   Link as MuiLink,
   Menu,
@@ -67,70 +68,72 @@ const Navbar: FC<NavbarProps> = props => {
 
   return (
     <AppBar color={appBarColor} component='nav' position='static'>
-      <StyledToolbar disableGutters>
-        <Box sx={{ display: 'flex' }}>
-          <IconButton
-            aria-label='menu'
-            color={otherColor}
-            onClick={onMenuButtonClick}>
-            <MenuIcon />
-          </IconButton>
-          <Link href='/' passHref>
-            <MuiLink sx={{ alignSelf: 'center' }} underline='hover'>
-              <StyledTitle
-                color={otherColor}
-                // component='h1'
-                variant='h6'
-                noWrap>
-                {title}
-              </StyledTitle>
-            </MuiLink>
-          </Link>
-        </Box>
-        {children}
-        <Box sx={{ display: 'flex' }}>
-          <IconButton
-            aria-controls='simple-menu'
-            color={otherColor}
-            onClick={onAvatarClick}
-            aria-hidden>
-            {isUserLoggedIn ? (
-              <Avatar
-                alt='avatar'
-                src={avatarUrl}
-                sx={{ height: 24, width: 24 }}
-              />
-            ) : (
-              <AccountIcon />
-            )}
-            <Menu
-              anchorEl={anchorEl}
-              onClose={onAvatarClick}
-              open={Boolean(anchorEl)}
-              keepMounted>
+      <Container maxWidth='lg' disableGutters>
+        <StyledToolbar disableGutters>
+          <Box sx={{ display: 'flex' }}>
+            <IconButton
+              aria-label='menu'
+              color={otherColor}
+              onClick={onMenuButtonClick}>
+              <MenuIcon />
+            </IconButton>
+            <Link href='/' passHref>
+              <MuiLink sx={{ alignSelf: 'center' }} underline='hover'>
+                <StyledTitle
+                  color={otherColor}
+                  // component='h1'
+                  variant='h6'
+                  noWrap>
+                  {title}
+                </StyledTitle>
+              </MuiLink>
+            </Link>
+          </Box>
+          {children}
+          <Box sx={{ display: 'flex' }}>
+            <IconButton
+              aria-controls='simple-menu'
+              color={otherColor}
+              onClick={onAvatarClick}
+              aria-hidden>
               {isUserLoggedIn ? (
-                <MenuItem>
-                  <MuiLink
-                    color='secondary'
-                    href={'/api/auth/logout'}
-                    underline={'none'}>
-                    Logout
-                  </MuiLink>
-                </MenuItem>
+                <Avatar
+                  alt='avatar'
+                  src={avatarUrl}
+                  sx={{ height: 24, width: 24 }}
+                />
               ) : (
-                <MenuItem>
-                  <MuiLink
-                    color='secondary'
-                    href={`/api/auth/login?returnTo=${loginRedirectUrl}`}
-                    underline={'none'}>
-                    Login
-                  </MuiLink>
-                </MenuItem>
+                <AccountIcon />
               )}
-            </Menu>
-          </IconButton>
-        </Box>
-      </StyledToolbar>
+              <Menu
+                anchorEl={anchorEl}
+                onClose={onAvatarClick}
+                open={Boolean(anchorEl)}
+                keepMounted>
+                {isUserLoggedIn ? (
+                  <MenuItem>
+                    <MuiLink
+                      color='secondary'
+                      href={'/api/auth/logout'}
+                      underline={'none'}>
+                      Logout
+                    </MuiLink>
+                  </MenuItem>
+                ) : (
+                  <MenuItem>
+                    <MuiLink
+                      color='secondary'
+                      href={`/api/auth/login?returnTo=${loginRedirectUrl}`}
+                      underline={'none'}>
+                      Login
+                    </MuiLink>
+                  </MenuItem>
+                )}
+              </Menu>
+            </IconButton>
+          </Box>
+        </StyledToolbar>
+      </Container>
     </AppBar>
   )
 }

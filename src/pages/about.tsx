@@ -1,56 +1,12 @@
 import React from 'react'
 
-import { Box } from '@mui/material'
-import { styled } from '@mui/system'
 import { NextPage } from 'next'
 
 import Markdown from '@/components/Markdown/Markdown'
 
-const AbsoluteBox = styled(Box)(({ theme }) => ({
-  position: 'absolute',
-  top: 56,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  overflow: 'scroll',
-  [theme.breakpoints.up('sm')]: {
-    top: 64,
-  },
-  [theme.breakpoints.up('md')]: {
-    bottom: 20,
-  },
-}))
-
-const ContentBox = styled(Box)(({ theme }) => ({
-  backgroundImage: "url('/img/bg/trans.png')",
-  height: 'calc(100% - 56px)',
-  [theme.breakpoints.up('sm')]: {
-    height: 'calc(100% - 64px)',
-  },
-  [theme.breakpoints.up('md')]: {
-    height: 'calc(100% - 84px)',
-    margin: '0 auto',
-    borderRadius: 8,
-    border: 'solid 1px #2a2a2a',
-  },
-}))
-
-const RelativeBox = styled(Box)(({ theme }) => ({
-  padding: 15,
-  [theme.breakpoints.down('md')]: {
-    paddingTop: 0,
-  },
-  maxWidth: 900,
-  margin: 'auto',
-}))
-
 const Index: NextPage = () => (
-  <ContentBox>
-    <AbsoluteBox>
-      <RelativeBox>
-        <Markdown>
-          {`
-
+  <Markdown>
+    {`
 <img class="img--full-width img--left img--grow" loading="lazy" src="/img/blog/sreeram.jpg" alt="sreeram padmanabhan" title="sreeram padmanabhan" />
 
 ## Hello, World! 👋
@@ -95,12 +51,8 @@ So far, I have had the opportunity to work for some great companies which includ
 
   <img src='/img/blog/bumble.ico' /> **Freelance Web Developer, Trivandrum**
 
-</div>
-      `}
-        </Markdown>
-      </RelativeBox>
-    </AbsoluteBox>
-  </ContentBox>
+</div>`}
+  </Markdown>
 )
 
 export default Index
