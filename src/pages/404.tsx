@@ -12,7 +12,7 @@ const Index: NextPage = () => (
         alt='blog'
         height='175'
         loading='lazy'
-        src='/img/sections/about.svg'
+        src='/img/sections/404.svg'
         title='blog'
         width='300'
       />
