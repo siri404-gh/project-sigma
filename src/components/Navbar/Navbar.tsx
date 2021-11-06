@@ -68,7 +68,7 @@ const Navbar: FC<NavbarProps> = props => {
 
   return (
     <AppBar color={appBarColor} component='nav' position='static'>
-      <Container maxWidth='lg' disableGutters>
+      <Container maxWidth='md' disableGutters>
         <StyledToolbar disableGutters>
           <Box sx={{ display: 'flex' }}>
             <IconButton

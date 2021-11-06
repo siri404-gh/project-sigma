@@ -30,7 +30,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#0e0e10',
-          // borderBottom: 'solid 1px #333',
+          borderBottom: 'solid 1px #333',
         },
       },
     },
@@ -38,7 +38,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#0e0e10',
-          // borderTop: 'solid 1px #333',
+          borderTop: 'solid 1px #333',
         },
       },
     },

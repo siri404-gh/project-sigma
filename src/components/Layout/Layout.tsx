@@ -21,16 +21,8 @@ export interface LayoutProps {
 
 const ContentBox = styled(Box)(({ theme }) => ({
   backgroundImage: "url('/img/bg/trans.png')",
-  // 100vh - navbar height - bottombar height
-  height: 'calc(100% - 56px - 56px)',
+  height: '100%',
   [theme.breakpoints.up('sm')]: {
-    // 100vh - navbar height - bottombar height
-    height: 'calc(100% - 64px - 56px)',
-  },
-  [theme.breakpoints.up('md')]: {
-    // 100vh - navbar height - bottombar height - margin
-    height: 'calc(100% - 20px)',
-    margin: '20px auto',
     border: 'solid 1px #2a2a2a',
     borderRadius: 8,
   },
@@ -46,19 +38,13 @@ const AbsoluteBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     top: 64,
   },
-  [theme.breakpoints.up('md')]: {
-    bottom: 76,
-  },
 }))
 
-const RelativeBox = styled(Box)(({ theme }) => ({
-  padding: 15,
-  maxWidth: 900,
+const RelativeBox = styled(Box)({
+  maxWidth: 860,
+  height: '100%',
   margin: 'auto',
-  [theme.breakpoints.up('md')]: {
-    margin: '20px auto',
-  },
-}))
+})
 
 const Layout: FC<LayoutProps> = ({
   children,
@@ -101,15 +87,28 @@ const Layout: FC<LayoutProps> = ({
         maxWidth='md'
         sx={{
           height: {
-            xs: 'calc(100vh - 56px - 56px)',
-            sm: 'calc(100vh - 64px - 56px)',
-            md: 'calc(100vh - 64px - 56px - 20px)',
+            xs: 'calc(100vh - 56px - 56px - 1px)',
+            sm: 'calc(100vh - 64px - 56px - 1px)',
+          },
+          p: {
+            xs: 0,
+            sm: 2,
+            md: 2.5,
           },
         }}
         disableGutters>
         <ContentBox>
-          <AbsoluteBox>
-            <RelativeBox>{children}</RelativeBox>
+          <AbsoluteBox
+            sx={{
+              my: {
+                xs: 0,
+                sm: 4,
+                md: 5,
+              },
+            }}>
+            <RelativeBox sx={{ px: { xs: 1.5, sm: 4, md: 2.5 } }}>
+              {children}
+            </RelativeBox>
           </AbsoluteBox>
         </ContentBox>
       </Container>
