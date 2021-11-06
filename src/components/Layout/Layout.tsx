@@ -6,7 +6,7 @@ import { styled } from '@mui/system'
 
 import Bottombar from '@/components/Bottombar/Bottombar'
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
-import Navlinks, { NavlinksProps } from '@/components/Navlinks/Navlinks'
+import { NavlinksProps } from '@/components/Navlinks/Navlinks'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import Social, { SocialProps } from '@/components/Social/Social'
@@ -25,7 +25,7 @@ const ContentBox = styled(Box)(({ theme }) => ({
   backgroundImage: "url('/img/bg/trans.png')",
   height: '100%',
   [theme.breakpoints.up('sm')]: {
-    // border: 'solid 1px #2a2a2a',
+    border: 'solid 1px #2a2a2a',
     borderRadius: 8,
   },
 }))
@@ -39,6 +39,9 @@ const AbsoluteBox = styled(Box)(({ theme }) => ({
   overflow: 'scroll',
   [theme.breakpoints.up('sm')]: {
     top: 64,
+  },
+  [theme.breakpoints.up('md')]: {
+    bottom: 0,
   },
 }))
 
@@ -72,8 +75,21 @@ const Layout: FC<LayoutProps> = ({
     onMenuClick: onSidebarToggle,
   }
 
-  const bottombarProps = {
+  const bottombarProps1 = {
     ...navlinksProps,
+    sx: { height: 64, display: { xs: 'none', md: 'block' } },
+  }
+
+  const bottombarProps2 = {
+    ...navlinksProps,
+    sx: {
+      height: 56,
+      borderTop: 'solid 1px #333',
+      position: 'fixed',
+      bottom: 0,
+      width: '100%',
+      display: { md: 'none' },
+    },
   }
 
   const userMenuProps = {
@@ -82,11 +98,11 @@ const Layout: FC<LayoutProps> = ({
   }
 
   return (
-    <div className='layout'>
+    <Box className='layout' sx={{ height: '100vh' }}>
       <Seo {...seoProps} />
       <Sidebar {...sidebarProps} />
       <Navbar {...navbarProps}>
-        <Navlinks {...navlinksProps} />
+        <Bottombar {...bottombarProps1} />
         <Box sx={{ display: 'flex' }}>
           <Social {...socialProps} />
           <UserMenu {...userMenuProps} />
@@ -98,6 +114,7 @@ const Layout: FC<LayoutProps> = ({
           height: {
             xs: 'calc(100vh - 56px - 56px - 1px)',
             sm: 'calc(100vh - 64px - 56px - 1px)',
+            md: 'calc(100vh - 64px - 1px)',
           },
           p: {
             xs: 0,
@@ -108,6 +125,7 @@ const Layout: FC<LayoutProps> = ({
         disableGutters>
         <ContentBox>
           <AbsoluteBox
+            id='scrolling'
             sx={{
               my: {
                 xs: 0,
@@ -125,8 +143,8 @@ const Layout: FC<LayoutProps> = ({
           </AbsoluteBox>
         </ContentBox>
       </Container>
-      <Bottombar {...bottombarProps} />
-    </div>
+      <Bottombar {...bottombarProps2} />
+    </Box>
   )
 }
 

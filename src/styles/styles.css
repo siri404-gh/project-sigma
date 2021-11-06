@@ -71,6 +71,7 @@
 }
 
 .layout {
+  /* background-color: indigo; */
   background: url(/img/bg/floral-1.jpg), url(/img/bg/floral-2.jpg) black;
   background-size: 300px 400px, 100px 500px;
   background-repeat: no-repeat, no-repeat;
@@ -108,7 +109,8 @@
 /* Styles inside markdown */
 
 .markdown > .experience > p {
-  text-align: justify;
+  height: 32px;
+  overflow: hidden;
 }
 
 .markdown > .experience > p > img {
@@ -119,9 +121,14 @@
 }
 
 .markdown > .experience > p > img ~ strong {
-  vertical-align: text-bottom;
+  vertical-align: bottom;
+  word-break: break-all;
 }
 
 html {
   background: #0e0e10;
+}
+
+#scrolling::-webkit-scrollbar {
+  display: none;
 }

@@ -88,7 +88,7 @@ const components = {
     </Typography>
   ),
   strong: ({ children }: { children: string }) => (
-    <Typography color='primary' component='strong' variant='subtitle2'>
+    <Typography color='primary' component='strong' variant='subtitle1'>
       {children}
     </Typography>
   ),

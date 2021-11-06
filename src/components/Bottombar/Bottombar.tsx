@@ -17,8 +17,8 @@ const iconMap: { [key: string]: (props: SvgIconProps) => JSX.Element } = {
   Courses: MenuBookIcon,
 }
 
-const Bottombar: FC<NavlinksProps> = ({ links = [] }) => (
-  <BottomNavigation sx={{ position: 'fixed', bottom: 0, width: '100%' }}>
+const Bottombar: FC<NavlinksProps> = ({ links = [], ...rest }) => (
+  <BottomNavigation {...rest}>
     {links.map(link => {
       const Icon = iconMap[link.title]
       return (
@@ -26,6 +26,7 @@ const Bottombar: FC<NavlinksProps> = ({ links = [] }) => (
           <BottomNavigationAction
             icon={<Icon color='primary' />}
             label={link.title}
+            showLabel
           />
         </Link>
       )

@@ -44,7 +44,7 @@ const Navbar: FC<NavbarProps> = props => {
   const otherColor = 'primary'
 
   return (
-    <AppBar color={appBarColor} component='nav' position='static'>
+    <AppBar color={appBarColor} component='nav' elevation={0} position='sticky'>
       <Container disableGutters>
         <StyledToolbar disableGutters>
           <Box sx={{ display: 'flex' }}>

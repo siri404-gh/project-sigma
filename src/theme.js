@@ -38,7 +38,21 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#0e0e10',
-          borderTop: 'solid 1px #333',
+        },
+      },
+    },
+
+    MuiBottomNavigationAction: {
+      styleOverrides: {
+        root: {
+          padding: 11,
+        },
+        label: {
+          color: '#e4e4e4',
+          fontSize: 12,
+          '&.Mui-selected': {
+            fontSize: 12,
+          },
         },
       },
     },

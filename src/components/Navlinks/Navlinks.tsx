@@ -16,6 +16,7 @@ export interface NavlinkType {
 
 export interface NavlinksProps {
   links?: NavlinkType[]
+  rest?: any[]
 }
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -33,8 +34,8 @@ const StyledLi = styled(Box)({
   margin: '0 10px',
 })
 
-const Navlinks: FC<NavlinksProps> = ({ links = [] }) => (
-  <StyledBox component='ul'>
+const Navlinks: FC<NavlinksProps> = ({ links = [], ...rest }) => (
+  <StyledBox component='ul' {...rest}>
     {links.map(({ title, url }) => (
       <StyledLi key={title}>
         <Link href={url} passHref>
