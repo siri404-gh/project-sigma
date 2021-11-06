@@ -115,7 +115,8 @@ const Layout: FC<LayoutProps> = ({
                 md: 5,
               },
             }}>
-            <RelativeBox sx={{ px: { xs: 1.5, sm: 4, md: 2.5 } }}>
+            <RelativeBox
+              sx={{ p: { xs: 1.5, sm: 0 }, px: { xs: 1.5, sm: 4, md: 2.5 } }}>
               {children}
             </RelativeBox>
           </AbsoluteBox>
