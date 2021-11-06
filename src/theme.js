@@ -20,7 +20,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: 'Oxygen, Arsenal, Ubuntu, Roboto sans-serif',
-    fontSize: 15,
+    fontSize: 14,
     fontWeightLight: 300,
     fontWeightMedium: 500,
     fontWeightRegular: 400,

@@ -26,7 +26,7 @@ const StyledToolbar = styled(Toolbar)({
 
 const StyledTitle = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
-    maxWidth: 98,
+    maxWidth: 95,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
