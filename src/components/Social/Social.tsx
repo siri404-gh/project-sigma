@@ -12,7 +12,6 @@ const styles = {
   socialIcon: {
     height: 24,
     width: 24,
-    color: 'white',
   },
 }
 
@@ -50,7 +49,7 @@ const Social: FC<SocialProps> = ({ links = [] }) => (
             rel='noreferrer'
             sx={styles.social}
             target='_blank'>
-            <Icon sx={styles.socialIcon} />
+            <Icon color='primary' sx={styles.socialIcon} />
             {link.name}
           </Link>
         )
