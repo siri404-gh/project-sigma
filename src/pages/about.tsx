@@ -51,9 +51,7 @@ So far, I have had the opportunity to work for some great companies which includ
 
   <img src='/img/blog/bumble.ico' /> **Freelance Web Developer, Trivandrum**
 
-</div>
-
-<br />`}
+</div>`}
   </Markdown>
 )
 

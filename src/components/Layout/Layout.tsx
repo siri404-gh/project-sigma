@@ -22,11 +22,13 @@ export interface LayoutProps {
 }
 
 const ContentBox = styled(Box)(({ theme }) => ({
-  backgroundImage: "url('/img/bg/trans.png')",
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
   height: '100%',
   [theme.breakpoints.up('sm')]: {
-    border: 'solid 1px #2a2a2a',
     borderRadius: 8,
+  },
+  [theme.breakpoints.up('md')]: {
+    border: 'solid 1px #2a2a2a',
   },
 }))
 
