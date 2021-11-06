@@ -6,10 +6,10 @@ exports[`Navbar renders 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorTransparent MuiAppBar-positionStatic css-v526sl-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthMd MuiContainer-disableGutters css-153bhgj-MuiContainer-root"
+      class="MuiContainer-root MuiContainer-maxWidthLg MuiContainer-disableGutters css-1p4tas-MuiContainer-root"
     >
       <div
-        class="MuiToolbar-root MuiToolbar-regular css-1887wf8-MuiToolbar-root"
+        class="MuiToolbar-root MuiToolbar-regular css-16ch7h7-MuiToolbar-root"
       >
         <div
           class="MuiBox-root css-k008qs"
@@ -43,32 +43,6 @@ exports[`Navbar renders 1`] = `
               class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-1euan1h-MuiTypography-root"
             />
           </a>
-        </div>
-        <div
-          class="MuiBox-root css-k008qs"
-        >
-          <button
-            aria-controls="simple-menu"
-            aria-hidden="true"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="AccountCircleIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
-              />
-            </svg>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
         </div>
       </div>
     </div>
