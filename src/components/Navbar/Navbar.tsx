@@ -20,7 +20,7 @@ export interface NavbarProps {
 }
 
 const StyledToolbar = styled(Toolbar)({
-  padding: '0 6px',
+  padding: 0,
   justifyContent: 'space-between',
 })
 
@@ -45,7 +45,7 @@ const Navbar: FC<NavbarProps> = props => {
 
   return (
     <AppBar color={appBarColor} component='nav' elevation={0} position='sticky'>
-      <Container disableGutters>
+      <Container>
         <StyledToolbar disableGutters>
           <Box sx={{ display: 'flex' }}>
             <IconButton

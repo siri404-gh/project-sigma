@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const envConfig = JSON.parse(process.env.CONFIG || '{}')
+const envConfig = JSON.parse(process.env.NEXT_PUBLIC_CONFIG || '{}')
 
 const config = {
   seo: {

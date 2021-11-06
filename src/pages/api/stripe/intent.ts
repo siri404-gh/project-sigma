@@ -16,7 +16,7 @@ export default async function intent(
       currency: process.env.STRIPE_PAYMENT_CURRENCY || 'usd',
     })
     res.send({
-      clientSecret: clientSecret,
+      clientSecret,
     })
   } catch (error: any) {
     console.error(error)

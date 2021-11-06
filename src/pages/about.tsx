@@ -56,7 +56,3 @@ So far, I have had the opportunity to work for some great companies which includ
 )
 
 export default Index
-
-export const getServerSideProps = async () => ({
-  props: {},
-})
