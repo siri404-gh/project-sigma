@@ -10,6 +10,8 @@ import Navlinks, { NavlinksProps } from '@/components/Navlinks/Navlinks'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import Social, { SocialProps } from '@/components/Social/Social'
+
+import UserMenu from '../UserMenu/UserMenu'
 export interface LayoutProps {
   children?: JSX.Element
   seoProps?: SEOProps
@@ -58,12 +60,6 @@ const Layout: FC<LayoutProps> = ({
   const onSidebarToggle = () => setIsSidebarOpen(!isSidebarOpen)
   const { user } = useUser()
 
-  navbarProps = {
-    ...navbarProps,
-    onMenuClick: onSidebarToggle,
-    isUserLoggedIn: !!user,
-    avatarUrl: user?.picture || '',
-  }
   sidebarProps = {
     ...sidebarProps,
     isOpen: isSidebarOpen,
@@ -71,8 +67,18 @@ const Layout: FC<LayoutProps> = ({
     onOpen: onSidebarToggle,
   }
 
+  navbarProps = {
+    ...navbarProps,
+    onMenuClick: onSidebarToggle,
+  }
+
   const bottombarProps = {
     ...navlinksProps,
+  }
+
+  const userMenuProps = {
+    avatarUrl: user?.picture || '',
+    isUserLoggedIn: !!user,
   }
 
   return (
@@ -81,7 +87,10 @@ const Layout: FC<LayoutProps> = ({
       <Sidebar {...sidebarProps} />
       <Navbar {...navbarProps}>
         <Navlinks {...navlinksProps} />
-        <Social {...socialProps} />
+        <Box sx={{ display: 'flex' }}>
+          <Social {...socialProps} />
+          <UserMenu {...userMenuProps} />
+        </Box>
       </Navbar>
       <Container
         maxWidth='md'
