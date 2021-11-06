@@ -25,7 +25,7 @@ const ContentBox = styled(Box)(({ theme }) => ({
   backgroundImage: "url('/img/bg/trans.png')",
   height: '100%',
   [theme.breakpoints.up('sm')]: {
-    border: 'solid 1px #2a2a2a',
+    // border: 'solid 1px #2a2a2a',
     borderRadius: 8,
   },
 }))
