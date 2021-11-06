@@ -8,33 +8,13 @@ export interface CenterProps {
   className?: string
 }
 
-const RelativeBox = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  height: 'calc(100% - 56px)',
-  [theme.breakpoints.up('sm')]: {
-    height: 'calc(100% - 64px)',
-  },
-  [theme.breakpoints.up('md')]: {
-    height: 'calc(100% - 84px)',
-  },
+const FlexBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '100%',
 }))
 
-const AbsoluteBox = styled(Box)({
-  display: 'flex',
-  position: 'absolute',
-  inset: 0,
-})
-
-const CenterBox = styled(Box)({
-  margin: 'auto',
-})
-
-const Center: FC<CenterProps> = ({ children }) => (
-  <RelativeBox>
-    <AbsoluteBox>
-      <CenterBox>{children}</CenterBox>
-    </AbsoluteBox>
-  </RelativeBox>
-)
+const Center: FC<CenterProps> = ({ children }) => <FlexBox>{children}</FlexBox>
 
 export default Center

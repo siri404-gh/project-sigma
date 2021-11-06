@@ -25,6 +25,24 @@ const theme = createTheme({
     fontWeightMedium: 500,
     fontWeightRegular: 400,
   },
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#0e0e10',
+          borderBottom: 'solid 1px #333',
+        },
+      },
+    },
+    MuiBottomNavigation: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#0e0e10',
+          borderTop: 'solid 1px #333',
+        },
+      },
+    },
+  },
 })
 
 export default theme

@@ -1,7 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-import React from 'react'
+import React, { FC } from 'react'
 
+import { SvgIconComponent } from '@mui/icons-material'
 import GitHub from '@mui/icons-material/GitHub'
 import Instagram from '@mui/icons-material/Instagram'
 import LinkedIn from '@mui/icons-material/LinkedIn'
@@ -24,17 +23,17 @@ interface SocialLink {
 }
 
 export interface SocialProps {
-  links: SocialLink[]
+  links?: SocialLink[]
 }
 
-const iconMap = {
+const iconMap: { [key: string]: SvgIconComponent } = {
   github: GitHub,
   instagram: Instagram,
   linkedin: LinkedIn,
   twitter: Twitter,
 }
 
-const Social: FC<SocialProps> = ({ links = links }) => (
+const Social: FC<SocialProps> = ({ links = [] }) => (
   <Box
     sx={{
       display: 'flex',
@@ -46,8 +45,8 @@ const Social: FC<SocialProps> = ({ links = links }) => (
         return (
           <Link
             key={link.url}
+            component='a'
             href={link.url}
-            name={link.name}
             rel='noreferrer'
             sx={styles.social}
             target='_blank'>
