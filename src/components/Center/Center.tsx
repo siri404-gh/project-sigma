@@ -12,7 +12,7 @@ const FlexBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '100%',
+  height: 'fill-available',
 }))
 
 const Center: FC<CenterProps> = ({ children }) => <FlexBox>{children}</FlexBox>
