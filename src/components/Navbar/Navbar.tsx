@@ -57,6 +57,7 @@ const Navbar: FC<NavbarProps> = props => {
             <Link href='/' passHref>
               <MuiLink sx={{ alignSelf: 'center' }} underline='hover'>
                 <StyledTitle
+                  className='_shimmer'
                   color={otherColor}
                   // component='h1'
                   variant='h6'

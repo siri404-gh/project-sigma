@@ -1,6 +1,7 @@
 import React, { useState, Fragment, FC } from 'react'
 
 import { useRouter } from 'next/router'
+import { format } from 'url'
 
 import Snack from '@/components/Snack/Snack'
 
@@ -31,9 +32,15 @@ const Alert: FC<AlertProps> = ({ children, num = 0, type, onClose }) => {
 
 const Alerts = () => {
   const router = useRouter()
-  const { type = 'info', ...rest } = router.query
+  const {
+    pathname,
+    query: { slug, type = 'info', ...rest },
+  } = router
+
   const onAlertClose = () => {
-    router.replace(router.pathname, undefined, { shallow: true })
+    const newQuery = { ...(slug && { slug }) }
+
+    router.replace({ pathname, query: newQuery }, undefined, { shallow: true })
   }
 
   if (!rest) return null

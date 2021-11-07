@@ -24,6 +24,7 @@ const Bottombar: FC<NavlinksProps> = ({ links = [], ...rest }) => (
       return (
         <Link key={link.title} href={link.url} passHref>
           <BottomNavigationAction
+            className='hover-up'
             icon={<Icon color='primary' />}
             label={link.title}
             showLabel

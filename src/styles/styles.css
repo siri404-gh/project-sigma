@@ -16,14 +16,24 @@
   }
 }
 
-:root {
-  --animate-up-down: {
-    animation: up-down 1.4s infinite ease-in-out alternate;
+@keyframes bounce {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -10px;
+  }
+  100% {
+    margin-top: 0;
   }
 }
 
 .animate-up-down {
   animation: up-down 1.4s infinite ease-in-out alternate;
+}
+
+.hover-up:hover {
+  animation: bounce 0.75s 1 alternate;
 }
 
 ._shimmer {
@@ -58,8 +68,8 @@
   background-repeat: no-repeat;
   background-position: 0 0;
   background-color: rgba(198, 198, 198, 0.3);
-  -webkit-animation: shimmer 3s infinite;
-  animation: shimmer 3s infinite;
+  -webkit-animation: shimmer 2.5s infinite;
+  animation: shimmer 2.5s infinite;
 }
 
 ._shimmer > h6 {
