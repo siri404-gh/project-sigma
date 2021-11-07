@@ -15,7 +15,7 @@ export default async function callback(
     const {
       user: { sub: custId },
     } = session
-    writeUserData(custId, '1')
+    await writeUserData(custId, '1')
 
     res.redirect('/api/auth/login?returnTo=/?payment=success')
   } catch (error) {
