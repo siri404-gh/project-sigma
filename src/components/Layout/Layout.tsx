@@ -4,6 +4,7 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { Box, Container } from '@mui/material'
 import { styled } from '@mui/system'
 
+import Alerts from '@/components/Alerts/Alerts'
 import Bottombar from '@/components/Bottombar/Bottombar'
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
 import { NavlinksProps } from '@/components/Navlinks/Navlinks'
@@ -103,6 +104,7 @@ const Layout: FC<LayoutProps> = ({
     <Box className='layout' sx={{ height: '100vh' }}>
       <Seo {...seoProps} />
       <Sidebar {...sidebarProps} />
+      <Alerts />
       <Navbar {...navbarProps}>
         <Bottombar {...bottombarProps1} />
         <Box sx={{ display: 'flex' }}>

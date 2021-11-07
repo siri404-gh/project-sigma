@@ -54,6 +54,7 @@ const StripeCheckout = ({ onSuccess }: { onSuccess: () => void }) => {
     setProcessing(true)
     const { clientSecret } = await getIntent()
     const payload = await stripe.confirmCardPayment(clientSecret, {
+      // eslint-disable-next-line camelcase
       payment_method: {
         card: elements.getElement(CardElement)!,
       },

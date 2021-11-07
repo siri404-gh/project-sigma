@@ -8,7 +8,7 @@ export interface CenterProps {
   className?: string
 }
 
-const FlexBox = styled(Box)(({ theme }) => ({
+const FlexBox = styled(Box)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
