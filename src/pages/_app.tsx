@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, ReactNode } from 'react'
+import React, { Fragment, FC } from 'react'
 
 import { UserProvider } from '@auth0/nextjs-auth0'
 import { CssBaseline } from '@mui/material'
@@ -20,26 +20,24 @@ const layoutProps = {
 }
 
 type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode
+  layout?: FC<LayoutProps>
 }
 
 type AppPropsWithLayout = NextAppProps & {
   Component: NextPageWithLayout
 }
 
-const defaultLayout = (page: ReactElement, layoutProps: LayoutProps) => (
-  <Layout {...layoutProps}>{page}</Layout>
-)
-
 const MyApp = ({ Component: Page }: AppPropsWithLayout) => {
-  const getLayout = Page.getLayout ?? defaultLayout
+  const PageLayout = Page.layout ?? Layout
 
   return (
     <Fragment>
       <UserProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {getLayout(<Page />, layoutProps)}
+          <PageLayout {...layoutProps}>
+            <Page />
+          </PageLayout>
         </ThemeProvider>
       </UserProvider>
     </Fragment>

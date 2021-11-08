@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material'
+import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
@@ -28,7 +22,9 @@ const Premium = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const promise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
-
+  const cost = Math.floor(
+    +(process.env.NEXT_PUBLIC_STRIPE_PAYMENT_VALUE ?? '99900') / 10000,
+  )
   return (
     <Center>
       {paymentSuccess && (
@@ -42,19 +38,21 @@ const Premium = () => {
         </Snack>
       )}
       <StyledCard color='secondary'>
-        <CardActionArea>
-          <CardMedia
-            alt='Sreeram Padmanabhan'
-            component='img'
-            image='/img/sections/about.svg'
-            title='Sreeram Padmanabhan'
-          />
-          <CardContent>
-            <Typography component='h2' variant='h6' gutterBottom>
-              Premium Membership <span style={{ float: 'right' }}>£49</span>
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <CardMedia
+          alt='Sreeram Padmanabhan'
+          component='img'
+          image='/img/sections/about.svg'
+          title='Sreeram Padmanabhan'
+        />
+        <CardContent>
+          <Typography component='h2' variant='h6' gutterBottom>
+            Premium Access
+            <span style={{ float: 'right' }}>£ {cost}</span>
+          </Typography>
+          <Typography variant='caption' gutterBottom>
+            Includes lifetime access to all paid content
+          </Typography>
+        </CardContent>
         <Elements stripe={promise}>
           <StripeCheckout
             onFailure={msg => {

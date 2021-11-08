@@ -12,7 +12,7 @@ export default async function intent(
 ) {
   try {
     const { client_secret: clientSecret } = await stripe.paymentIntents.create({
-      amount: Number(process.env.STRIPE_PAYMENT_VALUE),
+      amount: Number(process.env.NEXT_PUBLIC_STRIPE_PAYMENT_VALUE),
       currency: process.env.STRIPE_PAYMENT_CURRENCY || 'usd',
     })
     res.send({

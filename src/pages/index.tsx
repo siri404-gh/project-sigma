@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { NextPage } from 'next'
 import Image from 'next/image'
 
 import Center from '@/components/Center/Center'
+import Layout from '@/components/Layout/Layout'
 
-const Index: NextPage = () => (
+const Index = () => (
   <Center>
     <div className='animate-up-down'>
       <Image
@@ -19,5 +19,7 @@ const Index: NextPage = () => (
     </div>
   </Center>
 )
+
+Index.layout = Layout
 
 export default Index

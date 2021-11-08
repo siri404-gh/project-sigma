@@ -82,7 +82,41 @@
 
 .layout {
   /* background-color: indigo; */
+
+  /* Chip */
   /* background: url('/img/bg/chip.svg') black; */
+
+  /* Snyk */
+  /* background: linear-gradient(238deg,#24033a,#4e0380) */
+
+  /* Ubuntu */
+  /* background-blend-mode: multiply, multiply, normal, normal;
+  background-image: linear-gradient(
+      to bottom left,
+      rgba(119, 41, 83, 0.16) 0,
+      rgba(119, 41, 83, 0.16) 49.9%,
+      transparent 50%
+    ),
+    linear-gradient(
+      to bottom right,
+      rgba(228, 228, 228, 0.5) 0,
+      rgba(228, 228, 228, 0.5) 49.9%,
+      transparent 50%
+    ),
+    linear-gradient(
+      to top left,
+      #fff 0%,
+      #fff 49.3%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(-89deg, #e95420 0%, #772953 42%, #2c001e 94%);
+  background-position: top right, top left, right bottom -1px, left top;
+  background-repeat: no-repeat;
+  background-size: 74% 99.83%, 68% 91%, 103.8% 20.26%, 100% 99.8%; */
+
+  /* Floral */
+
   background: url(/img/bg/floral-1.jpg), url(/img/bg/floral-2.jpg) black;
   background-size: 300px 400px, 100px 500px;
   background-repeat: no-repeat, no-repeat;
