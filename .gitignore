@@ -87,3 +87,4 @@ public/workbox-*.js.map
 .src
 data.json
 data.prod.json
+src/data

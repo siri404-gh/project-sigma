@@ -1,19 +1,11 @@
-import React, { FC } from 'react'
+import React, { ReactElement } from 'react'
 
-import Markdown from '@/components/Markdown/Markdown'
+// import Layout, { LayoutProps } from '@/components/Layout/Layout'
 
-interface IndexProps {
-  firstRoute?: string
-}
+const Index = () => <div />
 
-const Index: FC<IndexProps> = ({ firstRoute = '' }) => (
-  <Markdown>{firstRoute}</Markdown>
-)
-
-export const getServerSideProps = async ({ query: { slug = '' } }) => ({
-  props: {
-    firstRoute: slug,
-  },
-})
+// Index.getLayout = (page: ReactElement, layoutProps: LayoutProps) => (
+//   <Layout {...layoutProps}>{page}</Layout>
+// )
 
 export default Index
