@@ -17,8 +17,8 @@ export default async function callback(
     } = session
     await writeUserData(custId, '1')
 
-    res.redirect('/api/auth/login?returnTo=/?payment=success')
+    res.redirect('/api/auth/login?returnTo=/?payment=success&type=success')
   } catch (error) {
-    res.redirect('/api/auth/login?returnTo=/?payment=failure')
+    res.redirect('/api/auth/login?returnTo=/?payment=failure&type=error')
   }
 }

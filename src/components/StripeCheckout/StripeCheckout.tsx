@@ -16,7 +16,13 @@ const getIntent = async () => {
   return await _res.json()
 }
 
-const StripeCheckout = ({ onSuccess }: { onSuccess: () => void }) => {
+const StripeCheckout = ({
+  onSuccess,
+  onFailure,
+}: {
+  onSuccess: () => void
+  onFailure: (msg?: string) => void
+}) => {
   const stripe = useStripe()
   const elements = useElements()
   const [succeeded, setSucceeded] = useState(false)
@@ -60,15 +66,12 @@ const StripeCheckout = ({ onSuccess }: { onSuccess: () => void }) => {
       },
     })
     if (payload.error) {
-      setError(`Payment failed!`)
-      console.log(payload.error.message)
-      setProcessing(false)
+      onFailure?.(payload.error.message)
     } else {
-      setError(null)
-      setProcessing(false)
       setSucceeded(true)
       onSuccess?.()
     }
+    setProcessing(false)
   }
 
   return (
@@ -90,11 +93,6 @@ const StripeCheckout = ({ onSuccess }: { onSuccess: () => void }) => {
       {error && (
         <Alert severity='error' variant='filled'>
           {error}
-        </Alert>
-      )}
-      {!error && succeeded && (
-        <Alert severity='success' variant='filled'>
-          Payment Success!
         </Alert>
       )}
     </form>

@@ -10,16 +10,16 @@ import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
 import { NavlinksProps } from '@/components/Navlinks/Navlinks'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
-import Social, { SocialProps } from '@/components/Social/Social'
+import SpeedDial, { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
+import UserMenu from '@/components/UserMenu/UserMenu'
 
-import UserMenu from '../UserMenu/UserMenu'
 export interface LayoutProps {
   children?: JSX.Element
   seoProps?: SEOProps
   navbarProps?: NavbarProps
   navlinksProps?: NavlinksProps
   sidebarProps?: SidebarProps
-  socialProps?: SocialProps
+  socialProps?: SpeedDialProps
 }
 
 const ContentBox = styled(Box)(({ theme }) => ({
@@ -108,7 +108,6 @@ const Layout: FC<LayoutProps> = ({
       <Navbar {...navbarProps}>
         <Bottombar {...bottombarProps1} />
         <Box sx={{ display: 'flex' }}>
-          <Social {...socialProps} />
           <UserMenu {...userMenuProps} />
         </Box>
       </Navbar>
@@ -147,6 +146,7 @@ const Layout: FC<LayoutProps> = ({
           </AbsoluteBox>
         </ContentBox>
       </Container>
+      <SpeedDial {...socialProps} />
       <Bottombar {...bottombarProps2} />
     </Box>
   )

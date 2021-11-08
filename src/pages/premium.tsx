@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
   Card,
@@ -12,6 +12,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 
 import Center from '@/components/Center/Center'
+import Snack from '@/components/Snack/Snack'
 import StripeCheckout from '@/components/StripeCheckout/StripeCheckout'
 
 const StyledCard = styled(Card)({
@@ -20,11 +21,26 @@ const StyledCard = styled(Card)({
 })
 
 const Premium = () => {
+  const [paymentSuccess, setPaymentSuccess] = useState(false)
+  const [paymentFailure, setPaymentFailure] = useState<
+    string | undefined | null
+  >(null)
+
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const promise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
   return (
     <Center>
+      {paymentSuccess && (
+        <Snack onClose={() => setPaymentSuccess(false)} type='success' open>
+          Payment Success!
+        </Snack>
+      )}
+      {paymentFailure && (
+        <Snack onClose={() => setPaymentFailure(null)} type='error' open>
+          {paymentFailure || 'Payment failed!'}
+        </Snack>
+      )}
       <StyledCard color='secondary'>
         <CardActionArea>
           <CardMedia
@@ -35,13 +51,17 @@ const Premium = () => {
           />
           <CardContent>
             <Typography component='h2' variant='h6' gutterBottom>
-              Membership <span style={{ float: 'right' }}>£49</span>
+              Premium Membership <span style={{ float: 'right' }}>£49</span>
             </Typography>
           </CardContent>
         </CardActionArea>
         <Elements stripe={promise}>
           <StripeCheckout
+            onFailure={msg => {
+              setPaymentFailure(msg)
+            }}
             onSuccess={() => {
+              setPaymentSuccess(true)
               window.location.href = '/api/stripe/callback'
             }}
           />

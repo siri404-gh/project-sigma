@@ -1,8 +1,9 @@
-import React, { useState, MouseEvent, FC, Fragment } from 'react'
+import React, { useState, MouseEvent, FC, Fragment, ReactNode } from 'react'
 
 import { AccountCircle as AccountIcon } from '@mui/icons-material'
 import {
   Avatar,
+  Divider,
   IconButton,
   Link as MuiLink,
   Menu,
@@ -13,11 +14,15 @@ export interface UserMenuProps {
   avatarUrl?: string
   isUserLoggedIn?: boolean
   loginRedirectUrl?: string
+  children?: ReactNode
 }
 
-const UserMenu: FC<UserMenuProps> = props => {
-  const { avatarUrl, isUserLoggedIn, loginRedirectUrl = '/' } = props
-
+const UserMenu: FC<UserMenuProps> = ({
+  avatarUrl,
+  isUserLoggedIn,
+  loginRedirectUrl = '/',
+  children = null,
+}) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
 
   const onAvatarClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -44,25 +49,20 @@ const UserMenu: FC<UserMenuProps> = props => {
           onClose={onAvatarClick}
           open={Boolean(anchorEl)}
           keepMounted>
-          {isUserLoggedIn ? (
-            <MenuItem>
-              <MuiLink
-                color='secondary'
-                href={'/api/auth/logout'}
-                underline={'none'}>
-                Logout
-              </MuiLink>
-            </MenuItem>
-          ) : (
-            <MenuItem>
-              <MuiLink
-                color='secondary'
-                href={`/api/auth/login?returnTo=${loginRedirectUrl}`}
-                underline={'none'}>
-                Login
-              </MuiLink>
-            </MenuItem>
-          )}
+          <MenuItem>
+            <MuiLink
+              color='secondary'
+              href={
+                isUserLoggedIn
+                  ? '/api/auth/logout'
+                  : `/api/auth/login?returnTo=${loginRedirectUrl}`
+              }
+              underline={'none'}>
+              {isUserLoggedIn ? 'Logout' : 'Login'}
+            </MuiLink>
+          </MenuItem>
+          {children && <Divider />}
+          {children}
         </Menu>
       </IconButton>
     </Fragment>

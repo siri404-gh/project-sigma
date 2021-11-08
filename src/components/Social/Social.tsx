@@ -49,7 +49,7 @@ const Social: FC<SocialProps> = ({ links = [] }) => (
             rel='noreferrer'
             sx={styles.social}
             target='_blank'>
-            <Icon color='primary' sx={styles.socialIcon} />
+            <Icon color='secondary' sx={styles.socialIcon} />
             {link.name}
           </Link>
         )
