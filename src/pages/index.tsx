@@ -1,24 +1,9 @@
 import React from 'react'
 
-import Image from 'next/image'
-
-import Center from '@/components/Center/Center'
 import Layout from '@/components/Layout/Layout'
+import Splash from '@/components/Splash/Splash'
 
-const Index = () => (
-  <Center>
-    <div className='animate-up-down'>
-      <Image
-        alt='blog'
-        height='175'
-        loading='lazy'
-        src='/img/sections/about.svg'
-        title='blog'
-        width='300'
-      />
-    </div>
-  </Center>
-)
+const Index = () => <Splash />
 
 Index.layout = Layout
 

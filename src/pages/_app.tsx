@@ -9,6 +9,7 @@ import type { AppProps as NextAppProps } from 'next/app'
 import Layout, { LayoutProps } from '@/components/Layout/Layout'
 import config from '@/config'
 import theme from '@/theme'
+import { DataProvider } from '@/utils'
 import '@/styles/styles.css'
 
 const layoutProps = {
@@ -33,12 +34,14 @@ const MyApp = ({ Component: Page }: AppPropsWithLayout) => {
   return (
     <Fragment>
       <UserProvider>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <PageLayout {...layoutProps}>
-            <Page />
-          </PageLayout>
-        </ThemeProvider>
+        <DataProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <PageLayout {...layoutProps}>
+              <Page />
+            </PageLayout>
+          </ThemeProvider>
+        </DataProvider>
       </UserProvider>
     </Fragment>
   )

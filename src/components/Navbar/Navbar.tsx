@@ -4,7 +4,6 @@ import { Menu as MenuIcon } from '@mui/icons-material'
 import {
   AppBar,
   Box,
-  Container,
   IconButton,
   Link as MuiLink,
   Toolbar,
@@ -45,31 +44,30 @@ const Navbar: FC<NavbarProps> = props => {
 
   return (
     <AppBar color={appBarColor} component='nav' elevation={0} position='sticky'>
-      <Container>
-        <StyledToolbar disableGutters>
-          <Box sx={{ display: 'flex' }}>
-            <IconButton
-              aria-label='menu'
-              color={otherColor}
-              onClick={onMenuButtonClick}>
-              <MenuIcon />
-            </IconButton>
-            <Link href='/' passHref>
-              <MuiLink sx={{ alignSelf: 'center' }} underline='hover'>
-                <StyledTitle
-                  className='_shimmer'
-                  color={otherColor}
-                  // component='h1'
-                  variant='h6'
-                  noWrap>
-                  {title}
-                </StyledTitle>
-              </MuiLink>
-            </Link>
-          </Box>
-          {children}
-        </StyledToolbar>
-      </Container>
+      <StyledToolbar>
+        <Box sx={{ display: 'flex' }}>
+          <IconButton
+            aria-label='menu'
+            color={otherColor}
+            onClick={onMenuButtonClick}
+            sx={{ mr: 1 }}>
+            <MenuIcon />
+          </IconButton>
+          <Link href='/' passHref>
+            <MuiLink sx={{ alignSelf: 'center' }} underline='hover'>
+              <StyledTitle
+                className='_shimmer'
+                color={otherColor}
+                // component='h1'
+                variant='h6'
+                noWrap>
+                {title}
+              </StyledTitle>
+            </MuiLink>
+          </Link>
+        </Box>
+        {children}
+      </StyledToolbar>
     </AppBar>
   )
 }
