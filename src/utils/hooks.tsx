@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 
-import { Session } from '@auth0/nextjs-auth0'
-
 import { fetchData } from './dataProvider'
 
 export const useTier = (custId: string) => {
@@ -19,8 +17,16 @@ export const useTier = (custId: string) => {
   return [tier, isLoading] as const
 }
 
-export const withPemissionsRequired = async (session: Session, role = '1') => {
-  const { tier } = await fetchData(session.user?.sub)
+export const withPemissionsRequired = async (custId: string, role = '1') => {
+  if (!custId) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+  const { tier } = await fetchData(custId)
   if (tier !== role) {
     return {
       redirect: {

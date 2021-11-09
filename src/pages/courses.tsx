@@ -9,6 +9,6 @@ export default () => <div>Content</div>
 export const getServerSideProps = withPageAuthRequired({
   getServerSideProps: async ({ req, res }) => {
     const session = getSession(req, res)
-    return await withPemissionsRequired(session!)
+    return await withPemissionsRequired(session?.user?.sub)
   },
 })
