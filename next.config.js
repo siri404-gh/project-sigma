@@ -59,7 +59,7 @@ const nextConfig = {
     register: true,
     scope: '/',
     sw: 'service-worker.js',
-    exclude: ['/api/*'],
+    // exclude: ['/api/*'],
     buildExcludes: [/middleware-manifest.json$/],
     runtimeCaching,
   },
