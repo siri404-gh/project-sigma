@@ -1,19 +1,17 @@
-import React, { useState, useContext, FC } from 'react'
+import React, { useState, FC } from 'react'
 
+import { useUser } from '@auth0/nextjs-auth0'
 import { Box, Container } from '@mui/material'
 import { styled } from '@mui/system'
 
 import Alerts from '@/components/Alerts/Alerts'
-import BlinkingCursor from '@/components/BlinkingCursor/BlinkingCursor'
 import Bottombar from '@/components/Bottombar/Bottombar'
-import Center from '@/components/Center/Center'
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
 import { NavlinksProps } from '@/components/Navlinks/Navlinks'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import SpeedDial, { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
-import UserMenu from '@/components/UserMenu/UserMenu'
-import { dataContext } from '@/utils'
+import UserMenu, { UserMenuProps } from '@/components/UserMenu/UserMenu'
 
 export interface LayoutProps {
   children?: JSX.Element
@@ -22,6 +20,7 @@ export interface LayoutProps {
   navlinksProps?: NavlinksProps
   sidebarProps?: SidebarProps
   socialProps?: SpeedDialProps
+  userMenuProps?: UserMenuProps
 }
 
 const ContentBox = styled(Box)(({ theme }) => ({
@@ -63,10 +62,11 @@ const Layout: FC<LayoutProps> = ({
   navlinksProps,
   sidebarProps,
   socialProps,
+  userMenuProps,
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const onSidebarToggle = () => setIsSidebarOpen(!isSidebarOpen)
-  const user = useContext(dataContext)
+  const { user } = useUser()
 
   sidebarProps = {
     ...sidebarProps,
@@ -97,9 +97,10 @@ const Layout: FC<LayoutProps> = ({
     },
   }
 
-  const userMenuProps = {
+  userMenuProps = {
+    ...userMenuProps,
     avatarUrl: user?.picture || '',
-    isUserLoggedIn: !!user?.sub,
+    isUserLoggedIn: !!user,
   }
 
   return (
@@ -144,12 +145,7 @@ const Layout: FC<LayoutProps> = ({
                 p: { xs: 1.5, sm: 0, md: 0 },
                 px: { xs: 1.5, sm: 4, md: 2.5 },
               }}>
-              {!user && (
-                <Center>
-                  <BlinkingCursor />
-                </Center>
-              )}
-              {user && children}
+              {children}
             </RelativeBox>
           </AbsoluteBox>
         </ContentBox>

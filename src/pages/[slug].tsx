@@ -1,5 +1,7 @@
 import React from 'react'
 
-const Index = () => <div />
+import Splash from '@/components/Splash/Splash'
+
+const Index = () => <Splash />
 
 export default Index

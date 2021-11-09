@@ -1,10 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-import Layout from '@/components/Layout/Layout'
 import Splash from '@/components/Splash/Splash'
 
-const Index = () => <Splash />
-
-Index.layout = Layout
+const Index: FC = () => <Splash />
 
 export default Index

@@ -1,7 +1,6 @@
 import React, { useState, Fragment, FC } from 'react'
 
 import { useRouter } from 'next/router'
-import { format } from 'url'
 
 import Snack from '@/components/Snack/Snack'
 

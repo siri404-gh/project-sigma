@@ -2,8 +2,10 @@ import React, { useState, useEffect, createContext, ReactElement } from 'react'
 
 import { useUser } from '@auth0/nextjs-auth0'
 
-export const fetchData = async (custId: string) => {
-  const data = await fetch(`/api/user?custId=${custId}`)
+export const fetchData: (custId: string) => Promise<any> = async custId => {
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_DOMAIN}/api/user?custId=${custId}`,
+  )
   return await data.json()
 }
 
