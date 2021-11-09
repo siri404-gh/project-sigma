@@ -59,7 +59,8 @@ const nextConfig = {
     register: true,
     scope: '/',
     sw: 'service-worker.js',
-    exclude: ['/api/*', 'build-manifest.json', 'react-loadable-manifest.json'],
+    exclude: ['/api/*'],
+    buildExcludes: [/middleware-manifest.json$/],
     runtimeCaching,
   },
 }
