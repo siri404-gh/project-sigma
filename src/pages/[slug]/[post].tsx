@@ -9,9 +9,18 @@ import { flatLinks } from '@/utils/helpers'
 export default ({ data }: { data: string }) => <Markdown>{data}</Markdown>
 
 export async function getStaticPaths() {
-  const _flatLinks = flatLinks(config.navlinks, 'links', 'url', 1)
+  const _flatLinks = flatLinks(
+    config.navlinks,
+    'links',
+    'url',
+    1,
+    ({ title }) => title !== 'Courses',
+  )
 
+  console.log(_flatLinks)
   const paths = _flatLinks.map(link => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const [, slug, post] = link.split('/')
     return { params: { slug, post } }
   })
