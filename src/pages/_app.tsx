@@ -8,14 +8,17 @@ import type { AppProps as NextAppProps } from 'next/app'
 import Layout, { LayoutProps } from '@/components/Layout/Layout'
 import config from '@/config'
 import theme from '@/theme'
-
 import '@/styles/styles.css'
+import { useNavlinks } from '@/utils/hooks'
 
 const MyApp: FC<NextAppProps> = ({ Component: Page, pageProps }) => {
+  // get navlinks client side
+  const navlinks = useNavlinks(config.navlinks)
+
   const layoutProps: LayoutProps = {
     seoProps: config.seo,
     navbarProps: config.navbar,
-    navlinksProps: config.navlinks,
+    navlinksProps: navlinks,
     sidebarProps: config.sidebar,
     socialProps: config.socialLinks,
   }

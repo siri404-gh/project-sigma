@@ -37,3 +37,25 @@ export const withPemissionsRequired = async (custId: string, role = '1') => {
   }
   return { props: {} }
 }
+
+export const getNavlinks = async () => {
+  const url =
+    'https://raw.githubusercontent.com/sreeramofficial/blog-posts/master/links.json'
+  const res = await fetch(url)
+  const data = await res.json()
+  return data
+}
+
+export const useNavlinks = (initialVal = {}) => {
+  const [navlinks, setNavlinks] = useState<any>(initialVal)
+
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await getNavlinks()
+      setNavlinks(data)
+    }
+    fetch()
+  }, [])
+
+  return navlinks
+}

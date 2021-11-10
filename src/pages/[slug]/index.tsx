@@ -3,26 +3,18 @@ import React from 'react'
 import { GetStaticProps } from 'next'
 
 import Markdown from '@/components/Markdown/Markdown'
-import config from '@/config'
-import { flatLinks } from '@/utils/helpers'
+import { flattenNavlinks, getPost, getPaths1 } from '@/utils/helpers'
+import { getNavlinks } from '@/utils/hooks'
 
 export default ({ data }: { data: string }) => <Markdown>{data}</Markdown>
 
 export async function getStaticPaths() {
-  const _flatLinks = flatLinks(
-    config.navlinks,
-    'links',
-    'url',
-    0,
-    ({ title }) => title !== 'Courses',
-  )
-  console.log(_flatLinks)
-  const paths = _flatLinks.map(link => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const [, slug] = link.split('/')
-    return { params: { slug } }
-  })
+  const navlinks = await getNavlinks()
+  const _flatLinks = flattenNavlinks(navlinks)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const paths = getPaths1(_flatLinks)
+  console.log(paths)
 
   return {
     paths,
@@ -31,11 +23,11 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  // const data = require(`../../data/${params?.slug}/index.md`).default
-  const url = `https://raw.githubusercontent.com/sreeramofficial/blog-posts/master/${params?.slug}/index.md`
-  const res = await fetch(url)
-  const data = await res.text()
+  let data
+
+  if (params?.slug) {
+    data = await getPost(params.slug.toString())
+  }
 
   return {
     props: { data },

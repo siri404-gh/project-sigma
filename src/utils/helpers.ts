@@ -6,7 +6,7 @@ type ObjType = {
 
 const isArray = (val: any): boolean => Array.isArray(val)
 
-export const flatLinks = (
+const flatLinks = (
   obj: ObjType,
   property: string,
   key: string,
@@ -44,3 +44,25 @@ export const getFiles = (dir: string, files_?: string[]) => {
   }
   return files_
 }
+
+export const getPost = async (slug: string, post = 'index') => {
+  const url = `https://raw.githubusercontent.com/sreeramofficial/blog-posts/master/${slug}/${post}.md`
+  const res = await fetch(url)
+  const data = await res.text()
+  return data
+}
+
+export const flattenNavlinks = (navlinks: ObjType, level = 0) =>
+  flatLinks(navlinks, 'links', 'url', level, ({ title }) => title !== 'Courses')
+
+export const getPaths1 = (_flatLinks: string[]) =>
+  _flatLinks.map(link => {
+    const [, slug] = link.split('/')
+    return { params: { slug } }
+  })
+
+export const getPaths2 = (_flatLinks: string[]) =>
+  _flatLinks.map(link => {
+    const [, slug, post] = link.split('/')
+    return { params: { slug, post } }
+  })
