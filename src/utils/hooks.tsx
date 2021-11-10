@@ -11,6 +11,7 @@ export const withPemissionsRequired = ({ getServerSideProps }) =>
   async function ({ req, res, ...rest }) {
     const session = getSession(req, res)
     const { tier } = await fetchUserData(session?.user.sub)
+    console.log('tier', tier)
     if (tier !== '1')
       return {
         redirect: {

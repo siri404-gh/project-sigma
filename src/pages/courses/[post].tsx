@@ -10,7 +10,7 @@ export default ({ data }: { data: string }) => <Markdown>{data}</Markdown>
 
 const _getServerSideProps = async ({ params }: { params: any }) => {
   const data = await fetchPost('courses', params.post)
-
+  console.log('data', data)
   return {
     props: {
       data,
