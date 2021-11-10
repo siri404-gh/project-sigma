@@ -21,7 +21,7 @@ export const withPemissionsRequired = async (custId: string, role = '1') => {
   if (!custId) {
     return {
       redirect: {
-        destination: '/login',
+        destination: '/api/auth/login',
         permanent: false,
       },
     }

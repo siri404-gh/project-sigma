@@ -3,20 +3,14 @@ import React, { FC } from 'react'
 import { Box, Link as MuiLink } from '@mui/material'
 import { styled } from '@mui/system'
 import Link from 'next/link'
-
-export interface NavlinkRoute {
-  title: string
-  route: string
-}
 export interface NavlinkType {
   title: string
   url: string
-  routes?: NavlinkRoute[]
+  links?: NavlinkType[]
 }
 
 export interface NavlinksProps {
   links?: NavlinkType[]
-  rest?: any[]
 }
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -34,8 +28,8 @@ const StyledLi = styled(Box)({
   margin: '0 10px',
 })
 
-const Navlinks: FC<NavlinksProps> = ({ links = [], ...rest }) => (
-  <StyledBox component='ul' {...rest}>
+const Navlinks: FC<NavlinksProps> = ({ links = [] }) => (
+  <StyledBox component='ul'>
     {links.map(({ title, url }) => (
       <StyledLi key={title}>
         <Link href={url} passHref>

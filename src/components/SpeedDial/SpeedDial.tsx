@@ -56,6 +56,12 @@ const _SpeedDial: FC<SpeedDialProps> = ({ links = [] }) => (
           return (
             <SpeedDialAction
               key={link.name}
+              FabProps={{
+                href: link.url,
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                target: '_blank',
+              }}
               icon={<Icon color='secondary' />}
               tooltipTitle={link.name}
             />

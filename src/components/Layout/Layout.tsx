@@ -12,6 +12,7 @@ import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import SpeedDial, { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
 import UserMenu, { UserMenuProps } from '@/components/UserMenu/UserMenu'
+import NestedLinks from '../NestedLinks/NestedLinks'
 
 export interface LayoutProps {
   children?: JSX.Element
@@ -106,7 +107,9 @@ const Layout: FC<LayoutProps> = ({
   return (
     <Box className='layout' sx={{ height: '100vh' }}>
       <Seo {...seoProps} />
-      <Sidebar {...sidebarProps} />
+      <Sidebar {...sidebarProps}>
+        <NestedLinks {...navlinksProps} onSelect={onSidebarToggle} />
+      </Sidebar>
       <Alerts />
       <Navbar {...navbarProps}>
         <Bottombar {...bottombarProps1} />

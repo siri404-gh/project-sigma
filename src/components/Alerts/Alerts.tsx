@@ -33,11 +33,11 @@ const Alerts = () => {
   const router = useRouter()
   const {
     pathname,
-    query: { slug, type = 'info', ...rest },
+    query: { slug, post, type = 'info', ...rest },
   } = router
 
   const onAlertClose = () => {
-    const newQuery = { ...(slug && { slug }) }
+    const newQuery = { ...(slug && { slug }), ...(post && { post }) }
 
     router.replace({ pathname, query: newQuery }, undefined, { shallow: true })
   }

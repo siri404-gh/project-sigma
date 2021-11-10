@@ -11,7 +11,7 @@ import theme from '@/theme'
 
 import '@/styles/styles.css'
 
-const MyApp: FC<NextAppProps> = ({ Component: Page }) => {
+const MyApp: FC<NextAppProps> = ({ Component: Page, pageProps }) => {
   const layoutProps: LayoutProps = {
     seoProps: config.seo,
     navbarProps: config.navbar,
@@ -25,7 +25,7 @@ const MyApp: FC<NextAppProps> = ({ Component: Page }) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Layout {...layoutProps}>
-          <Page />
+          <Page {...pageProps} />
         </Layout>
       </ThemeProvider>
     </UserProvider>
