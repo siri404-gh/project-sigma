@@ -45,13 +45,6 @@ export const getFiles = (dir: string, files_?: string[]) => {
   return files_
 }
 
-export const getPost = async (slug: string, post = 'index') => {
-  const url = `https://raw.githubusercontent.com/sreeramofficial/blog-posts/master/${slug}/${post}.md`
-  const res = await fetch(url)
-  const data = await res.text()
-  return data
-}
-
 export const flattenNavlinks1 = (navlinks: ObjType, level = 0) =>
   flatLinks(navlinks, 'links', 'url', level)
 

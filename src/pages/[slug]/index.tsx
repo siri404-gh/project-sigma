@@ -3,13 +3,13 @@ import React from 'react'
 import { GetStaticProps } from 'next'
 
 import Markdown from '@/components/Markdown/Markdown'
-import { flattenNavlinks1, getPost, getPaths1 } from '@/utils/helpers'
-import { getNavlinks } from '@/utils/hooks'
+import { fetchPost, fetchNavlinks } from '@/utils/fetchers'
+import { flattenNavlinks1, getPaths1 } from '@/utils/helpers'
 
 export default ({ data }: { data: string }) => <Markdown>{data}</Markdown>
 
 export async function getStaticPaths() {
-  const navlinks = await getNavlinks()
+  const navlinks = await fetchNavlinks()
   const _flatLinks = flattenNavlinks1(navlinks)
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   let data
 
   if (params?.slug) {
-    data = await getPost(params.slug.toString())
+    data = await fetchPost(params.slug.toString())
   }
 
   return {
