@@ -33,16 +33,13 @@ const Alerts = () => {
   const router = useRouter()
   const {
     pathname,
-    query: { slug, post, type = 'info', ...rest },
+    query,
+    query: { payment, type = 'info', ...rest },
   } = router
 
   const onAlertClose = () => {
-    const newQuery = { ...(slug && { slug }), ...(post && { post }) }
-
-    router.replace({ pathname, query: newQuery }, undefined, { shallow: true })
+    router.replace({ pathname, query: rest }, undefined, { shallow: true })
   }
-
-  if (!rest) return null
 
   let _type = type.toString()
 
@@ -57,14 +54,22 @@ const Alerts = () => {
     _type = 'info'
   }
 
+  const allowedParams = ['payment']
+
   return (
     <Fragment>
-      {Object.keys(rest).map((param, index) => (
-        <Alert key={index} num={index} onClose={onAlertClose} type={_type}>
-          <span style={{ textTransform: 'capitalize' }}>{param}</span>: &nbsp;
-          <span style={{ textTransform: 'capitalize' }}>{rest[param]}</span>
-        </Alert>
-      ))}
+      {allowedParams.map(
+        (param, index) =>
+          query[param] && (
+            <Alert key={index} num={index} onClose={onAlertClose} type={_type}>
+              <span style={{ textTransform: 'capitalize' }}>{param}</span>:
+              &nbsp;
+              <span style={{ textTransform: 'capitalize' }}>
+                {query[param]}
+              </span>
+            </Alert>
+          ),
+      )}
     </Fragment>
   )
 }
