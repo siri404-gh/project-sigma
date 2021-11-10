@@ -11,7 +11,7 @@ const flatLinks = (
   property: string,
   key: string,
   level: number,
-  filter: (obj: ObjType) => boolean,
+  filter = (obj: ObjType) => true,
 ) => {
   const res: (ObjType[] | string)[] = []
 
@@ -52,7 +52,10 @@ export const getPost = async (slug: string, post = 'index') => {
   return data
 }
 
-export const flattenNavlinks = (navlinks: ObjType, level = 0) =>
+export const flattenNavlinks1 = (navlinks: ObjType, level = 0) =>
+  flatLinks(navlinks, 'links', 'url', level)
+
+export const flattenNavlinks2 = (navlinks: ObjType, level = 0) =>
   flatLinks(navlinks, 'links', 'url', level, ({ title }) => title !== 'Courses')
 
 export const getPaths1 = (_flatLinks: string[]) =>
