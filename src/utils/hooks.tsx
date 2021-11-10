@@ -18,7 +18,7 @@ export const withPemissionsRequired = ({ getServerSideProps }) =>
           permanent: false,
         },
       }
-    return getServerSideProps({ req, res, ...rest })
+    return await getServerSideProps({ req, res, ...rest })
   }
 
 export const useNavlinks = (initialVal = {}) => {
