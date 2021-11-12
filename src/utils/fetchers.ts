@@ -8,7 +8,7 @@ export const fetchNavlinks = async () => {
 export const postUrl = (slug: string, post = '') =>
   `https://raw.githubusercontent.com/sreeramofficial/blog-posts/master/${slug}/${post}.md`
 
-export const fetchUserData: (custId: string) => Promise<any> = async custId => {
+export const fetchUserData = async (custId: string) => {
   const data = await fetch(
     `${process.env.NEXT_PUBLIC_DOMAIN}/api/user?custId=${custId}`,
   )

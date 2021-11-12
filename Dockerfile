@@ -1,8 +1,8 @@
-FROM node:dubnium-alpine AS project-sigma-builder
+FROM node:fermium-alpine AS project-sigma-builder
 ADD package.json /project-sigma/
 ADD package-lock.json /project-sigma/
 WORKDIR /project-sigma/
-RUN npm run setup
+RUN npm ci
 
 FROM project-sigma-builder AS project-sigma
 WORKDIR /project-sigma/

@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/sreeram-io/project-sigma#readme",
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.3.1",
+    "@auth0/nextjs-auth0": "^1.6.1",
     "@emotion/react": "^11.5.0",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -46,7 +46,7 @@
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.1",
     "mongo": "^0.1.0",
-    "next": "^11.1.2",
+    "next": "^12.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
