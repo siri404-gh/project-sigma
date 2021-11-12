@@ -86,5 +86,5 @@ const config = {
     ],
   },
 }
-console.log(process.env.NEXT_PUBLIC_CONFIG)
+console.log('====', process.env.NEXT_PUBLIC_CONFIG)
 module.exports = { ...config, ...envConfig }
