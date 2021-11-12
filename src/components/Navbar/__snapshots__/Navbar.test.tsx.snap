@@ -6,7 +6,7 @@ exports[`Navbar renders 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorTransparent MuiAppBar-positionSticky css-14bkxa-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-5lveh-MuiToolbar-root"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-yx2a9g-MuiToolbar-root"
     >
       <div
         class="MuiBox-root css-k008qs"

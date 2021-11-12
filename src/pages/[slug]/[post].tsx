@@ -3,18 +3,24 @@ import React from 'react'
 import { GetStaticProps } from 'next'
 
 import Markdown from '@/components/Markdown/Markdown'
-import { fetchPost, fetchNavlinks } from '@/utils/fetchers'
-import { flattenNavlinks2, getPaths2 } from '@/utils/helpers'
+import { postUrl, fetchNavlinks } from '@/utils/fetchers'
+import { flatLinks, getPathsSlugPost } from '@/utils/helpers'
 
 export default ({ data }: { data: string }) => <Markdown>{data}</Markdown>
 
 export async function getStaticPaths() {
   const navlinks = await fetchNavlinks()
-  const _flatLinks = flattenNavlinks2(navlinks, 1)
+  const flatNavLinks = flatLinks(
+    navlinks,
+    'links',
+    'url',
+    1,
+    ({ title }) => title !== 'Courses',
+  )
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const paths = getPaths2(_flatLinks)
-  console.log(paths)
+  const paths = getPathsSlugPost(flatNavLinks)
+
   return {
     paths,
     fallback: true,
@@ -22,12 +28,9 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  let data
-
-  if (params?.slug && params?.post) {
-    data = await fetchPost(params.slug.toString(), params.post.toString())
-  }
-
+  const { slug, post } = params as { slug: string; post: string }
+  const res = await fetch(postUrl(slug, post))
+  const data = await res.text()
   return {
     props: { data },
   }

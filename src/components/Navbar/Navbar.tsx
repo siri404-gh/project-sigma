@@ -10,7 +10,6 @@ import {
   Typography,
 } from '@mui/material'
 import { styled } from '@mui/system'
-import Link from 'next/link'
 
 export interface NavbarProps {
   children?: React.ReactNode
@@ -19,7 +18,6 @@ export interface NavbarProps {
 }
 
 const StyledToolbar = styled(Toolbar)({
-  padding: 0,
   justifyContent: 'space-between',
 })
 
@@ -53,18 +51,16 @@ const Navbar: FC<NavbarProps> = props => {
             sx={{ mr: 1 }}>
             <MenuIcon />
           </IconButton>
-          <Link href='/' passHref>
-            <MuiLink sx={{ alignSelf: 'center' }} underline='hover'>
-              <StyledTitle
-                className='_shimmer'
-                color={otherColor}
-                // component='h1'
-                variant='h6'
-                noWrap>
-                {title}
-              </StyledTitle>
-            </MuiLink>
-          </Link>
+          <MuiLink href='/' sx={{ alignSelf: 'center' }} underline='hover'>
+            <StyledTitle
+              className='_shimmer'
+              color={otherColor}
+              // component='h1'
+              variant='h6'
+              noWrap>
+              {title}
+            </StyledTitle>
+          </MuiLink>
         </Box>
         {children}
       </StyledToolbar>

@@ -4,6 +4,7 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import { useRouter } from 'next/router'
 
 import Center from '@/components/Center/Center'
 import Snack from '@/components/Snack/Snack'
@@ -19,7 +20,7 @@ const Premium = () => {
   const [paymentFailure, setPaymentFailure] = useState<
     string | undefined | null
   >(null)
-
+  const router = useRouter()
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const promise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
   const cost = Math.floor(
@@ -60,7 +61,7 @@ const Premium = () => {
             }}
             onSuccess={() => {
               setPaymentSuccess(true)
-              window.location.href = '/api/stripe/callback'
+              window.location.href = `/api/stripe/callback?returnTo=${router.query.returnTo}`
             }}
           />
         </Elements>
