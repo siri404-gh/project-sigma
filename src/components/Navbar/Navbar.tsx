@@ -55,7 +55,9 @@ const Navbar: FC<NavbarProps> = props => {
             <StyledTitle
               className='_shimmer'
               color={otherColor}
-              // component='h1'
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              component='h1'
               variant='h6'
               noWrap>
               {title}

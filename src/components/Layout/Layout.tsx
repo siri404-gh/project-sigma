@@ -13,6 +13,7 @@ import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import SpeedDial, { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
 import UserMenu, { UserMenuProps } from '@/components/UserMenu/UserMenu'
 
+import InfoMenu from '../InfoMenu/InfoMenu'
 import NestedLinks from '../NestedLinks/NestedLinks'
 
 export interface LayoutProps {
@@ -117,6 +118,7 @@ const Layout: FC<LayoutProps> = ({
         <Box
           sx={{ display: 'flex', width: { md: 200 }, justifyContent: 'right' }}>
           <UserMenu {...userMenuProps} />
+          <InfoMenu {...socialProps} />
         </Box>
       </Navbar>
       <Container
@@ -154,7 +156,7 @@ const Layout: FC<LayoutProps> = ({
           </AbsoluteBox>
         </ContentBox>
       </Container>
-      <SpeedDial {...socialProps} />
+      {/* <SpeedDial {...socialProps} /> */}
       <Bottombar {...bottombarProps2} />
     </Box>
   )
