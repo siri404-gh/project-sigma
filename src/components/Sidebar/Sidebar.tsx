@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { Drawer, Typography, Toolbar } from '@mui/material'
+import { Drawer, Typography, Toolbar, Divider } from '@mui/material'
 
 export interface SidebarProps {
   isOpen?: boolean
@@ -18,6 +18,7 @@ const Sidebar: FC<SidebarProps> = ({ children, isOpen, onClose, title }) => (
         {title}
       </Typography>
     </Toolbar>
+    <Divider />
     {children}
   </Drawer>
 )

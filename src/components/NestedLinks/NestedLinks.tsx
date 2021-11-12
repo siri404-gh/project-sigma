@@ -9,12 +9,14 @@ import {
   ExpandMore,
 } from '@mui/icons-material'
 import {
+  Box,
   Collapse,
   List,
   ListItem,
   ListItemText,
   ListItemIcon,
   Link as MuiLink,
+  Divider,
 } from '@mui/material'
 import { SvgIconProps } from '@mui/material'
 
@@ -50,7 +52,7 @@ const NestedList: FC<NestedListProps> = ({ item, onSelect }) => {
   const Icon = iconMap[item.title] || null
 
   return (
-    <Fragment>
+    <Box sx={{ width: { xs: 285, sm: 300, md: 400 } }}>
       <ListItem onClick={onClick} button>
         <ListItemIcon>
           <Icon color='secondary' />
@@ -58,18 +60,22 @@ const NestedList: FC<NestedListProps> = ({ item, onSelect }) => {
         <ListItemText primary={item.title} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
+      <Divider />
       <Collapse in={open} timeout='auto' unmountOnExit>
         <List component='div' disablePadding>
           {item.links?.map(link => (
-            <MuiLink key={link.title} href={link.url} underline='hover'>
-              <ListItem onClick={onSelect}>
-                <ListItemText secondary={link.title} />
-              </ListItem>
-            </MuiLink>
+            <Fragment key={link.title}>
+              <MuiLink href={link.url} underline='hover'>
+                <ListItem onClick={onSelect}>
+                  <ListItemText secondary={link.title} />
+                </ListItem>
+              </MuiLink>
+              <Divider />
+            </Fragment>
           ))}
         </List>
       </Collapse>
-    </Fragment>
+    </Box>
   )
 }
 
