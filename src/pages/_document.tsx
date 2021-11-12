@@ -4,7 +4,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 import theme from '../theme'
 
-export default class MyDocument extends Document {
+class MyDocument extends Document {
   render() {
     return (
       <Html lang='en'>
@@ -19,6 +19,8 @@ export default class MyDocument extends Document {
     )
   }
 }
+
+export default MyDocument
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).

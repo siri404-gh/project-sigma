@@ -6,7 +6,9 @@ import { GetServerSideProps } from 'next'
 import Markdown from '@/components/Markdown/Markdown'
 import { fetchUserData } from '@/utils/fetchers'
 
-export default ({ data }: { data: string }) => <Markdown>{data}</Markdown>
+const Post = ({ data }: { data: string }) => <Markdown>{data}</Markdown>
+
+export default Post
 
 export const getServerSideProps: GetServerSideProps = async ({
   params,
@@ -56,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     if (!session) {
       return {
         redirect: {
-          destination: `/api/login?returnTo=${returnTo}`,
+          destination: `/api/auth/login?returnTo=${returnTo}`,
           permanent: false,
         },
       }

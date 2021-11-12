@@ -6,7 +6,9 @@ import Markdown from '@/components/Markdown/Markdown'
 import { postUrl, fetchNavlinks } from '@/utils/fetchers'
 import { flatLinks, getPathsSlugPost } from '@/utils/helpers'
 
-export default ({ data }: { data: string }) => <Markdown>{data}</Markdown>
+const Post = ({ data }: { data: string }) => <Markdown>{data}</Markdown>
+
+export default Post
 
 export async function getStaticPaths() {
   const navlinks = await fetchNavlinks()

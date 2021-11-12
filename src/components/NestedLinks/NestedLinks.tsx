@@ -17,7 +17,6 @@ import {
   Link as MuiLink,
 } from '@mui/material'
 import { SvgIconProps } from '@mui/material'
-import Link from 'next/link'
 
 import { NavlinksProps, NavlinkType } from '@/components/Navlinks/Navlinks'
 
@@ -62,11 +61,11 @@ const NestedList: FC<NestedListProps> = ({ item, onSelect }) => {
       <Collapse in={open} timeout='auto' unmountOnExit>
         <List component='div' disablePadding>
           {item.links?.map(link => (
-            <Link key={link.title} href={link.url} passHref>
-              <ListItem component={MuiLink} onClick={onSelect}>
+            <MuiLink key={link.title} href={link.url} underline='hover'>
+              <ListItem onClick={onSelect}>
                 <ListItemText secondary={link.title} />
               </ListItem>
-            </Link>
+            </MuiLink>
           ))}
         </List>
       </Collapse>
