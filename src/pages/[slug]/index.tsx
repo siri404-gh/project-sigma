@@ -1,14 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Fragment } from 'react'
 
 import { Typography } from '@mui/material'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import BlinkingCursor from '@/components/BlinkingCursor/BlinkingCursor'
 import Center from '@/components/Center/Center'
 import { NavlinkType } from '@/components/Navlinks/Navlinks'
+import config from '@/config'
 import { fetchNavlinks } from '@/utils/fetchers'
 
-const Index = ({ firstRoute }: { firstRoute: string }) => {
+const Index = ({
+  title,
+  url,
+  firstRoute,
+}: {
+  title: string
+  url: string
+  firstRoute: string
+}) => {
   const router = useRouter()
 
   useEffect(() => {
@@ -17,6 +27,16 @@ const Index = ({ firstRoute }: { firstRoute: string }) => {
 
   return (
     <Center>
+      <Head>
+        <Fragment>
+          <title>{title}</title>
+          <meta content={title} name='og:title' />
+          <meta content={title} name='twitter:title' />
+          <meta content={url} name='og:url' />
+          <meta content={url} name='twitter:url' />
+          <meta content={url} name='canonical' />
+        </Fragment>
+      </Head>
       <BlinkingCursor /> &nbsp;
       <Typography color='primary'>Loading...</Typography>
     </Center>
@@ -25,37 +45,21 @@ const Index = ({ firstRoute }: { firstRoute: string }) => {
 
 export const getServerSideProps = async ({ query: { slug = '' } }) => {
   const navlinks = await fetchNavlinks()
-  const sublinks = navlinks.links.find(
+  const section = navlinks.links.find(
     (link: NavlinkType) => link.url === `/${slug}`,
   )
-
+  if (section) {
+    return {
+      props: {
+        title: `${section.title} | ${config.seo.title}`,
+        url: process.env.NEXT_PUBLIC_DOMAIN + section.url,
+        firstRoute: section.links[0].url,
+      },
+    }
+  }
   return {
-    props: {
-      firstRoute: sublinks.links[0].url,
-    },
+    props: {},
   }
 }
 
 export default Index
-
-// export async function getStaticPaths() {
-//   const navlinks = await fetchNavlinks()
-//   const flatNavLinks = flatLinks(navlinks, 'links', 'url', 0)
-//   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//   // @ts-ignore
-//   const paths = getPathsSlug(flatNavLinks)
-
-//   return {
-//     paths,
-//     fallback: true,
-//   }
-// }
-
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
-//   const { slug } = params as { slug: string }
-//   const res = await fetch(postUrl(slug, 'index'))
-//   const data = await res.text()
-//   return {
-//     props: { data },
-//   }
-// }

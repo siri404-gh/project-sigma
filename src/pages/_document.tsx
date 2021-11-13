@@ -2,15 +2,11 @@ import * as React from 'react'
 
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-import theme from '../theme'
-
 class MyDocument extends Document {
   render() {
     return (
       <Html lang='en'>
-        <Head>
-          <meta content={theme.palette.primary.main} name='theme-color' />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

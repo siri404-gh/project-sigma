@@ -1,13 +1,37 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import { getSession } from '@auth0/nextjs-auth0'
 import isbot from 'isbot'
 import { GetServerSideProps } from 'next'
+import Head from 'next/head'
 
 import Markdown from '@/components/Markdown/Markdown'
-import { fetchUserData, postUrl } from '@/utils/fetchers'
+import config from '@/config'
+import { fetchUserData, postUrl, fetchNavlinks } from '@/utils/fetchers'
 
-const Post = ({ data }: { data: string }) => <Markdown>{data}</Markdown>
+const Post = ({
+  data,
+  title,
+  url,
+}: {
+  data: string
+  title: string
+  url: string
+}) => (
+  <Fragment>
+    <Head>
+      <Fragment>
+        <title>{title}</title>
+        <meta content={title} name='og:title' />
+        <meta content={title} name='twitter:title' />
+        <meta content={url} name='og:url' />
+        <meta content={url} name='twitter:url' />
+        <meta content={url} name='canonical' />
+      </Fragment>
+    </Head>
+    <Markdown>{data}</Markdown>
+  </Fragment>
+)
 
 export default Post
 
@@ -47,10 +71,19 @@ export const getServerSideProps: GetServerSideProps = async ({
 
     const _res = await fetch(postUrl('interview', post))
     const data = await _res.text()
+    const navlinks = await fetchNavlinks()
+    const section = navlinks.links.find(
+      (link: { url: string }) => link.url === `/interview`,
+    )
+    const { title, url } = section.links.find(
+      (link: { url: string }) => link.url === `/interview/${post}`,
+    )
 
     return {
       props: {
         data,
+        title: `${title} | ${config.seo.title}`,
+        url: process.env.NEXT_PUBLIC_DOMAIN + url,
       },
     }
   } catch (error) {

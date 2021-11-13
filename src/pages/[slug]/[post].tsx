@@ -1,12 +1,36 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 
 import Markdown from '@/components/Markdown/Markdown'
+import config from '@/config'
 import { postUrl, fetchNavlinks } from '@/utils/fetchers'
 import { flatLinks, getPathsSlugPost } from '@/utils/helpers'
 
-const Post = ({ data }: { data: string }) => <Markdown>{data}</Markdown>
+const Post = ({
+  data,
+  title,
+  url,
+}: {
+  data: string
+  title: string
+  url: string
+}) => (
+  <Fragment>
+    <Head>
+      <Fragment>
+        <title>{title}</title>
+        <meta content={title} name='og:title' />
+        <meta content={title} name='twitter:title' />
+        <meta content={url} name='og:url' />
+        <meta content={url} name='twitter:url' />
+        <meta content={url} name='canonical' />
+      </Fragment>
+    </Head>
+    <Markdown>{data}</Markdown>
+  </Fragment>
+)
 
 export default Post
 
@@ -31,9 +55,22 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug, post } = params as { slug: string; post: string }
+
+  const navlinks = await fetchNavlinks()
+  const section = navlinks.links.find(
+    (link: { url: string }) => link.url === `/${slug}`,
+  )
+  const { title, url } = section.links.find(
+    (link: { url: string }) => link.url === `/${slug}/${post}`,
+  )
+
   const res = await fetch(postUrl(slug, post))
   const data = await res.text()
   return {
-    props: { data },
+    props: {
+      data,
+      title: `${title} | ${config.seo.title}`,
+      url: process.env.NEXT_PUBLIC_DOMAIN + url,
+    },
   }
 }

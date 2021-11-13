@@ -19,6 +19,12 @@ export interface SEOProps {
   viewport?: string
 }
 
+type TagType = {
+  as: string
+  args: any
+  show: boolean
+}
+
 const Seo: FC<SEOProps> = ({
   author,
   description,
@@ -34,44 +40,244 @@ const Seo: FC<SEOProps> = ({
   title,
   twitterId,
   viewport,
-}) => (
-  <Head>
-    <title>{title}</title>
-    <meta charSet='UTF-8' />
-    <meta content={themeColor} name='theme-color' />
-    <meta content={author} name='author' />
-    <meta content={keywords} name='keywords' />
-    <meta content={description} name='description' />
-    <meta content={ogSiteName} property='og:site_name' />
-    <meta content={title} property='og:title' />
-    <meta content={description} property='og:description' />
-    <meta content={ogUrl} property='og:url' />
-    <meta content={ogImage} property='og:image' />
-    <meta content={ogImageAlt} property='og:image:alt' />
-    <meta content={ogType} property='og:type' />
-    <meta content={description} name='twitter:card' />
-    <meta content={domain} name='twitter:url' />
-    <meta content={title} name='twitter:title' />
-    <meta content={description} name='twitter:description' />
-    <meta content={`${domain}/img/icon-192.png`} name='twitter:image' />
-    <meta content={twitterId} name='twitter:creator' />
-    <meta content={viewport} name='viewport' />
-    <meta content='index,follow' name='robots' />
-    <meta content={process.env.NODE_ENV} name='node-env' />
-    <link href='/img/favicon.ico' rel='icon' />
-    <link href='/img/icon-192.png' rel='apple-touch-icon' />
-    <link href={ogUrl} rel='canonical' />
-    <link href='/static/manifest.json' rel='manifest' />
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `window.dataLayer = [{ event: 'gtm.js', 'gtm.start': new Date().getTime() }]`,
-      }}></script>
-    {process.env.NODE_ENV === 'production' && gtmId && (
-      <script
-        src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`}
-        async></script>
-    )}
-  </Head>
-)
+}) => {
+  const tags: TagType[] = [
+    {
+      as: 'title',
+      args: {
+        children: title,
+      },
+      show: !!title,
+    },
+    {
+      as: 'meta',
+      args: {
+        charSet: 'UTF-8',
+      },
+      show: false,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'theme-color',
+        content: themeColor,
+      },
+      show: !!themeColor,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'author',
+        content: author,
+      },
+      show: !!author,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'keywords',
+        content: keywords,
+      },
+      show: !!keywords,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'description',
+        content: description,
+      },
+      show: !!description,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'og:site_name',
+        content: ogSiteName,
+      },
+      show: !!ogSiteName,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'og:title',
+        content: title,
+      },
+      show: !!title,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'og:description',
+        content: description,
+      },
+      show: !!description,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'og:url',
+        content: ogUrl,
+      },
+      show: !!ogUrl,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'og:image',
+        content: ogImage,
+      },
+      show: !!ogImage,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'og:image:alt',
+        content: ogImageAlt,
+      },
+      show: !!ogImageAlt,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'og:type',
+        content: ogType,
+      },
+      show: !!ogType,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'twitter:card',
+        content: description,
+      },
+      show: !!description,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'twitter:url',
+        content: ogUrl,
+      },
+      show: !!ogUrl,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'twitter:title',
+        content: title,
+      },
+      show: !!title,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'twitter:description',
+        content: description,
+      },
+      show: !!description,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'twitter:image',
+        content: `${domain}/img/icon-192.png`,
+      },
+      show: !!domain,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'twitter:creator',
+        content: twitterId,
+      },
+      show: !!twitterId,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'viewport',
+        content: viewport,
+      },
+      show: !!viewport,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'robots',
+        content: 'index,follow',
+      },
+      show: false,
+    },
+    {
+      as: 'meta',
+      args: {
+        name: 'node-env',
+        content: process.env.NODE_ENV,
+      },
+      show: false,
+    },
+    {
+      as: 'link',
+      args: {
+        href: '/img/favicon.ico',
+        rel: 'icon',
+      },
+      show: false,
+    },
+    {
+      as: 'link',
+      args: {
+        href: '/img/icon-192.png',
+        rel: 'apple-touch-icon',
+      },
+      show: false,
+    },
+    {
+      as: 'link',
+      args: {
+        href: ogUrl,
+        rel: 'canonical',
+      },
+      show: !!ogUrl,
+    },
+    {
+      as: 'link',
+      args: {
+        href: '/static/manifest.json',
+        rel: 'manifest',
+      },
+      show: false,
+    },
+    {
+      as: 'script',
+      args: {
+        src: 'https://www.googletagmanager.com/gtag/js?id=' + gtmId,
+        async: true,
+      },
+      show: !!gtmId,
+    },
+    {
+      as: 'script',
+      args: {
+        dangerouslySetInnerHTML: {
+          __html: `
+            window.dataLayer = [{ event: 'gtm.js', 'gtm.start': new Date().getTime() }];
+          `,
+        },
+      },
+      show: false,
+    },
+  ]
+
+  return (
+    <Head>
+      {tags.map((tag, index) => (
+        <React.Fragment key={index}>
+          {tag.show && <tag.as {...tag.args} />}
+        </React.Fragment>
+      ))}
+    </Head>
+  )
+}
 
 export default Seo
