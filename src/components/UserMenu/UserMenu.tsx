@@ -57,7 +57,7 @@ const UserMenu: FC<UserMenuProps> = ({
                   ? '/api/auth/logout'
                   : `/api/auth/login?returnTo=${loginRedirectUrl}`
               }
-              underline={'none'}>
+              underline='none'>
               {isUserLoggedIn ? 'Logout' : 'Login'}
             </MuiLink>
           </MenuItem>

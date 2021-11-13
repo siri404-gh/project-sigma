@@ -23,9 +23,7 @@ const Post = ({
       <Fragment>
         <title>{title}</title>
         <meta content={title} name='og:title' />
-        <meta content={title} name='twitter:title' />
         <meta content={url} name='og:url' />
-        <meta content={url} name='twitter:url' />
         <meta content={url} name='canonical' />
       </Fragment>
     </Head>

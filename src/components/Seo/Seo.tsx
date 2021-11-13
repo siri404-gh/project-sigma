@@ -144,46 +144,46 @@ const Seo: FC<SEOProps> = ({
       },
       show: !!ogType,
     },
-    {
-      as: 'meta',
-      args: {
-        name: 'twitter:card',
-        content: description,
-      },
-      show: !!description,
-    },
-    {
-      as: 'meta',
-      args: {
-        name: 'twitter:url',
-        content: ogUrl,
-      },
-      show: !!ogUrl,
-    },
-    {
-      as: 'meta',
-      args: {
-        name: 'twitter:title',
-        content: title,
-      },
-      show: !!title,
-    },
-    {
-      as: 'meta',
-      args: {
-        name: 'twitter:description',
-        content: description,
-      },
-      show: !!description,
-    },
-    {
-      as: 'meta',
-      args: {
-        name: 'twitter:image',
-        content: `${domain}/img/icon-192.png`,
-      },
-      show: !!domain,
-    },
+    // {
+    //   as: 'meta',
+    //   args: {
+    //     name: 'twitter:card',
+    //     content: ogType,
+    //   },
+    //   show: !!ogType,
+    // },
+    // {
+    //   as: 'meta',
+    //   args: {
+    //     name: 'twitter:title',
+    //     content: title,
+    //   },
+    //   show: !!title,
+    // },
+    // {
+    //   as: 'meta',
+    //   args: {
+    //     name: 'twitter:description',
+    //     content: description,
+    //   },
+    //   show: !!description,
+    // },
+    // {
+    //   as: 'meta',
+    //   args: {
+    //     name: 'twitter:image',
+    //     content: ogImage,
+    //   },
+    //   show: !!ogImage,
+    // },
+    // {
+    //   as: 'meta',
+    //   args: {
+    //     name: 'twitter:image:alt',
+    //     content: ogImageAlt,
+    //   },
+    //   show: !!ogImageAlt,
+    // },
     {
       as: 'meta',
       args: {

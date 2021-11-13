@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.sreeram.twa",
+      "sha256_cert_fingerprints": [
+        "4F:B6:45:EC:B5:D9:1C:09:23:48:51:94:24:22:09:EC:4E:56:22:8F:76:BB:5F:ED:7B:0B:43:70:ED:E9:83:34"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.sreeram.twa",
+      "sha256_cert_fingerprints": [
+        "FE:1F:D2:DB:66:5B:D3:1D:B3:E0:64:E7:53:C8:3A:45:3F:AD:51:63:60:1A:43:90:51:D4:4D:3F:EC:61:A3:AB"
+      ]
+    }
+  }
+]
