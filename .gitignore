@@ -79,7 +79,7 @@ web-report/
 # Custom
 
 _configrc
-public/static/manifest.json
+public/manifest.json
 public/service-worker.js
 public/service-worker.js.map
 public/workbox-*.js

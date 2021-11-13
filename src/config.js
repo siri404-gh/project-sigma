@@ -6,6 +6,7 @@ const config = {
     author: 'Author',
     description: 'description',
     domain: 'http://localhost:3001',
+    email: '',
     gtmId: '',
     keywords: '',
     ogImage: 'http://localhost:3001/img/og_image.jpg',

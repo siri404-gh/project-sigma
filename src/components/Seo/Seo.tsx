@@ -243,7 +243,7 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'link',
       args: {
-        href: '/static/manifest.json',
+        href: '/manifest.json',
         rel: 'manifest',
       },
       show: false,

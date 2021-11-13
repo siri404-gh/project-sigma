@@ -37,7 +37,7 @@ const nextConfig = {
     config.plugins = [
       ...config.plugins,
       new WebpackManifestPlugin({
-        fileName: path.resolve(__dirname, './public/static/manifest.json'),
+        fileName: path.resolve(__dirname, './public/manifest.json'),
         // basePath: '',
         seed,
         generate: seed => seed,
