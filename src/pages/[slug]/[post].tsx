@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
+import Adsense from '@/components/Adsense/Asdense'
 import Markdown from '@/components/Markdown/Markdown'
 import config from '@/config'
 import { postUrl, fetchNavlinks } from '@/utils/fetchers'
@@ -29,6 +30,12 @@ const Post = ({
       </Fragment>
     </Head>
     <Markdown>{data}</Markdown>
+    <Adsense
+      adClient='ca-pub-6831276331714408'
+      adFormat='auto'
+      adSlot='2050444739'
+      data-full-width-responsive='true'
+    />
   </Fragment>
 )
 
