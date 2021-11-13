@@ -54,7 +54,7 @@ const Seo: FC<SEOProps> = ({
       args: {
         charSet: 'UTF-8',
       },
-      show: false,
+      show: true,
     },
     {
       as: 'meta',
@@ -206,7 +206,7 @@ const Seo: FC<SEOProps> = ({
         name: 'robots',
         content: 'index,follow',
       },
-      show: false,
+      show: true,
     },
     {
       as: 'meta',
@@ -214,7 +214,7 @@ const Seo: FC<SEOProps> = ({
         name: 'node-env',
         content: process.env.NODE_ENV,
       },
-      show: false,
+      show: true,
     },
     {
       as: 'link',
@@ -222,7 +222,7 @@ const Seo: FC<SEOProps> = ({
         href: '/img/favicon.ico',
         rel: 'icon',
       },
-      show: false,
+      show: true,
     },
     {
       as: 'link',
@@ -230,7 +230,7 @@ const Seo: FC<SEOProps> = ({
         href: '/img/icon-192.png',
         rel: 'apple-touch-icon',
       },
-      show: false,
+      show: true,
     },
     {
       as: 'link',
@@ -246,7 +246,7 @@ const Seo: FC<SEOProps> = ({
         href: '/manifest.json',
         rel: 'manifest',
       },
-      show: false,
+      show: true,
     },
     {
       as: 'script',
@@ -265,7 +265,7 @@ const Seo: FC<SEOProps> = ({
           `,
         },
       },
-      show: false,
+      show: true,
     },
   ]
 
