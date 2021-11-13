@@ -17,7 +17,7 @@ export async function getStaticPaths() {
     'links',
     'url',
     1,
-    ({ title }) => title !== 'Courses',
+    ({ title }) => title !== 'Interview',
   )
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

@@ -14,7 +14,7 @@ const iconMap: { [key: string]: (props: SvgIconProps) => JSX.Element } = {
   About: PersonIcon,
   Blog: CreateIcon,
   Tech: CloudQueueIcon,
-  Courses: MenuBookIcon,
+  Interview: MenuBookIcon,
 }
 
 const Bottombar: FC<NavlinksProps> = ({ links = [], ...rest }) => (

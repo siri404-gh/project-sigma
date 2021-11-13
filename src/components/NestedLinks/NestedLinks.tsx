@@ -38,7 +38,7 @@ const iconMap: { [key: string]: (props: SvgIconProps) => JSX.Element } = {
   About: Person,
   Blog: Create,
   Tech: CloudQueue,
-  Courses: MenuBook,
+  Interview: MenuBook,
 }
 
 type NestedListProps = {

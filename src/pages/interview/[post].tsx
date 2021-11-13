@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   try {
     if (!isBot) {
       const session = getSession(req, res)
-      const returnTo = `/courses/${post}`
+      const returnTo = `/interview/${post}`
 
       if (!session) {
         return {
@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       }
     }
 
-    const _res = await fetch(postUrl('courses', post))
+    const _res = await fetch(postUrl('interview', post))
     const data = await _res.text()
 
     return {

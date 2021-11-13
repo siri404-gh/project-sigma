@@ -51,7 +51,7 @@ const Premium = () => {
             <span style={{ float: 'right' }}>£ {cost}</span>
           </Typography>
           <Typography variant='caption' gutterBottom>
-            Includes lifetime access to all paid content
+            Get full access to all courses and features.
           </Typography>
         </CardContent>
         <Elements stripe={promise}>

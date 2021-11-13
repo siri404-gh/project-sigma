@@ -68,6 +68,18 @@ const nextConfig = {
     buildExcludes: [/middleware-manifest.json$/],
     runtimeCaching,
   },
+  redirects: async () => [
+    {
+      source: '/story/:slug',
+      destination: '/blog/:slug',
+      permanent: true,
+    },
+    {
+      source: '/photos/:slug',
+      destination: '/blog/:slug',
+      permanent: true,
+    },
+  ],
 }
 
 module.exports = withPlugins([withPWA], nextConfig)

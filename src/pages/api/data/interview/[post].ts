@@ -10,7 +10,7 @@ export default async function ProtectedRoute(
   const { post } = req.query
   const session = getSession(req, res)
 
-  const returnTo = `/courses/${post}`
+  const returnTo = `/interview/${post}`
 
   if (!session) {
     return res.status(401).json({
@@ -30,7 +30,7 @@ export default async function ProtectedRoute(
     })
   }
 
-  const url = `https://raw.githubusercontent.com/sreeramofficial/blog-posts/master/courses/${post}.md`
+  const url = `https://raw.githubusercontent.com/sreeramofficial/blog-posts/master/interview/${post}.md`
   const _res = await fetch(url)
   const data = await _res.text()
   return res.json({
