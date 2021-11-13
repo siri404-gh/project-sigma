@@ -1,33 +1,61 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import { GetStaticProps } from 'next'
+import { Typography } from '@mui/material'
+import { useRouter } from 'next/router'
 
-import Markdown from '@/components/Markdown/Markdown'
-import { postUrl, fetchNavlinks } from '@/utils/fetchers'
-import { flatLinks, getPathsSlug } from '@/utils/helpers'
+import BlinkingCursor from '@/components/BlinkingCursor/BlinkingCursor'
+import Center from '@/components/Center/Center'
+import { NavlinkType } from '@/components/Navlinks/Navlinks'
+import { fetchNavlinks } from '@/utils/fetchers'
 
-const Post = ({ data }: { data: string }) => <Markdown>{data}</Markdown>
+const Index = ({ firstRoute }: { firstRoute: string }) => {
+  const router = useRouter()
 
-export default Post
+  useEffect(() => {
+    if (firstRoute) setTimeout(() => router.push(firstRoute), 0)
+  }, [firstRoute])
 
-export async function getStaticPaths() {
+  return (
+    <Center>
+      <BlinkingCursor /> &nbsp;
+      <Typography color='primary'>Loading...</Typography>
+    </Center>
+  )
+}
+
+export const getServerSideProps = async ({ query: { slug = '' } }) => {
   const navlinks = await fetchNavlinks()
-  const flatNavLinks = flatLinks(navlinks, 'links', 'url', 0)
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const paths = getPathsSlug(flatNavLinks)
+  const sublinks = navlinks.links.find(
+    (link: NavlinkType) => link.url === `/${slug}`,
+  )
 
   return {
-    paths,
-    fallback: true,
+    props: {
+      firstRoute: sublinks.links[0].url,
+    },
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as { slug: string }
-  const res = await fetch(postUrl(slug, 'index'))
-  const data = await res.text()
-  return {
-    props: { data },
-  }
-}
+export default Index
+
+// export async function getStaticPaths() {
+//   const navlinks = await fetchNavlinks()
+//   const flatNavLinks = flatLinks(navlinks, 'links', 'url', 0)
+//   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//   // @ts-ignore
+//   const paths = getPathsSlug(flatNavLinks)
+
+//   return {
+//     paths,
+//     fallback: true,
+//   }
+// }
+
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+//   const { slug } = params as { slug: string }
+//   const res = await fetch(postUrl(slug, 'index'))
+//   const data = await res.text()
+//   return {
+//     props: { data },
+//   }
+// }
