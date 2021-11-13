@@ -1,7 +1,7 @@
 import React, { useState, FC, Fragment } from 'react'
 
 import {
-  CloudQueue,
+  Cloud,
   Create,
   MenuBook,
   Person,
@@ -37,7 +37,7 @@ const NestedLinks: FC<NestedLinksProps> = ({ links = [], onSelect }) => (
 const iconMap: { [key: string]: (props: SvgIconProps) => JSX.Element } = {
   About: Person,
   Blog: Create,
-  Tech: CloudQueue,
+  Tech: Cloud,
   Interview: MenuBook,
 }
 

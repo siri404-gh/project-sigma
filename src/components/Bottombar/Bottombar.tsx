@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import CloudQueueIcon from '@mui/icons-material/CloudQueue'
+import CloudIcon from '@mui/icons-material/Cloud'
 import CreateIcon from '@mui/icons-material/Create'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import PersonIcon from '@mui/icons-material/Person'
@@ -13,7 +13,7 @@ import { NavlinksProps } from '@/components/Navlinks/Navlinks'
 const iconMap: { [key: string]: (props: SvgIconProps) => JSX.Element } = {
   About: PersonIcon,
   Blog: CreateIcon,
-  Tech: CloudQueueIcon,
+  Tech: CloudIcon,
   Interview: MenuBookIcon,
 }
 
