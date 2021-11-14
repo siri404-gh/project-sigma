@@ -9,18 +9,16 @@ import {
   Menu,
   MenuItem,
 } from '@mui/material'
-
+import { useRouter } from 'next/router'
 export interface UserMenuProps {
   avatarUrl?: string
   isUserLoggedIn?: boolean
-  loginRedirectUrl?: string
   children?: ReactNode
 }
 
 const UserMenu: FC<UserMenuProps> = ({
   avatarUrl,
   isUserLoggedIn,
-  loginRedirectUrl = '/',
   children = null,
 }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
@@ -30,6 +28,7 @@ const UserMenu: FC<UserMenuProps> = ({
     setAnchorEl(!anchorEl ? e.currentTarget : null)
   }
 
+  const router = useRouter()
   const otherColor = 'primary'
 
   return (
@@ -52,11 +51,9 @@ const UserMenu: FC<UserMenuProps> = ({
           <MenuItem>
             <MuiLink
               color='secondary'
-              href={
-                isUserLoggedIn
-                  ? '/api/auth/logout'
-                  : `/api/auth/login?returnTo=${loginRedirectUrl}`
-              }
+              href={`/api/auth/${
+                isUserLoggedIn ? 'logout' : 'login'
+              }?returnTo=${router.asPath}`}
               underline='none'>
               {isUserLoggedIn ? 'Logout' : 'Login'}
             </MuiLink>
