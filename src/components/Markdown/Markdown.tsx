@@ -99,15 +99,17 @@ interface MarkdownProps {
 }
 
 const Markdown: FC<MarkdownProps> = props => (
-  <ReactMarkdown
-    className='markdown'
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore-line
-    components={components}
-    rehypePlugins={[rehypeRaw]}
-    remarkPlugins={[remarkGfm]}
-    {...props}
-  />
+  <main>
+    <ReactMarkdown
+      className='markdown'
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore-line
+      components={components}
+      rehypePlugins={[rehypeRaw]}
+      remarkPlugins={[remarkGfm]}
+      {...props}
+    />
+  </main>
 )
 
 export default Markdown

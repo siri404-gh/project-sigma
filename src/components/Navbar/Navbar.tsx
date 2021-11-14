@@ -53,11 +53,11 @@ const Navbar: FC<NavbarProps> = props => {
           </IconButton>
           <MuiLink href='/' sx={{ alignSelf: 'center' }} underline='hover'>
             <StyledTitle
-              className='_shimmer'
               color={otherColor}
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               component='h1'
+              id='navbar-title'
               variant='h6'
               noWrap>
               {title}

@@ -36,7 +36,7 @@
   animation: bounce 0.75s 1 alternate;
 }
 
-._shimmer {
+#navbar-title {
   color: rgba(255, 255, 255, 0.3);
   background: -webkit-gradient(
     linear,
@@ -72,15 +72,15 @@
   animation: shimmer 2.5s infinite;
 }
 
-._shimmer > h6 {
+.navbar-title > h6 {
   color: #ffffff;
 }
 
-._shimmer > span {
+.navbar-title > span {
   color: #ffffff4d;
 }
 
-.layout {
+#layout {
   /* background-color: indigo; */
 
   /* Chip */

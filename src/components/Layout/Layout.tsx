@@ -107,7 +107,7 @@ const Layout: FC<LayoutProps> = ({
   }
 
   return (
-    <Box className='layout' sx={{ height: '100vh' }}>
+    <Box id='layout' sx={{ height: '100vh' }}>
       <Seo {...seoProps} />
       <Sidebar {...sidebarProps}>
         <NestedLinks {...navlinksProps} />
