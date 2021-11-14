@@ -74,11 +74,6 @@ const nextConfig = {
       destination: '/blog/:slug',
       permanent: true,
     },
-    {
-      source: '/photos/:slug',
-      destination: '/blog/:slug',
-      permanent: true,
-    },
   ],
 }
 

@@ -15,6 +15,8 @@ const FlexBox = styled(Box)(() => ({
   height: 'fill-available',
 }))
 
-const Center: FC<CenterProps> = ({ children }) => <FlexBox>{children}</FlexBox>
+const Center: FC<CenterProps> = ({ children }) => (
+  <FlexBox id='center-box'>{children}</FlexBox>
+)
 
 export default Center

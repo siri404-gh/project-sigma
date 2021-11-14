@@ -22,22 +22,25 @@ const Index = ({
   const router = useRouter()
 
   useEffect(() => {
-    if (firstRoute) setTimeout(() => router.push(firstRoute), 0)
+    if (firstRoute) {
+      const timer = setTimeout(() => router.push(firstRoute), 400)
+      return () => clearTimeout(timer)
+    }
   }, [firstRoute])
 
   return (
-    <Center>
+    <Fragment>
       <Head>
-        <Fragment>
-          <title>{title}</title>
-          <meta content={title} name='og:title' />
-          <meta content={url} name='og:url' />
-          <meta content={url} name='canonical' />
-        </Fragment>
+        <title>{title}</title>
+        <meta content={title} name='og:title' />
+        <meta content={url} name='og:url' />
+        <meta content={url} name='canonical' />
       </Head>
-      <BlinkingCursor /> &nbsp;
-      <Typography color='primary'>Loading...</Typography>
-    </Center>
+      <Center>
+        <BlinkingCursor /> &nbsp;
+        <Typography color='primary'>Loading...</Typography>
+      </Center>
+    </Fragment>
   )
 }
 

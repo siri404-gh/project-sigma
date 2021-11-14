@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Navlinks renders 1`] = `
-<div>
-  <ul
-    class="MuiBox-root css-1xaulu4"
-  />
-</div>
-`;

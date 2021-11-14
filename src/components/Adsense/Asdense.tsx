@@ -23,6 +23,7 @@ const Adsense: FC<AdsenseProps> = ({
     if ('adsbygoogle' in window) {
       window.adsbygoogle.push({})
     } else {
+      console.error('Adsense: adsbygoogle not found')
       window.adsbygoogle = [{}]
       const script = document.createElement('script')
       script.async = true

@@ -20,12 +20,10 @@ const Post = ({
 }) => (
   <Fragment>
     <Head>
-      <Fragment>
-        <title>{title}</title>
-        <meta content={title} name='og:title' />
-        <meta content={url} name='og:url' />
-        <meta content={url} name='canonical' />
-      </Fragment>
+      <title>{title}</title>
+      <meta content={title} name='og:title' />
+      <meta content={url} name='og:url' />
+      <meta content={url} name='canonical' />
     </Head>
     <Markdown>{data}</Markdown>
     <Adsense
@@ -48,6 +46,7 @@ export async function getStaticPaths() {
     1,
     ({ title }) => title !== 'Interview',
   )
+
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const paths = getPathsSlugPost(flatNavLinks)
@@ -71,6 +70,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const res = await fetch(postUrl(slug, post))
   const data = await res.text()
+
   return {
     props: {
       data,

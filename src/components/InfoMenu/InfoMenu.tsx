@@ -1,17 +1,15 @@
 import React, { useState, MouseEvent, FC, Fragment } from 'react'
 
-import { Info } from '@mui/icons-material'
-
-import { SvgIconComponent } from '@mui/icons-material'
-import GitHub from '@mui/icons-material/GitHub'
-import Instagram from '@mui/icons-material/Instagram'
-import LinkedIn from '@mui/icons-material/LinkedIn'
-import Twitter from '@mui/icons-material/Twitter'
-import Box from '@mui/material/Box'
-import SpeedDial from '@mui/material/SpeedDial'
-import SpeedDialAction from '@mui/material/SpeedDialAction'
-import SpeedDialIcon from '@mui/material/SpeedDialIcon'
+import {
+  Info,
+  GitHub,
+  Instagram,
+  LinkedIn,
+  Twitter,
+  SvgIconComponent,
+} from '@mui/icons-material'
 import { IconButton, Menu, Link, MenuItem } from '@mui/material'
+
 interface InfoMenuLink {
   name: string
   icon: string

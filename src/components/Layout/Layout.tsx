@@ -6,8 +6,8 @@ import { styled } from '@mui/system'
 
 import Alerts from '@/components/Alerts/Alerts'
 import Bottombar from '@/components/Bottombar/Bottombar'
+import { BottombarProps } from '@/components/Bottombar/Bottombar'
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
-import { NavlinksProps } from '@/components/Navlinks/Navlinks'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import SpeedDial, { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
@@ -20,7 +20,7 @@ export interface LayoutProps {
   children?: JSX.Element
   seoProps?: SEOProps
   navbarProps?: NavbarProps
-  navlinksProps?: NavlinksProps
+  navlinksProps?: BottombarProps
   sidebarProps?: SidebarProps
   socialProps?: SpeedDialProps
   userMenuProps?: UserMenuProps
@@ -110,13 +110,13 @@ const Layout: FC<LayoutProps> = ({
     <Box className='layout' sx={{ height: '100vh' }}>
       <Seo {...seoProps} />
       <Sidebar {...sidebarProps}>
-        <NestedLinks {...navlinksProps} onSelect={onSidebarToggle} />
+        <NestedLinks {...navlinksProps} />
       </Sidebar>
       <Alerts />
       <Navbar {...navbarProps}>
         <Bottombar {...bottombarProps1} />
         <Box
-          sx={{ display: 'flex', width: { md: 200 }, justifyContent: 'right' }}>
+          sx={{ display: 'flex', width: { md: 250 }, justifyContent: 'right' }}>
           <UserMenu {...userMenuProps} />
           <InfoMenu {...socialProps} />
         </Box>
@@ -147,6 +147,7 @@ const Layout: FC<LayoutProps> = ({
               },
             }}>
             <RelativeBox
+              id='relative-box'
               sx={{
                 p: { xs: 1.5, sm: 0, md: 0 },
                 px: { xs: 1.5, sm: 4, md: 2.5 },

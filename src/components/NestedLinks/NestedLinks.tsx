@@ -1,13 +1,6 @@
 import React, { useState, FC, Fragment } from 'react'
 
-import {
-  Cloud,
-  Create,
-  MenuBook,
-  Person,
-  ExpandLess,
-  ExpandMore,
-} from '@mui/icons-material'
+import { ExpandLess, ExpandMore } from '@mui/icons-material'
 import {
   Box,
   Collapse,
@@ -18,12 +11,15 @@ import {
   Link as MuiLink,
   Divider,
 } from '@mui/material'
-import { SvgIconProps } from '@mui/material'
 
-import { NavlinksProps, NavlinkType } from '@/components/Navlinks/Navlinks'
+import { iconMap } from '@/components/Bottombar/Bottombar'
+import {
+  BottombarProps,
+  BottombarLinkType,
+} from '@/components/Bottombar/Bottombar'
 
-type NestedLinksProps = NavlinksProps & {
-  onSelect: () => void
+type NestedLinksProps = BottombarProps & {
+  onSelect?: () => void
 }
 
 const NestedLinks: FC<NestedLinksProps> = ({ links = [], onSelect }) => (
@@ -34,22 +30,16 @@ const NestedLinks: FC<NestedLinksProps> = ({ links = [], onSelect }) => (
   </div>
 )
 
-const iconMap: { [key: string]: (props: SvgIconProps) => JSX.Element } = {
-  About: Person,
-  Blog: Create,
-  Tech: Cloud,
-  Interview: MenuBook,
-}
-
 type NestedListProps = {
-  item: NavlinkType
-  onSelect: () => void
+  item: BottombarLinkType
+  onSelect?: () => void
 }
 
 const NestedList: FC<NestedListProps> = ({ item, onSelect }) => {
   const [open, setOpen] = useState(false)
   const onClick = () => setOpen(!open)
   const Icon = iconMap[item.title] || null
+  const onNestedItemSelect = () => onSelect?.()
 
   return (
     <Box sx={{ width: { xs: 285, sm: 300, md: 400 } }}>
@@ -66,7 +56,7 @@ const NestedList: FC<NestedListProps> = ({ item, onSelect }) => {
           {item.links?.map(link => (
             <Fragment key={link.title}>
               <MuiLink href={link.url} underline='hover'>
-                <ListItem onClick={onSelect}>
+                <ListItem onClick={onNestedItemSelect}>
                   <ListItemText secondary={link.title} />
                 </ListItem>
               </MuiLink>

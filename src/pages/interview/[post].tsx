@@ -20,12 +20,10 @@ const Post = ({
 }) => (
   <Fragment>
     <Head>
-      <Fragment>
-        <title>{title}</title>
-        <meta content={title} name='og:title' />
-        <meta content={url} name='og:url' />
-        <meta content={url} name='canonical' />
-      </Fragment>
+      <title>{title}</title>
+      <meta content={title} name='og:title' />
+      <meta content={url} name='og:url' />
+      <meta content={url} name='canonical' />
     </Head>
     <Markdown>{data}</Markdown>
   </Fragment>
