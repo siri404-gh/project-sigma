@@ -64,7 +64,7 @@ const config = {
     ],
   },
   navbar: {
-    title: 'Sreeram Padmanabhan',
+    title: 'Title',
   },
   sidebar: {
     title: 'Sidebar',
