@@ -145,7 +145,7 @@
 @media (min-width: 450px) {
   .img--left {
     border-radius: 5px;
-    max-width: 199px;
+    max-width: 300px;
     float: left;
     margin: 0 15px 15px 0;
   }

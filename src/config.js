@@ -64,7 +64,7 @@ const config = {
     ],
   },
   navbar: {
-    title: 'Title',
+    title: 'Awesome Website',
   },
   sidebar: {
     title: 'Sidebar',

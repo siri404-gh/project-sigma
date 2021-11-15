@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import Adsense from '@/components/Adsense/Asdense'
+import Adsense from '@/components/Adsense/Adsense'
 import Markdown from '@/components/Markdown/Markdown'
 import config from '@/config'
 import { postUrl, fetchNavlinks } from '@/utils/fetchers'

@@ -6,7 +6,11 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang='en'>
-        <Head />
+        <Head>
+          <script
+            src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+            async></script>
+        </Head>
         <body>
           <Main />
           <NextScript />

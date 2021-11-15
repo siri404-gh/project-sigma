@@ -10,6 +10,7 @@ interface AdsenseProps {
 declare const window: Window &
   typeof globalThis & {
     adsbygoogle: any
+    isAdsenseLoaded: boolean
   }
 
 const Adsense: FC<AdsenseProps> = ({
@@ -20,16 +21,11 @@ const Adsense: FC<AdsenseProps> = ({
   ...rest
 }) => {
   useEffect(() => {
-    if ('adsbygoogle' in window) {
+    try {
+      window.adsbygoogle = window.adsbygoogle || []
       window.adsbygoogle.push({})
-    } else {
-      console.error('Adsense: adsbygoogle not found')
-      window.adsbygoogle = [{}]
-      const script = document.createElement('script')
-      script.async = true
-      script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`
-      script.crossOrigin = 'anonymous'
-      document.body.appendChild(script)
+    } catch (err) {
+      console.log(err)
     }
   }, [])
 
