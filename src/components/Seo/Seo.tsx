@@ -263,7 +263,7 @@ const Seo: FC<SEOProps> = ({
       as: 'script',
       args: {
         src: 'https://www.googletagmanager.com/gtag/js?id=' + gtmId,
-        async: true,
+        async: 'true',
       },
       show: !!gtmId,
     },
