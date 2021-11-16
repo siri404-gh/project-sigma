@@ -251,14 +251,6 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'script',
       args: {
-        src: 'https://www.googletagmanager.com/gtag/js?id=' + gtmId,
-        async: true,
-      },
-      show: !!gtmId,
-    },
-    {
-      as: 'script',
-      args: {
         dangerouslySetInnerHTML: {
           __html: `
             window.dataLayer = [{ event: 'gtm.js', 'gtm.start': new Date().getTime() }];
@@ -266,6 +258,14 @@ const Seo: FC<SEOProps> = ({
         },
       },
       show: true,
+    },
+    {
+      as: 'script',
+      args: {
+        src: 'https://www.googletagmanager.com/gtag/js?id=' + gtmId,
+        async: true,
+      },
+      show: !!gtmId,
     },
   ]
 
