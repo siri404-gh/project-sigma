@@ -79,7 +79,7 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'meta',
       args: {
-        name: 'og:site_name',
+        property: 'og:site_name',
         content: ogSiteName,
       },
       show: !!ogSiteName,
@@ -87,7 +87,7 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'meta',
       args: {
-        name: 'og:title',
+        property: 'og:title',
         content: title,
       },
       show: !!title,
@@ -95,7 +95,7 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'meta',
       args: {
-        name: 'og:description',
+        property: 'og:description',
         content: description,
       },
       show: !!description,
@@ -103,7 +103,7 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'meta',
       args: {
-        name: 'og:url',
+        property: 'og:url',
         content: ogUrl,
       },
       show: !!ogUrl,
@@ -111,7 +111,7 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'meta',
       args: {
-        name: 'og:image',
+        property: 'og:image',
         content: ogImage,
       },
       show: !!ogImage,
@@ -119,7 +119,7 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'meta',
       args: {
-        name: 'og:image:alt',
+        property: 'og:image:alt',
         content: ogImageAlt,
       },
       show: !!ogImageAlt,
@@ -127,7 +127,7 @@ const Seo: FC<SEOProps> = ({
     {
       as: 'meta',
       args: {
-        name: 'og:type',
+        property: 'og:type',
         content: ogType,
       },
       show: !!ogType,
