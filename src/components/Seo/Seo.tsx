@@ -5,9 +5,7 @@ import Head from 'next/head'
 export interface SEOProps {
   author?: string
   description?: string
-  domain?: string
   gtmId?: string
-  keywords?: string
   ogImage?: string
   ogImageAlt?: string
   ogSiteName?: string
@@ -28,9 +26,7 @@ type TagType = {
 const Seo: FC<SEOProps> = ({
   author,
   description,
-  domain,
   gtmId,
-  keywords,
   ogImage,
   ogImageAlt,
   ogSiteName,
@@ -71,14 +67,6 @@ const Seo: FC<SEOProps> = ({
         content: author,
       },
       show: !!author,
-    },
-    {
-      as: 'meta',
-      args: {
-        name: 'keywords',
-        content: keywords,
-      },
-      show: !!keywords,
     },
     {
       as: 'meta',
@@ -266,6 +254,32 @@ const Seo: FC<SEOProps> = ({
         async: 'true',
       },
       show: !!gtmId,
+    },
+    {
+      as: 'script',
+      args: {
+        type: 'application/ld+json',
+        dangerouslySetInnerHTML: {
+          __html: `{
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "${ogUrl}"
+            },
+            "headline": "${title}",
+            "image": [
+              "${process.env.NEXT_PUBLIC_DOMAIN}/icon-256.jpg",
+              "${ogImage}"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "${author}"
+            },
+          }`,
+        },
+      },
+      show: ogUrl !== process.env.NEXT_PUBLIC_DOMAIN,
     },
   ]
 
