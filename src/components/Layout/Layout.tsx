@@ -33,7 +33,7 @@ const ContentBox = styled(Box)(({ theme }) => ({
     borderRadius: 8,
   },
   [theme.breakpoints.up('md')]: {
-    border: 'solid 1px #2a2a2a',
+    border: 'solid 1px #000',
   },
 }))
 
