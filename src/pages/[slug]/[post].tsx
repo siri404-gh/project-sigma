@@ -5,6 +5,7 @@ import Head from 'next/head'
 
 import Adsense from '@/components/Adsense/Adsense'
 import Markdown from '@/components/Markdown/Markdown'
+import Progress from '@/components/Progress/Progress'
 import config from '@/config'
 import { postUrl, fetchNavlinks } from '@/utils/fetchers'
 import { flatLinks, getPathsSlugPost } from '@/utils/helpers'
@@ -13,10 +14,14 @@ const Post = ({
   data,
   title,
   url,
+  next,
+  prev,
 }: {
   data: string
   title: string
   url: string
+  next: { url: string; title: string }
+  prev: { url: string; title: string }
 }) => (
   <Fragment>
     <Head>
@@ -45,6 +50,7 @@ const Post = ({
       </script>
     </Head>
     <Markdown>{data}</Markdown>
+    <Progress next={next} prev={prev} />
     <Adsense
       adClient='ca-pub-6831276331714408'
       adFormat='auto'
@@ -80,12 +86,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug, post } = params as { slug: string; post: string }
 
   const navlinks = await fetchNavlinks()
+
   const section = navlinks.links.find(
     (link: { url: string }) => link.url === `/${slug}`,
   )
-  const { title, url } = section.links.find(
+  const index = section.links.findIndex(
     (link: { url: string }) => link.url === `/${slug}/${post}`,
   )
+
+  const { title, url } = section.links[index]
 
   const res = await fetch(postUrl(slug, post))
   const data = await res.text()
@@ -95,6 +104,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       data,
       title,
       url: process.env.NEXT_PUBLIC_DOMAIN + url,
+      next: section.links[index + 1] || null,
+      prev: section.links[index - 1] || null,
     },
   }
 }
