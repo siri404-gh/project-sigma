@@ -21,9 +21,28 @@ const Post = ({
   <Fragment>
     <Head>
       <title>{title}</title>
-      <meta content={title} name='og:title' />
-      <meta content={url} name='og:url' />
-      <meta content={url} name='canonical' />
+      <meta content={title} property='og:title' />
+      <meta content={url} property='og:url' />
+      <meta content={url} property='canonical' />
+      <script type='application/ld+json'>
+        {`{
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "${url}"
+            },
+            "headline": "${title}",
+            "image": [
+              "${process.env.NEXT_PUBLIC_DOMAIN}/icon-256.jpg",
+              "${config.seo.ogImage}"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "${config.seo.author}"
+            },
+          }`}
+      </script>
     </Head>
     <Markdown>{data}</Markdown>
     <Adsense
@@ -74,7 +93,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       data,
-      title: `${title} | ${config.seo.title}`,
+      title,
       url: process.env.NEXT_PUBLIC_DOMAIN + url,
     },
   }

@@ -24,6 +24,25 @@ const Post = ({
       <meta content={title} name='og:title' />
       <meta content={url} name='og:url' />
       <meta content={url} name='canonical' />
+      <script type='application/ld+json'>
+        {`{
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "${url}"
+            },
+            "headline": "${title}",
+            "image": [
+              "${process.env.NEXT_PUBLIC_DOMAIN}/icon-256.jpg",
+              "${config.seo.ogImage}"
+            ],
+            "author": {
+              "@type": "Person",
+              "name": "${config.seo.author}"
+            },
+          }`}
+      </script>
     </Head>
     <Markdown>{data}</Markdown>
   </Fragment>

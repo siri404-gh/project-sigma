@@ -240,9 +240,7 @@ const Seo: FC<SEOProps> = ({
       as: 'script',
       args: {
         dangerouslySetInnerHTML: {
-          __html: `
-            window.dataLayer = [{ event: 'gtm.js', 'gtm.start': new Date().getTime() }];
-          `,
+          __html: `window.dataLayer = [{ event: 'gtm.js', 'gtm.start': new Date().getTime() }];`,
         },
       },
       show: true,
@@ -279,7 +277,7 @@ const Seo: FC<SEOProps> = ({
           }`,
         },
       },
-      show: ogUrl !== process.env.NEXT_PUBLIC_DOMAIN,
+      show: ogUrl === process.env.NEXT_PUBLIC_DOMAIN,
     },
   ]
 
