@@ -2,10 +2,9 @@ import * as React from 'react'
 
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
-import { Container, Button } from '@mui/material'
+import { Box, Container, Button } from '@mui/material'
 // import MobileStepper from '@mui/material/MobileStepper'
 import Link from 'next/link'
-import { Box } from '@mui/system'
 
 export default function Progress({
   prev,
@@ -16,14 +15,14 @@ export default function Progress({
 }) {
   const prevButton = prev ? (
     <Link href={prev.url} passHref>
-      <Button>
+      <Button style={{ display: 'flex', justifyContent: 'left' }}>
         <KeyboardArrowLeft />
         {prev.title}
       </Button>
     </Link>
   ) : (
     <Link href={'/'} passHref>
-      <Button>
+      <Button style={{ display: 'flex', justifyContent: 'left' }}>
         <KeyboardArrowLeft />
         Home
       </Button>
@@ -32,14 +31,14 @@ export default function Progress({
 
   const nextButton = next ? (
     <Link href={next.url} passHref>
-      <Button>
+      <Button style={{ display: 'flex', justifyContent: 'right' }}>
         {next.title}
         <KeyboardArrowRight />
       </Button>
     </Link>
   ) : (
     <Link href={'/'} passHref>
-      <Button>
+      <Button style={{ display: 'flex', justifyContent: 'right' }}>
         <KeyboardArrowRight />
         Home
       </Button>
@@ -60,10 +59,8 @@ export default function Progress({
           display: { xs: 'none', md: 'grid' },
           gridTemplateColumns: '1fr 1fr',
         }}>
-        <div style={{ display: 'flex' }}>{prevButton}</div>
-        <div style={{ display: 'flex', justifyContent: 'right' }}>
-          {nextButton}
-        </div>
+        {prevButton}
+        {nextButton}
         {/* <MobileStepper
         activeStep={-1}
         backButton={prevButton}
