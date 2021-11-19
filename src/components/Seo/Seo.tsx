@@ -253,32 +253,6 @@ const Seo: FC<SEOProps> = ({
       },
       show: !!gtmId,
     },
-    {
-      as: 'script',
-      args: {
-        type: 'application/ld+json',
-        dangerouslySetInnerHTML: {
-          __html: `{
-            "@context": "https://schema.org",
-            "@type": "NewsArticle",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": "${ogUrl}"
-            },
-            "headline": "${title}",
-            "image": [
-              "${process.env.NEXT_PUBLIC_DOMAIN}/icon-256.jpg",
-              "${ogImage}"
-            ],
-            "author": {
-              "@type": "Person",
-              "name": "${author}"
-            },
-          }`,
-        },
-      },
-      show: ogUrl === process.env.NEXT_PUBLIC_DOMAIN,
-    },
   ]
 
   return (
