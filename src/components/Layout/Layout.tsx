@@ -8,6 +8,7 @@ import Alerts from '@/components/Alerts/Alerts'
 import Bottombar from '@/components/Bottombar/Bottombar'
 import { BottombarProps } from '@/components/Bottombar/Bottombar'
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
+import Progress from '@/components/Progress/Progress'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import SpeedDial, { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
@@ -15,6 +16,8 @@ import UserMenu, { UserMenuProps } from '@/components/UserMenu/UserMenu'
 
 import InfoMenu from '../InfoMenu/InfoMenu'
 import NestedLinks from '../NestedLinks/NestedLinks'
+import { useRouter } from 'next/router'
+import { useNavlinks, useProgress } from '@/utils/hooks'
 
 export interface LayoutProps {
   children?: JSX.Element
@@ -33,7 +36,7 @@ const ContentBox = styled(Box)(({ theme }) => ({
     borderRadius: 8,
   },
   [theme.breakpoints.up('md')]: {
-    border: 'solid 1px #000',
+    border: 'solid 1px #2a2a2a',
   },
 }))
 
@@ -46,9 +49,6 @@ const AbsoluteBox = styled(Box)(({ theme }) => ({
   overflow: 'scroll',
   [theme.breakpoints.up('sm')]: {
     top: 64,
-  },
-  [theme.breakpoints.up('md')]: {
-    bottom: 0,
   },
 }))
 
@@ -70,6 +70,7 @@ const Layout: FC<LayoutProps> = ({
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const onSidebarToggle = () => setIsSidebarOpen(!isSidebarOpen)
   const { user } = useUser()
+  const { prev, next } = useProgress()
 
   sidebarProps = {
     ...sidebarProps,
@@ -127,7 +128,6 @@ const Layout: FC<LayoutProps> = ({
           height: {
             xs: 'calc(100vh - 56px - 56px - 1px)',
             sm: 'calc(100vh - 64px - 56px - 1px)',
-            md: 'calc(100vh - 64px - 1px)',
           },
           p: {
             xs: 0,
@@ -157,6 +157,7 @@ const Layout: FC<LayoutProps> = ({
           </AbsoluteBox>
         </ContentBox>
       </Container>
+      {(next || prev) && <Progress next={next} prev={prev} />}
       {/* <SpeedDial {...socialProps} /> */}
       <Bottombar {...bottombarProps2} />
     </Box>

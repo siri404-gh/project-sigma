@@ -14,30 +14,39 @@ export default function Progress({
   next?: { url: string; title: string }
 }) {
   const prevButton = prev ? (
-    <Button component={Link} href={prev.url}>
-      <KeyboardArrowLeft />
-      {prev.title}
-    </Button>
+    <Link href={prev.url} passHref>
+      <Button color='info'>
+        <KeyboardArrowLeft />
+        {prev.title}
+      </Button>
+    </Link>
   ) : null
 
   const nextButton = next ? (
     <Link href={next.url} passHref>
-      <Button variant='contained'>
-        Next: {next.title}
+      <Button color='info'>
+        {next.title}
         <KeyboardArrowRight />
       </Button>
     </Link>
   ) : null
 
+  // return nextButton
+
   return (
     <MobileStepper
       activeStep={-1}
-      backButton={null}
+      backButton={prevButton}
       nextButton={nextButton}
-      position='static'
-      steps={1}
-      sx={{ backgroundColor: 'black' }}
-      variant='text'
+      position='bottom'
+      steps={0}
+      sx={{
+        height: 56,
+        backgroundColor: 'black',
+        borderTop: '1px solid #2e2e2e',
+        display: { xs: 'none', md: 'flex' },
+      }}
+      variant='dots'
     />
   )
 }

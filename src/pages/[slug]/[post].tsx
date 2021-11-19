@@ -3,9 +3,7 @@ import React, { Fragment } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import Adsense from '@/components/Adsense/Adsense'
 import Markdown from '@/components/Markdown/Markdown'
-import Progress from '@/components/Progress/Progress'
 import config from '@/config'
 import { postUrl, fetchNavlinks } from '@/utils/fetchers'
 import { flatLinks, getPathsSlugPost } from '@/utils/helpers'
@@ -14,8 +12,6 @@ const Post = ({
   data,
   title,
   url,
-  next,
-  prev,
 }: {
   data: string
   title: string
@@ -50,13 +46,6 @@ const Post = ({
       </script>
     </Head>
     <Markdown>{data}</Markdown>
-    <Progress next={next} prev={prev} />
-    <Adsense
-      adClient='ca-pub-6831276331714408'
-      adFormat='auto'
-      adSlot='2050444739'
-      data-full-width-responsive='true'
-    />
   </Fragment>
 )
 
@@ -104,8 +93,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       data,
       title,
       url: process.env.NEXT_PUBLIC_DOMAIN + url,
-      next: section.links[index + 1] || null,
-      prev: section.links[index - 1] || null,
     },
   }
 }

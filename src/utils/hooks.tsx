@@ -3,6 +3,8 @@
 
 import { useState, useEffect } from 'react'
 
+import { useRouter } from 'next/router'
+
 import { fetchNavlinks } from './fetchers'
 
 export const useNavlinks = (initialVal = {}) => {
@@ -17,4 +19,40 @@ export const useNavlinks = (initialVal = {}) => {
   }, [])
 
   return navlinks
+}
+
+export const useProgress = () => {
+  const [prev, setPrev] = useState<any>(null)
+  const [next, setNext] = useState<any>(null)
+  const navlinks = useNavlinks()
+
+  const router = useRouter()
+  const {
+    route,
+    query: { slug, post },
+  } = router
+
+  let newSlug = slug
+  if (route.indexOf('interview') > -1) {
+    newSlug = 'interview'
+  }
+
+  useEffect(() => {
+    if (!navlinks.links) return
+    if (newSlug) {
+      const section = navlinks.links.find(
+        (link: { url: string }) => link.url === `/${newSlug}`,
+      )
+      let index
+      if (post) {
+        index = section.links.findIndex(
+          (link: { url: string }) => link.url === `/${newSlug}/${post}`,
+        )
+        setPrev(section.links[index - 1] || null)
+        setNext(section.links[index + 1] || null)
+      }
+    }
+  }, [newSlug, post, navlinks])
+
+  return { prev, next }
 }
