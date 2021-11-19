@@ -13,11 +13,10 @@ import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import SpeedDial, { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
 import UserMenu, { UserMenuProps } from '@/components/UserMenu/UserMenu'
+import { useProgress } from '@/utils/hooks'
 
 import InfoMenu from '../InfoMenu/InfoMenu'
 import NestedLinks from '../NestedLinks/NestedLinks'
-import { useRouter } from 'next/router'
-import { useNavlinks, useProgress } from '@/utils/hooks'
 
 export interface LayoutProps {
   children?: JSX.Element
