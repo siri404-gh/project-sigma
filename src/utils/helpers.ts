@@ -14,7 +14,7 @@
 //   return files_
 // }
 
-type ObjType = {
+export type ObjType = {
   [key: string]: string | ObjType[]
 }
 

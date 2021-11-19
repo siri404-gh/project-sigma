@@ -125,8 +125,8 @@ const Layout: FC<LayoutProps> = ({
         maxWidth='md'
         sx={{
           height: {
-            xs: 'calc(100vh - 56px - 56px - 1px)',
-            sm: 'calc(100vh - 64px - 56px - 1px)',
+            xs: 'calc(100vh - 56px - 56px - 2px)',
+            sm: 'calc(100vh - 64px - 56px - 2px)',
           },
           p: {
             xs: 0,

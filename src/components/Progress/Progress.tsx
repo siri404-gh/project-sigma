@@ -5,6 +5,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 import { Container, Button } from '@mui/material'
 // import MobileStepper from '@mui/material/MobileStepper'
 import Link from 'next/link'
+import { Box } from '@mui/system'
 
 export default function Progress({
   prev,
@@ -15,14 +16,14 @@ export default function Progress({
 }) {
   const prevButton = prev ? (
     <Link href={prev.url} passHref>
-      <Button color='info'>
+      <Button>
         <KeyboardArrowLeft />
         {prev.title}
       </Button>
     </Link>
   ) : (
     <Link href={'/'} passHref>
-      <Button color='info'>
+      <Button>
         <KeyboardArrowLeft />
         Home
       </Button>
@@ -31,14 +32,14 @@ export default function Progress({
 
   const nextButton = next ? (
     <Link href={next.url} passHref>
-      <Button color='info'>
+      <Button>
         {next.title}
         <KeyboardArrowRight />
       </Button>
     </Link>
   ) : (
     <Link href={'/'} passHref>
-      <Button color='info'>
+      <Button>
         <KeyboardArrowRight />
         Home
       </Button>
@@ -48,12 +49,22 @@ export default function Progress({
   // return nextButton
 
   return (
-    <Container
-      maxWidth='md'
-      sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-      <div style={{ textAlign: 'left' }}>{prevButton}</div>
-      <div style={{ textAlign: 'right' }}>{nextButton}</div>
-      {/* <MobileStepper
+    <Box
+      sx={{
+        borderTop: '1px solid #2e2e2e',
+      }}>
+      <Container
+        maxWidth='md'
+        sx={{
+          height: 56,
+          display: { xs: 'none', md: 'grid' },
+          gridTemplateColumns: '1fr 1fr',
+        }}>
+        <div style={{ display: 'flex' }}>{prevButton}</div>
+        <div style={{ display: 'flex', justifyContent: 'right' }}>
+          {nextButton}
+        </div>
+        {/* <MobileStepper
         activeStep={-1}
         backButton={prevButton}
         nextButton={nextButton}
@@ -67,6 +78,7 @@ export default function Progress({
         }}
         variant='dots'
       /> */}
-    </Container>
+      </Container>
+    </Box>
   )
 }
