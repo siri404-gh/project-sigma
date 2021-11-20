@@ -91,7 +91,7 @@ const Layout: FC<LayoutProps> = ({
     <Box>
       <Seo {...seoProps} />
       <Sidebar {...sidebarProps}>
-        <NestedLinks {...navlinks} />
+        <NestedLinks {...navlinks} onSelect={onSidebarToggle} />
       </Sidebar>
       <Alerts />
       <Navbar {...navbarProps}>
