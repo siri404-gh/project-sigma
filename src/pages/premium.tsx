@@ -11,7 +11,7 @@ import Snack from '@/components/Snack/Snack'
 import StripeCheckout from '@/components/StripeCheckout/StripeCheckout'
 
 const StyledCard = styled(Card)({
-  maxWidth: 280,
+  width: 280,
   padding: 10,
 })
 
