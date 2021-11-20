@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react'
 
 import { useUser } from '@auth0/nextjs-auth0'
-import { Box, Container } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 
 import Alerts from '@/components/Alerts/Alerts'
@@ -23,7 +23,7 @@ const border = 'solid 1px #333'
 const ScrollingBox = styled(Box)({
   borderTop: border,
   borderBottom: border,
-  height: 'calc(100vh - 64px - 64px - 2px)',
+  height: 'calc(100vh - 64px - 64px)',
   overflowY: 'scroll',
 })
 
@@ -132,8 +132,22 @@ const Layout: FC<LayoutProps> = ({
           width: '100%',
           background: '#000',
         }}>
-        <Progress next={next} prev={prev} />
+        {(next || prev) && <Progress next={next} prev={prev} />}
         <Bottombar {...bottombarProps2} />
+        {!next && !prev && (
+          <Typography
+            color='white'
+            sx={{
+              display: 'flex',
+              height: 64,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            variant='subtitle2'>
+            If only one gets inspired, its a victory.
+            {/* लोकः समस्ताः सुखिनो भवन्तु || */}
+          </Typography>
+        )}
       </div>
     </Box>
   )

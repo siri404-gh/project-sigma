@@ -146,6 +146,10 @@ body {
   /* Snyk */
   /* background: linear-gradient(238deg,#24033a,#4e0380) */
 
+  /* Radial gradient */
+  background-color: #2d3436;
+  background-image: linear-gradient(315deg, #2e2d36 0%, #000000 74%);
+
   /* Ubuntu */
   /* background-blend-mode: multiply, multiply, normal, normal;
   background-image: linear-gradient(
@@ -174,10 +178,10 @@ body {
 
   /* Floral */
 
-  background: url(/img/bg/floral-1.jpg), url(/img/bg/floral-2.jpg) black;
+  /* background: url(/img/bg/floral-1.jpg), url(/img/bg/floral-2.jpg) black;
   background-size: 300px 400px, 100px 500px;
   background-repeat: no-repeat, no-repeat;
-  background-position: top 64px left, bottom 96px right;
+  background-position: top 64px left, bottom 96px right; */
 }
 
 #scrolling::-webkit-scrollbar {
