@@ -2,6 +2,7 @@ import React, { useState, FC } from 'react'
 
 import { useUser } from '@auth0/nextjs-auth0'
 import { Box, Container } from '@mui/material'
+import { styled } from '@mui/system'
 
 import Alerts from '@/components/Alerts/Alerts'
 import Bottombar from '@/components/Bottombar/Bottombar'
@@ -10,13 +11,20 @@ import Navbar, { NavbarProps } from '@/components/Navbar/Navbar'
 import Progress from '@/components/Progress/Progress'
 import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
-import SpeedDial, { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
+import { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
 import UserMenu, { UserMenuProps } from '@/components/UserMenu/UserMenu'
 import { useProgress } from '@/utils/hooks'
 
 import InfoMenu from '../InfoMenu/InfoMenu'
 import NestedLinks from '../NestedLinks/NestedLinks'
 
+const ScrollingBox = styled(Box)({
+  borderTop: 'solid 1px #333',
+  borderBottom: 'solid 1px #333',
+  overflow: 'scroll',
+  height: 'calc(100vh - 64px - 64px - 2px)',
+  overflowY: 'scroll',
+})
 export interface LayoutProps {
   children?: JSX.Element
   seoProps?: SEOProps
@@ -91,18 +99,12 @@ const Layout: FC<LayoutProps> = ({
           <InfoMenu {...socialProps} />
         </Box>
       </Navbar>
-      <Box
-        id='scrolling'
-        sx={{
-          overflow: 'scroll',
-          height: 'calc(100vh - 64px - 64px - 2px)',
-          overflowY: 'scroll',
-        }}>
+      <ScrollingBox id='scrolling'>
         <Container
           maxWidth={'md'}
           sx={{
             position: 'relative',
-            border: { md: 'solid 1px #2e2e2e' },
+            border: { md: 'solid 1px #333' },
             borderRadius: { md: 4 },
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
             my: {
@@ -118,10 +120,9 @@ const Layout: FC<LayoutProps> = ({
           }}>
           {children}
         </Container>
-      </Box>
+      </ScrollingBox>
       <div style={{ position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
         <Progress next={next} prev={prev} />
-        {/* <SpeedDial {...socialProps} /> */}
         <Bottombar {...bottombarProps2} />
       </div>
     </Box>

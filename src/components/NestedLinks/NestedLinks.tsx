@@ -11,6 +11,7 @@ import {
   Link as MuiLink,
   Divider,
 } from '@mui/material'
+import Link from 'next/link'
 
 import { iconMap } from '@/components/Bottombar/Bottombar'
 import {
@@ -55,11 +56,13 @@ const NestedList: FC<NestedListProps> = ({ item, onSelect }) => {
         <List component='div' disablePadding>
           {item.links?.map(link => (
             <Fragment key={link.title}>
-              <MuiLink href={link.url} underline='hover'>
-                <ListItem onClick={onNestedItemSelect}>
-                  <ListItemText secondary={link.title} />
-                </ListItem>
-              </MuiLink>
+              <Link href={link.url} passHref>
+                <MuiLink underline='none'>
+                  <ListItem onClick={onNestedItemSelect}>
+                    <ListItemText secondary={link.title} />
+                  </ListItem>
+                </MuiLink>
+              </Link>
               <Divider />
             </Fragment>
           ))}

@@ -10,6 +10,7 @@ import {
   Typography,
 } from '@mui/material'
 import { styled } from '@mui/system'
+import Link from 'next/link'
 
 export interface NavbarProps {
   children?: React.ReactNode
@@ -51,18 +52,20 @@ const Navbar: FC<NavbarProps> = props => {
             sx={{ mr: 1 }}>
             <MenuIcon />
           </IconButton>
-          <MuiLink href='/' sx={{ alignSelf: 'center' }} underline='hover'>
-            <StyledTitle
-              color={otherColor}
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              component='h1'
-              id='navbar-title'
-              variant='h6'
-              noWrap>
-              {title}
-            </StyledTitle>
-          </MuiLink>
+          <Link href='/' passHref>
+            <MuiLink sx={{ alignSelf: 'center' }} underline='hover'>
+              <StyledTitle
+                color={otherColor}
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                component='h1'
+                id='navbar-title'
+                variant='h6'
+                noWrap>
+                {title}
+              </StyledTitle>
+            </MuiLink>
+          </Link>
         </Box>
         {children}
       </StyledToolbar>
