@@ -18,10 +18,11 @@ import { useProgress } from '@/utils/hooks'
 import InfoMenu from '../InfoMenu/InfoMenu'
 import NestedLinks from '../NestedLinks/NestedLinks'
 
+const border = 'solid 1px #333'
+
 const ScrollingBox = styled(Box)({
-  borderTop: 'solid 1px #333',
-  borderBottom: 'solid 1px #333',
-  overflow: 'scroll',
+  borderTop: border,
+  borderBottom: border,
   height: 'calc(100vh - 64px - 64px - 2px)',
   overflowY: 'scroll',
 })
@@ -70,7 +71,6 @@ const Layout: FC<LayoutProps> = ({
     ...navlinksProps,
     sx: {
       height: 56,
-      borderTop: 'solid 1px #333',
       position: 'fixed',
       bottom: 0,
       width: '100%',
@@ -104,7 +104,7 @@ const Layout: FC<LayoutProps> = ({
           maxWidth={'md'}
           sx={{
             position: 'relative',
-            border: { md: 'solid 1px #333' },
+            border: { md: border },
             borderRadius: { md: 4 },
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
             my: {
