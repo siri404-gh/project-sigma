@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 
 import { UserProvider } from '@auth0/nextjs-auth0'
 import { CssBaseline } from '@mui/material'
@@ -9,20 +9,19 @@ import Layout, { LayoutProps } from '@/components/Layout/Layout'
 import config from '@/config'
 import theme from '@/theme'
 import '@/styles/styles.css'
-import { useNavlinks } from '@/utils/hooks'
 
 const MyApp: FC<NextAppProps> = ({ Component: Page, pageProps }) => {
-  // get navlinks client side
-  const navlinks = useNavlinks(config.navlinks)
+  // console.log('app beginning')
 
   const layoutProps: LayoutProps = {
     seoProps: config.seo,
     navbarProps: config.navbar,
-    navlinksProps: navlinks,
+    navlinksProps: config.navlinks,
     sidebarProps: config.sidebar,
     socialProps: config.socialLinks,
   }
 
+  // console.log('app rendering')
   return (
     <UserProvider>
       <ThemeProvider theme={theme}>

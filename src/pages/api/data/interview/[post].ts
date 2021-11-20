@@ -1,7 +1,7 @@
 import { getSession } from '@auth0/nextjs-auth0'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { fetchUserData } from '@/utils/fetchers'
+import { postUrl, fetchUserData } from '@/utils/fetchers'
 
 export default async function ProtectedRoute(
   req: NextApiRequest,
@@ -30,8 +30,7 @@ export default async function ProtectedRoute(
     })
   }
 
-  const url = `https://raw.githubusercontent.com/sreeramofficial/blog-posts/master/interview/${post}.md`
-  const _res = await fetch(url)
+  const _res = await fetch(postUrl('interview', `${post}`))
   const data = await _res.text()
   return res.json({
     data,

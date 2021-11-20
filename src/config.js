@@ -74,6 +74,7 @@ const config = {
       {
         title: 'About',
         url: '/about',
+        links: [],
       },
     ],
   },

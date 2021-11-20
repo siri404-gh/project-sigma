@@ -8,12 +8,19 @@ import { useRouter } from 'next/router'
 import { fetchNavlinks } from './fetchers'
 
 export const useNavlinks = (initialVal = {}) => {
+  // console.log('useNavlinks')
+
   const [navlinks, setNavlinks] = useState<any>(initialVal)
 
   useEffect(() => {
     const fetch = async () => {
-      const data = await fetchNavlinks()
-      setNavlinks(data)
+      try {
+        const res = await fetchNavlinks()
+        // console.log('useNavlinks setting state')
+        setNavlinks(res)
+      } catch (err) {
+        console.error(err)
+      }
     }
     fetch()
   }, [])
@@ -21,10 +28,9 @@ export const useNavlinks = (initialVal = {}) => {
   return navlinks
 }
 
-export const useProgress = () => {
-  const [prev, setPrev] = useState<any>(null)
-  const [next, setNext] = useState<any>(null)
-  const navlinks = useNavlinks()
+export const useProgress = navlinks => {
+  // console.log('useProgress', navlinks)
+  const [progress, setProgress] = useState<any>([null, null])
 
   const router = useRouter()
   const {
@@ -45,14 +51,20 @@ export const useProgress = () => {
       )
       let index
       if (post) {
-        index = section.links.findIndex(
+        index = section?.links.findIndex(
           (link: { url: string }) => link.url === `/${newSlug}/${post}`,
         )
-        setPrev(section.links[index - 1] || null)
-        setNext(section.links[index + 1] || null)
+        // console.log('useProgress setting state 1')
+        setProgress([
+          section?.links[index - 1] || null,
+          section?.links[index + 1] || null,
+        ])
       }
+    } else {
+      // console.log('useProgress setting state 2')
+      setProgress([null, null])
     }
   }, [newSlug, post, navlinks])
 
-  return { prev, next }
+  return progress
 }

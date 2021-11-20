@@ -13,7 +13,7 @@ import Seo, { SEOProps } from '@/components/Seo/Seo'
 import Sidebar, { SidebarProps } from '@/components/Sidebar/Sidebar'
 import { SpeedDialProps } from '@/components/SpeedDial/SpeedDial'
 import UserMenu, { UserMenuProps } from '@/components/UserMenu/UserMenu'
-import { useProgress } from '@/utils/hooks'
+import { useProgress, useNavlinks } from '@/utils/hooks'
 
 import InfoMenu from '../InfoMenu/InfoMenu'
 import NestedLinks from '../NestedLinks/NestedLinks'
@@ -26,6 +26,7 @@ const ScrollingBox = styled(Box)({
   height: 'calc(100vh - 64px - 64px - 2px)',
   overflowY: 'scroll',
 })
+
 export interface LayoutProps {
   children?: JSX.Element
   seoProps?: SEOProps
@@ -45,10 +46,12 @@ const Layout: FC<LayoutProps> = ({
   socialProps,
   userMenuProps,
 }) => {
+  // console.log('layout beginning')
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const onSidebarToggle = () => setIsSidebarOpen(!isSidebarOpen)
   const { user } = useUser()
-  const { prev, next } = useProgress()
+  const navlinks = useNavlinks(navlinksProps)
+  const [prev, next] = useProgress(navlinks)
 
   sidebarProps = {
     ...sidebarProps,
@@ -63,7 +66,7 @@ const Layout: FC<LayoutProps> = ({
   }
 
   const bottombarProps1 = {
-    ...navlinksProps,
+    ...navlinks,
     sx: { height: 64, display: { xs: 'none', md: 'block' } },
   }
 
@@ -83,12 +86,12 @@ const Layout: FC<LayoutProps> = ({
     avatarUrl: user?.picture || '',
     isUserLoggedIn: !!user,
   }
-
+  // console.log('layout rendering')
   return (
     <Box>
       <Seo {...seoProps} />
       <Sidebar {...sidebarProps}>
-        <NestedLinks {...navlinksProps} />
+        <NestedLinks {...navlinks} />
       </Sidebar>
       <Alerts />
       <Navbar {...navbarProps}>
@@ -121,7 +124,14 @@ const Layout: FC<LayoutProps> = ({
           {children}
         </Container>
       </ScrollingBox>
-      <div style={{ position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
+      <div
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          background: '#000',
+        }}>
         <Progress next={next} prev={prev} />
         <Bottombar {...bottombarProps2} />
       </div>
