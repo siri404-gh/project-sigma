@@ -102,6 +102,7 @@ export const getServerSideProps: GetServerSideProps = async ({
         title: `${title} | ${config.seo.title}`,
         url: process.env.NEXT_PUBLIC_DOMAIN + url,
       },
+      revalidate: 60 * 60,
     }
   } catch (error) {
     console.error(error)

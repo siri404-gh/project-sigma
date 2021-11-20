@@ -96,5 +96,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       title,
       url: process.env.NEXT_PUBLIC_DOMAIN + url,
     },
+    revalidate: 60 * 60,
   }
 }
