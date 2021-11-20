@@ -11,7 +11,7 @@ const Splash = () => (
         alt='blog'
         height='175'
         loading='lazy'
-        src='/img/sections/about.svg'
+        src='/img/about.svg'
         title='blog'
         width='300'
       />

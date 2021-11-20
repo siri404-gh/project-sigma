@@ -42,7 +42,7 @@ const Premium = () => {
         <CardMedia
           alt='Sreeram Padmanabhan'
           component='img'
-          image='/img/sections/about.svg'
+          image='/img/about.svg'
           title='Sreeram Padmanabhan'
         />
         <CardContent>
