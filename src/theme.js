@@ -24,7 +24,7 @@ const theme = createTheme({
       main: colors.secondary,
     },
     background: {
-      default: colors.primary,
+      default: colors.secondary,
     },
   },
   typography: {
@@ -38,19 +38,28 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#0e0e10',
+          backgroundColor: '#0e0e0e',
           borderBottom: 'solid 1px #333',
+        },
+      },
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          minHeight: 64,
         },
       },
     },
     MuiBottomNavigation: {
       styleOverrides: {
         root: {
-          backgroundColor: '#0e0e10',
+          minHeight: 64,
+          maxHeight: 64,
+          boxSizing: 'content-box',
+          backgroundColor: '#0e0e0e',
         },
       },
     },
-
     MuiBottomNavigationAction: {
       styleOverrides: {
         root: {

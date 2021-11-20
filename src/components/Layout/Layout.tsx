@@ -2,7 +2,6 @@ import React, { useState, FC } from 'react'
 
 import { useUser } from '@auth0/nextjs-auth0'
 import { Box, Container } from '@mui/material'
-import { styled } from '@mui/system'
 
 import Alerts from '@/components/Alerts/Alerts'
 import Bottombar from '@/components/Bottombar/Bottombar'
@@ -27,35 +26,6 @@ export interface LayoutProps {
   socialProps?: SpeedDialProps
   userMenuProps?: UserMenuProps
 }
-
-const ContentBox = styled(Box)(({ theme }) => ({
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  height: '100%',
-  [theme.breakpoints.up('sm')]: {
-    borderRadius: 8,
-  },
-  [theme.breakpoints.up('md')]: {
-    border: 'solid 1px #2a2a2a',
-  },
-}))
-
-const AbsoluteBox = styled(Box)(({ theme }) => ({
-  position: 'absolute',
-  top: 56,
-  left: 0,
-  right: 0,
-  bottom: 56,
-  overflow: 'scroll',
-  [theme.breakpoints.up('sm')]: {
-    top: 64,
-  },
-}))
-
-const RelativeBox = styled(Box)({
-  maxWidth: 860,
-  height: '100%',
-  margin: 'auto',
-})
 
 const Layout: FC<LayoutProps> = ({
   children,
@@ -107,7 +77,7 @@ const Layout: FC<LayoutProps> = ({
   }
 
   return (
-    <Box id='layout' sx={{ height: '100vh' }}>
+    <Box>
       <Seo {...seoProps} />
       <Sidebar {...sidebarProps}>
         <NestedLinks {...navlinksProps} />
@@ -116,49 +86,44 @@ const Layout: FC<LayoutProps> = ({
       <Navbar {...navbarProps}>
         <Bottombar {...bottombarProps1} />
         <Box
-          sx={{ display: 'flex', width: { md: 250 }, justifyContent: 'right' }}>
+          sx={{ display: 'flex', width: { md: 175 }, justifyContent: 'right' }}>
           <UserMenu {...userMenuProps} />
           <InfoMenu {...socialProps} />
         </Box>
       </Navbar>
-      <Container
-        maxWidth='md'
+      <Box
+        id='scrolling'
         sx={{
-          height: {
-            xs: 'calc(100vh - 56px - 56px - 2px)',
-            sm: 'calc(100vh - 64px - 56px - 2px)',
-          },
-          p: {
-            xs: 0,
-            sm: 2,
-            md: 2.5,
-          },
-        }}
-        disableGutters>
-        <ContentBox>
-          <AbsoluteBox
-            id='scrolling'
-            sx={{
-              my: {
-                xs: 0,
-                sm: 4,
-                md: 5,
-              },
-            }}>
-            <RelativeBox
-              id='relative-box'
-              sx={{
-                p: { xs: 1.5, sm: 0, md: 0 },
-                px: { xs: 1.5, sm: 4, md: 2.5 },
-              }}>
-              {children}
-            </RelativeBox>
-          </AbsoluteBox>
-        </ContentBox>
-      </Container>
-      {(next || prev) && <Progress next={next} prev={prev} />}
-      {/* <SpeedDial {...socialProps} /> */}
-      <Bottombar {...bottombarProps2} />
+          overflow: 'scroll',
+          height: 'calc(100vh - 64px - 64px - 2px)',
+          overflowY: 'scroll',
+        }}>
+        <Container
+          maxWidth={'md'}
+          sx={{
+            position: 'relative',
+            border: { md: 'solid 1px #2e2e2e' },
+            borderRadius: { md: 4 },
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            my: {
+              xs: 0,
+              md: 2.5,
+            },
+            p: {
+              xs: 1,
+              sm: 2,
+              md: 2.5,
+            },
+            minHeight: 'fill-available',
+          }}>
+          {children}
+        </Container>
+      </Box>
+      <div style={{ position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
+        <Progress next={next} prev={prev} />
+        {/* <SpeedDial {...socialProps} /> */}
+        <Bottombar {...bottombarProps2} />
+      </div>
     </Box>
   )
 }

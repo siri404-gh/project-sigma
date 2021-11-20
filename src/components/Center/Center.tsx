@@ -9,10 +9,13 @@ export interface CenterProps {
 }
 
 const FlexBox = styled(Box)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: 'fill-available',
+  // display: 'flex',
+  // alignItems: 'center',
+  // justifyContent: 'center',
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
 }))
 
 const Center: FC<CenterProps> = ({ children }) => (

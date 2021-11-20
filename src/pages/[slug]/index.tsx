@@ -1,13 +1,11 @@
 import React, { useEffect, Fragment } from 'react'
 
-import { Typography } from '@mui/material'
+import { CircularProgress } from '@mui/material'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import BlinkingCursor from '@/components/BlinkingCursor/BlinkingCursor'
 import Center from '@/components/Center/Center'
 import { NavlinkType } from '@/components/Navlinks/Navlinks'
-import config from '@/config'
 import { fetchNavlinks } from '@/utils/fetchers'
 
 const Index = ({
@@ -37,8 +35,7 @@ const Index = ({
         <meta content={url} name='canonical' />
       </Head>
       <Center>
-        <BlinkingCursor /> &nbsp;
-        <Typography color='primary'>Loading...</Typography>
+        <CircularProgress />
       </Center>
     </Fragment>
   )
@@ -51,11 +48,15 @@ export const getServerSideProps = async ({ query: { slug = '' } }) => {
   )
   if (section) {
     return {
-      props: {
-        title: `${section.title} | ${config.seo.title}`,
-        url: process.env.NEXT_PUBLIC_DOMAIN + section.url,
-        firstRoute: section.links[0].url,
+      redirect: {
+        destination: section.links[0].url,
+        permanent: false,
       },
+      // props: {
+      //   title: `${section.title} | ${config.seo.title}`,
+      //   url: process.env.NEXT_PUBLIC_DOMAIN + section.url,
+      //   firstRoute: section.links[0].url,
+      // },
     }
   }
   return {

@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
-import { Box, Container, Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 // import MobileStepper from '@mui/material/MobileStepper'
 import Link from 'next/link'
 
@@ -13,16 +13,18 @@ export default function Progress({
   prev?: { url: string; title: string }
   next?: { url: string; title: string }
 }) {
+  if (!prev && !next) return null
+
   const prevButton = prev ? (
     <Link href={prev.url} passHref>
-      <Button style={{ display: 'flex', justifyContent: 'left' }}>
+      <Button style={{ display: 'flex' }}>
         <KeyboardArrowLeft />
         {prev.title}
       </Button>
     </Link>
   ) : (
     <Link href={'/'} passHref>
-      <Button style={{ display: 'flex', justifyContent: 'left' }}>
+      <Button style={{ display: 'flex' }}>
         <KeyboardArrowLeft />
         Home
       </Button>
@@ -31,14 +33,14 @@ export default function Progress({
 
   const nextButton = next ? (
     <Link href={next.url} passHref>
-      <Button style={{ display: 'flex', justifyContent: 'right' }}>
+      <Button style={{ display: 'flex' }}>
         {next.title}
         <KeyboardArrowRight />
       </Button>
     </Link>
   ) : (
     <Link href={'/'} passHref>
-      <Button style={{ display: 'flex', justifyContent: 'right' }}>
+      <Button style={{ display: 'flex' }}>
         <KeyboardArrowRight />
         Home
       </Button>
@@ -50,12 +52,12 @@ export default function Progress({
   return (
     <Box
       sx={{
+        background: '#0e0e0e',
         borderTop: '1px solid #2e2e2e',
       }}>
-      <Container
-        maxWidth='md'
+      <Box
         sx={{
-          height: 56,
+          height: 64,
           display: { xs: 'none', md: 'grid' },
           gridTemplateColumns: '1fr 1fr',
         }}>
@@ -75,7 +77,7 @@ export default function Progress({
         }}
         variant='dots'
       /> */}
-      </Container>
+      </Box>
     </Box>
   )
 }
