@@ -7,6 +7,7 @@ import Markdown from '@/components/Markdown/Markdown'
 import config from '@/config'
 import { postUrl, fetchNavlinks } from '@/utils/fetchers'
 import { flatLinks, getPathsSlugPost } from '@/utils/helpers'
+import { useScroll } from '@/utils/hooks'
 
 const Post = ({
   data,
@@ -18,15 +19,18 @@ const Post = ({
   url: string
   next: { url: string; title: string }
   prev: { url: string; title: string }
-}) => (
-  <Fragment>
-    <Head>
-      <title>{title}</title>
-      <meta content={title} property='og:title' />
-      <meta content={url} property='og:url' />
-      <meta content={url} property='canonical' />
-      <script type='application/ld+json'>
-        {`
+}) => {
+  useScroll([url])
+
+  return (
+    <Fragment>
+      <Head>
+        <title>{title}</title>
+        <meta content={title} property='og:title' />
+        <meta content={url} property='og:url' />
+        <meta content={url} property='canonical' />
+        <script type='application/ld+json'>
+          {`
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
@@ -45,11 +49,12 @@ const Post = ({
   },
 }
         `}
-      </script>
-    </Head>
-    <Markdown>{data}</Markdown>
-  </Fragment>
-)
+        </script>
+      </Head>
+      <Markdown>{data}</Markdown>
+    </Fragment>
+  )
+}
 
 export default Post
 

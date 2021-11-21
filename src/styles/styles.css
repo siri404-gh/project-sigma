@@ -202,3 +202,7 @@ body {
 #submit {
   margin-bottom: 10px;
 }
+
+pre {
+  color: white;
+}

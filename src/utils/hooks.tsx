@@ -68,3 +68,9 @@ export const useProgress = navlinks => {
 
   return progress
 }
+
+export const useScroll = params => {
+  useEffect(() => {
+    document?.getElementById('scrolling')?.scrollTo(0, 0)
+  }, params)
+}

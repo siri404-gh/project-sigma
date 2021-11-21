@@ -8,6 +8,7 @@ import Head from 'next/head'
 import Markdown from '@/components/Markdown/Markdown'
 import config from '@/config'
 import { fetchUserData, postUrl, fetchNavlinks } from '@/utils/fetchers'
+import { useScroll } from '@/utils/hooks'
 
 const Post = ({
   data,
@@ -17,15 +18,18 @@ const Post = ({
   data: string
   title: string
   url: string
-}) => (
-  <Fragment>
-    <Head>
-      <title>{title}</title>
-      <meta content={title} name='og:title' />
-      <meta content={url} name='og:url' />
-      <meta content={url} name='canonical' />
-      <script type='application/ld+json'>
-        {`
+}) => {
+  useScroll([url])
+
+  return (
+    <Fragment>
+      <Head>
+        <title>{title}</title>
+        <meta content={title} name='og:title' />
+        <meta content={url} name='og:url' />
+        <meta content={url} name='canonical' />
+        <script type='application/ld+json'>
+          {`
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
@@ -44,11 +48,12 @@ const Post = ({
   },
 }
         `}
-      </script>
-    </Head>
-    <Markdown>{data}</Markdown>
-  </Fragment>
-)
+        </script>
+      </Head>
+      <Markdown>{data}</Markdown>
+    </Fragment>
+  )
+}
 
 export default Post
 
